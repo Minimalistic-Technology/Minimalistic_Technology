@@ -128,16 +128,6 @@ const Home = () => {
           <li className="hover:text-green-400 cursor-pointer"><Link href="/Services">Services</Link></li>
         </ul>
       </nav>
-
-      {/* Buttons (Login & Get Started) */}
-      <div className="hidden md:flex space-x-2">
-        <button className="px-4 py-2 border bg-[#222222] text-green-500 rounded-lg hover:bg-green-400 hover:text-white transition">
-          Log In
-        </button>
-        <button className="px-4 py-2 bg-[#7ED957] text-gray-900 rounded-lg hover:bg-green-500 transition">
-          Get Started
-        </button>
-      </div>
     </header>
 
       {/* Hero Section */}
