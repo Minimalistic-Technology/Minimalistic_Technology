@@ -62,7 +62,8 @@ const Home = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFor 
+      mData({ ...formData, [name]: value });
   };
 
   // Handle form submission
