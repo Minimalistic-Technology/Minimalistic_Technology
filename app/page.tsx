@@ -2,30 +2,34 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BackgroundGradient } from "../components/BackgroundGradient";
-import { Cpu, Layout, Rocket, Headset,Menu,X,ArrowLeft,ArrowRight,} from "lucide-react";
-import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
+import { Cpu, Layout, Rocket, Headset, Menu, X, ArrowLeft, ArrowRight } from "lucide-react";
+import { FaFacebook, FaTwitter, FaYoutube, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import emailjs from "emailjs-com";
+
+// Load Google Fonts: Poppins
+import { Inter } from "next/font/google";
+const poppins = Inter({ subsets: ["latin"] });
 
 const testimonials = [
   {
     text: "This web app has completely transformed how we manage our deliveries. It’s seamless, efficient, and a game-changer for logistics!",
     name: "Daniel Martins",
     role: "Operations Manager, Swift Logistics Ltd.",
-    image: "men.jpg"
+    image: "men.jpg",
   },
   {
     text: "Minimalistic Technology's platform has helped us reduce delays and improve tracking. Our clients love the transparency!",
     name: "Elene Rodriguez",
     role: "Founder, Express Freight",
-    image: "women.jpg"
+    image: "women.jpg",
   },
   {
     text: "Minimalistic Technology's platform has helped us reduce delays and improve tracking. Our clients love the transparency!",
     name: "Durgesh Nai",
     role: "Founder, Express Freight",
-    image: "men1.jpg"
-  }
+    image: "men1.jpg",
+  },
 ];
 
 const Home = () => {
@@ -33,7 +37,6 @@ const Home = () => {
   const [current, setCurrent] = useState(0);
   const [windowWidth, setWindowWidth] = useState(1024);
   const [slideWidth, setSlideWidth] = useState(33.33);
-
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -70,9 +73,9 @@ const Home = () => {
     e.preventDefault();
 
     const sendData = {
-      name: formData.Name,  
-      email: formData.Email,  
-      message: formData.Message, 
+      name: formData.Name,
+      email: formData.Email,
+      message: formData.Message,
     };
 
     emailjs
@@ -81,7 +84,7 @@ const Home = () => {
         (response) => {
           console.log("SUCCESS!", response);
           alert("Message sent successfully!");
-          setFormData({ Name: "", Email: "", Message: "" }); 
+          setFormData({ Name: "", Email: "", Message: "" });
         },
         (error) => {
           console.error("FAILED...", error);
@@ -90,71 +93,64 @@ const Home = () => {
       );
   };
 
-
   return (
-    <div className="min-h-screen font-geist-sans bg-[#222222] text-white">
-
-      <header className="fixed top-0 left-0 w-full z-50 bg-[#222222]/50 backdrop-blur-md text-white p-4 md:flex md:justify-between md:items-center">
-      {/* Logo Section */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <Image src="/logo.jpg" alt="Logo" className= "backdrop-blur-2xl bg-[#222222]"  width={40} height={40} />
-          <div className="flex flex-colbg- text-green-600 text-xl font-bold">
-            <span>Minimilistic</span>
-            <span>Technology</span>
+    <div className={`min-h-screen ${poppins.className} bg-[#23272A] text-white`}>
+      {/* Header/Navbar */}
+      <header className="fixed top-0 left-0 w-full z-50 bg-[#23272A]/80 backdrop-blur-md  text-white p-4 md:flex md:justify-between md:items-center">
+        {/* Logo + Brand */}
+        <div className="flex items-center justify-between w-full md:w-auto">
+          <div className="flex items-center space-x-2">
+            <Image src="/logo.jpg" alt="Logo" width={40} height={40} className="rounded-full bg-[#222222]" />
+            <div className="flex flex-col text-green-600 text-xl font-bold">
+              <span>Minimalistic</span>
+              <span>Technology</span>
+            </div>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 text-white"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X size={30} /> : <Menu size={30} />}
+          </button>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 text-white"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X size={30} /> : <Menu size={30} />}
-        </button>
-      </div>
+        {/* Navigation Links */}
+        <nav className={`md:flex md:items-center md:space-x-6 ${isOpen ? "block" : "hidden"} md:block mt-4 md:mt-0`}>
+          <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
+            <li className="hover:text-green-400"><Link href="/">Home</Link></li>
+            <li className="hover:text-green-600"><Link href="/AboutUs">About Us</Link></li>
+            <li className="hover:text-green-400"><Link href="/Services">Services</Link></li>
+          </ul>
+        </nav>
 
-      {/* Navigation Menu */}
-      <nav
-        className={`absolute top-full left-0 w-full bg-/50 p-4 space-y-4 md:static md:w-auto md:p-0 md:flex md:space-x-6 md:space-y-0 ${
-          isOpen ? "block" : "hidden"
-        }`}
-      >
-        <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
-          <li className="hover:text-green-400 cursor-pointer"><Link href="/">Home</Link></li>
-          <li className="hover:text-green-600 cursor-pointer">
-            <Link href="/AboutUs">About Us</Link>
-          </li>
-          <li className="hover:text-green-400 cursor-pointer"><Link href="/Services">Services</Link></li>
-        </ul>
-      </nav>
+        {/* CTA Button */}
+        <div className="hidden md:block ml-4">
+          <Link href="/getstrted">
+            <button className="px-4 py-2 bg-[#7ED957] text-white rounded-lg hover:bg-green-500 transition">
+              Get Started
+            </button>
+          </Link>
+        </div>
+      </header>
 
-      {/* Buttons (Login & Get Started) */}
-      <div className="hidden md:flex space-x-2">
-        <button className="px-4 py-2 border bg-[#222222] text-green-500 rounded-lg hover:bg-green-400 hover:text-white transition">
-          Log In
-        </button>
-        <button className="px-4 py-2 bg-[#7ED957] text-gray-900 rounded-lg hover:bg-green-500 transition">
-          Get Started
-        </button>
-      </div>
-    </header>
 
       {/* Hero Section */}
-      <div className="flex flex-col md:flex-row items-center justify-between w-full mt-40 sm:mt-60 px-6 sm:px-16">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full mt-20 sm:mt-60 px-6 sm:px-16">
         <div className="max-w-xl text-left">
-          <h1 className="text-5xl sm:text-4xl font-bold">Build Websites Effortlessly</h1>
+        <h1 className="text-4xl sm:text-6xl font-bold">Build Websites Effortlessly</h1>
           <p className="text-base sm:text-lg">From Idea to Live Website - We Make It Seamless</p>
           <div className="text-xs sm:text-sm text-gray-400 mt-4">
             <span>No coding needed</span> | <span>AI powered design</span> | <span>Fast deployment</span>
           </div>
-          <button className="bg-[#7ED957] hover:bg-green-600 text-black font-bold py-2 px-6 rounded-lg mt-6">
+          <button className="bg-green-400 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg mt-6">
             Start Building
           </button>
         </div>
 
         <div className="rounded flex justify-end w-full">
-          <Image src="/api_img.jpg" alt="Hero" width={500} height={400} className="rounded-2xl mt-4" />
+          <Image src="/hero.jpg" alt="Hero" width={500} height={400} className="rounded-2xl mt-4" />
         </div>
       </div>
 
@@ -175,7 +171,7 @@ const Home = () => {
             </div>
           ))}
         </div>
-        <button className="mt-6 bg-green-600 hover:bg-green-600 text-black font-bold py-2 px-6 rounded-lg">
+        <button className="mt-6 bg- [#87C732 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg">
           Try it Now
         </button>
       </section>
@@ -185,53 +181,53 @@ const Home = () => {
 
         <div className="mt-7 flex flex-col md:flex-row justify-center items-center gap-6">
           {/* Starter Plan */}
-          <div className="bg-[#7ED957] text-black p-6 rounded-2xl hover:xl: w-full sm:w-3/4 md:w-1/4 shadow-lg">
-            <h3 className="text-xl font-semibold ">Starter</h3>
-            <p className="text-2xl font-bold ">$49 <span className="text-sm">/month</span></p>
-            <button className="mt-4 bg-green-600 text-black hover:text-white px-2 py-2 rounded-lg w-full">
+          <div className="bg-[#DAEEBF] text-black p-6 rounded-2xl hover:xl: w-full sm:w-3/4 md:w-1/4 shadow-lg">
+            <h3 className="text-xl font-semibold ">Starter plan</h3>
+            <p className="text-2xl font-bold ">₹1,000 (One-Time) <span className="text-sm"></span></p>
+            <button className="mt-4 bg-green-500 text-white hover:text-black px-2 py-2 rounded-lg w-full">
               Get Started
             </button>
             <ul className="mt-4 text-left space-y-2">
-              <li>✅ 5-page custom website</li>
-              <li>✅ Mobile & SEO-friendly design</li>
-              <li>✅ Basic contact form integration</li>
-              <li>✅ Standard hosting (1 year)</li>
-              <li>✅ Email support</li>
+              <li> Up to 3-page static website</li>
+              <li> Mobile-friendly & SEO-ready</li>
+              <li> Basic contact form </li>
+              <li> Lightweight, fast-loading design</li>
+              <li> customized page</li>
             </ul>
           </div>
 
           {/* Professional Plan */}
-          <div className="bg-green-500 text-black p-6 rounded-2xl w-full sm:w-3/4 md:w-1/5 shadow-lg relative">
-          <div className="absolute top-[-10px] left-1/2 -translate-x-1/2 bg-green-400 text-black px-3 py-1 text-sm rounded-lg">
+          <div className="bg-[#87C732] text-black p-6 rounded-2xl w-64 sm:w-3/4 md:w-1/5 shadow-lg relative">
+          <div className="absolute top-[-10px] left-1/2 -translate-x-1/2 bg-[#87C732] text-white px-3 py-1 text-sm rounded-lg">
           Most Popular
             </div>
-            <h3 className="text-xl font-semibold">Professional</h3>
-            <p className="text-2xl font-bold">$99 <span className="text-sm">/month</span></p>
-            <button className="mt-4 bg-white text-black hover:text-green-600 px-4 py-2 rounded-lg w-full">
+            <h3 className="text-xl font-semibold">Professional Plan</h3>
+            <p className="text-2xl font-bold"> ₹4,000 <span className="text-sm">/month</span></p>
+            <button className="mt-4 bg-white text-black hover:text-black px-4 py-2 rounded-lg w-full">
               Get Started
             </button>
             <ul className="mt-4 text-left space-y-2">
-              <li>✅ Mobile, SEO & speed optimized</li>
-              <li>✅ Blog & social media integration</li>
-              <li>✅ Standard hosting (1 year)</li>
-              <li>✅ 3 months of free maintenance</li>
-              <li>✅ Priority support</li>
+              <li> Mobile, SEO & speed optimized</li>
+              <li> Blog & social media integration</li>
+              <li> Standard hosting (1 year include)</li>
+              <li> 3 months of free maintenance</li>
+              <li> Priority support</li>
             </ul>
           </div>
 
           {/* Enterprise Plan */}
-          <div className="bg-[#7ED957] text-black p-6 rounded-2xl w-full sm:w-3/4 md:w-1/4 shadow-lg">
-            <h3 className="text-xl font-semibold">Enterprise</h3>
-            <p className="text-2xl font-bold">$199 <span className="text-sm">/month</span></p>
-            <button className="mt-4 bg-green-500 text-black hover:text-amber-50 px-4 py-2 rounded-lg w-full">
+          <div className="bg-[#DAEEBF] text-black p-6 rounded-2xl w-full sm:w-3/4 md:w-1/4 shadow-lg">
+            <h3 className="text-xl font-semibold">Enterprise Plan</h3>
+            <p className="text-2xl font-bold">₹10,000 <span className="text-sm">/month</span></p>
+            <button className="mt-4 bg-green-500 text-white hover:text-amber-50 px-4 py-2 rounded-lg w-full">
               Get Started
             </button>
             <ul className="mt-4 text-left space-y-2">
-              <li>✅ E-commerce,custom web app</li>
-              <li>✅ API integrations & automation</li>
-              <li>✅ Premium hosting (1 year)</li>
-              <li>✅ 5 months of free maintenance</li>
-              <li>✅ Dedicated manager,24/7 support</li>
+              <li> E-commerce,custom web app</li>
+              <li> API integrations & automation</li>
+              <li> Premium hosting (1 year include)</li>
+              <li> 5 months of free maintenance</li>
+              <li> Dedicated manager,24/7 support</li>
             </ul>
           </div>
         </div>
@@ -239,7 +235,7 @@ const Home = () => {
 
       <>
       {/* Testimonial Cards*/}
-      <section className="bg-[#222222] text-white py-12">
+      <section className="bg-[#23272A] text-white py-12">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">Testimonials</h2>
           <div className="relative overflow-hidden">
@@ -283,7 +279,7 @@ const Home = () => {
             </BackgroundGradient>
           </div> */}
       {/* Form */}
-      <section className="bg-[#222222] text-white py-12">
+      <section className="bg-[#23272A] text-white py-12">
         <div className="max-w-6xl mx-auto px-4">
           <h2  className="text-3xl font-bold text-center mb-2">Get Started Today</h2>
           <p className="text-center mb-10">Kindly fill this form to get started</p>
@@ -293,7 +289,7 @@ const Home = () => {
               <div className="text-[#A8A8A8] text-center">
                 <p>Join 1000+ businesses using Minimalistic Technology to build their dream website.</p>
                 <p className="mt-2">📧 MinimalisticTechnology.com</p>
-                <p>📞 +44-000-000-0000</p>
+                <p>📞 +91 90043 17329</p>
               </div>
             </div>
             {/* Right Column */}
@@ -357,7 +353,7 @@ const Home = () => {
         required
          className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md mt-3 mb-3"
       />
-      <button type="submit" className="bg-[#7ED957] text-black font-bold py-3 px-9 rounded-md hover:bg-[#6cc44a] transition">Submit</button>
+      <button type="submit" className="bg-[#7ED957] text-white font-bold py-3 px-9 rounded-md hover:bg-[#6cc44a] transition">Submit</button>
     </form>
 
 
@@ -370,7 +366,7 @@ const Home = () => {
         </div>
       </section>
             </>
-            <footer className="bg-[#222222] text-gray-300">
+            <footer className="bg-[#23272A] text-gray-300">
     <div className="border-b-2 w-full border-gray-500"></div>
       <div className="max-w-6xl mx-auto px-6">
 
@@ -410,16 +406,43 @@ const Home = () => {
         <div className="absolute left-0 right-0 border-b-2 border-gray-700 "></div>
         <div className="text-white flex space-x-4 text-start h-3 md:mt-0">@ 2025 Minimilistic Technology All Rights Resserved</div>
         <div className="flex space-x-4 justify-end mt-4 mb-5 md:mt-0">
-            <a href="#" className="hover:text-white transition">
-              <FaFacebook size={24} className="text-white hover:text-white" />
-            </a>
-            <a href="#" className="hover:text-white transition">
-              <FaTwitter size={24} className="text-white hover:text-white" />
-            </a>
-            <a href="#" className="hover:text-white transition">
-              <FaYoutube size={24} className="text-white hover:text-white" />
-            </a>
-          </div>
+          <a href="#" className="hover:text-white transition">
+            <FaFacebook size={24} className="text-white hover:text-white" />
+          </a>
+
+          <a 
+            href="https://x.com/TechMinimalists" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-white hover:text-white transition"
+          >
+            <FaTwitter size={24} />
+          </a>
+
+          <a 
+            href="https://www.instagram.com/minimalistictechnology?utm_source=qr&igsh=MTRucHg5bm5wNDBnYg==" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-white hover:text-white transition"
+          >
+            <FaInstagram size={24} />
+          </a>
+
+          <a 
+            href="https://www.linkedin.com/showcase/minimalistictechnology/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-white hover:text-white transition"
+          >
+            <FaLinkedin size={24} />
+          </a>
+
+          <a href="#" className="hover:text-white transition">
+            <FaYoutube size={24} className="text-white hover:text-white" />
+          </a>
+        </div>
+
+
         </div>
     </footer>
           </div>
