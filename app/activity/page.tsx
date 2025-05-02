@@ -106,17 +106,17 @@ export default function ActivityPage() {
 
   return (
     <div className={`p-8 min-h-screen transition-colors duration-500 ${
-      darkMode ? 'bg-[#1a1a1a] text-white' : 'bg-white text-gray-900'
+      darkMode ? 'bg-[#23272A] text-white' : 'bg-white text-gray-900'
     }`}>
       {/* Header */}
       <div className="flex items-center justify-between font-sans mb-10">
-        <h1 className={`text-3xl font-bold ${darkMode ? 'text-green-400' : 'text-green-600'}`}>
+        <h1 className={`text-3xl font-bold ${darkMode ? 'text-[#87C732]' : 'text-green-600'}`}>
           System Status Dashboard
         </h1>
         <button
           onClick={toggleDarkMode}
           className={`p-2 rounded-full ${
-            darkMode ? 'bg-green-500 text-white' : 'bg-yellow-500 text-white'
+            darkMode ? 'bg-[#87C732] text-white' : 'bg-yellow-500 text-white'
           } hover:brightness-110 transition`}
         >
           {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -125,7 +125,7 @@ export default function ActivityPage() {
 
       {/* GitHub 90-Day Status */}
       <div className="mb-12">
-        <h2 className={`text-2xl font-sans font-semibold mb-4 ${darkMode ? 'text-green-400' : 'text-green-700'}`}>
+        <h2 className={`text-2xl font-sans font-semibold mb-4 ${darkMode ? 'text-[#87C732]' : 'text-green-700'}`}>
           GitHub - Last 90 Days
         </h2>
         {loading ? (
@@ -141,7 +141,7 @@ export default function ActivityPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.01 }}
                 className={`w-2 h-12 rounded-sm ${
-                  day.status === 'operational' ? 'bg-green-500' : 'bg-red-500'
+                  day.status === 'operational' ? 'bg-[#87C732]' : 'bg-red-500'
                 }`}
                 title={`${day.date} - ${day.status}`}
               />
@@ -152,7 +152,7 @@ export default function ActivityPage() {
 
       {/* Third-Party Status */}
       <div className="mt-6">
-        <h2 className={`text-2xl font-sans font-bold mb-4 ${darkMode ? 'text-green-400' : 'text-green-700'}`}>
+        <h2 className={`text-2xl font-sans font-bold mb-4 ${darkMode ? 'text-[#87C732]' : 'text-[#87C732]'}`}>
           Third Party Components
         </h2>
         <div className="space-y-3">

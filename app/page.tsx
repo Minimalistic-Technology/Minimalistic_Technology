@@ -96,55 +96,82 @@ const Home = () => {
   return (
     <div className={`min-h-screen ${poppins.className} bg-[#23272A] text-white`}>
       {/* Header/Navbar */}
-      <header className="fixed top-0 left-0 w-full z-50 bg-[#23272A]/80 backdrop-blur-md  text-white p-4 md:flex md:justify-between md:items-center">
-        {/* Logo + Brand */}
-        <div className="flex items-center justify-between w-full md:w-auto">
-          <div className="flex items-center space-x-2">
-            <Image src="/logo.jpg" alt="Logo" width={40} height={40} className="rounded-full bg-[#222222]" />
-            <div className="flex flex-col text-green-600 text-xl font-bold">
-              <span>Minimalistic</span>
-              <span>Technology</span>
-            </div>
-          </div>
+      <header className="fixed top-0 left-0 w-full z-50 bg-[#23272A]/90 backdrop-blur-md text-white p-4">
+  <div className="flex justify-between items-center max-w-7xl mx-auto">
+    {/* Logo & Brand */}
+    <div className="flex items-center space-x-3">
+      <Image
+        src="/logo.jpg"
+        alt="Logo"
+        width={40}
+        height={40}
+        className="rounded-full bg-[#23272A]"
+      />
+      <div className="flex flex-col text-[#87C732] text-lg font-bold leading-tight">
+        <span>Minimalistic</span>
+        <span>Technology</span>
+      </div>
+    </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-white"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X size={30} /> : <Menu size={30} />}
-          </button>
-        </div>
+    {/* Hamburger Menu Button (Mobile) */}
+    <button
+      className="md:hidden"
+      onClick={() => setIsOpen(!isOpen)}
+      aria-label="Toggle Menu"
+    >
+      {isOpen ? <X size={28} /> : <Menu size={28} />}
+    </button>
 
-        {/* Navigation Links */}
-        <nav className={`md:flex md:items-center md:space-x-6 ${isOpen ? "block" : "hidden"} md:block mt-4 md:mt-0`}>
-          <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
-            <li className="hover:text-green-400"><Link href="/">Home</Link></li>
-            <li className="hover:text-green-600"><Link href="/AboutUs">About Us</Link></li>
-            <li className="hover:text-green-400"><Link href="/Services">Services</Link></li>
-          </ul>
-        </nav>
+    {/* Navigation Menu */}
+    <nav
+      className={`absolute top-full left-0 w-full bg-[#23272A] p-4 space-y-4 
+      md:static md:w-auto md:p-0 md:flex md:space-x-6 md:space-y-0 
+      ${isOpen ? "block" : "hidden"}`}
+    >
+      <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
+        <li className="hover:text-green-600 cursor-pointer">
+          <Link href="/">Home</Link>
+        </li>
+        <li className="hover:text-green-600 cursor-pointer">
+          <Link href="/AboutUs">About Us</Link>
+        </li>
+        <li className="hover:text-green-600 cursor-pointer">
+          <Link href="/Services">Services</Link>
+        </li>
 
-        {/* CTA Button */}
-        <div className="hidden md:block ml-4">
+        {/* Get Started Button (Mobile Only) */}
+        <li className="md:hidden">
           <Link href="/getstrted">
-            <button className="px-4 py-2 bg-[#7ED957] text-white rounded-lg hover:bg-green-500 transition">
+            <button className="w-full px-4 py-2 bg-[#87C732] text-white rounded-lg hover:bg-green-500 transition">
               Get Started
             </button>
           </Link>
-        </div>
-      </header>
+        </li>
+      </ul>
+    </nav>
+
+    {/* Get Started Button (Desktop Only) */}
+    <div className="hidden md:flex space-x-2">
+      <Link href="/getstrted">
+        <button className="px-4 py-2 bg-[#87C732] text-white rounded-lg hover:bg-green-500 transition">
+          Get Started
+        </button>
+      </Link>
+    </div>
+  </div>
+</header>
+
 
 
       {/* Hero Section */}
-      <div className="flex flex-col md:flex-row items-center justify-between w-full mt-20 sm:mt-60 px-6 sm:px-16">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full mt-40 sm:mt-60 px-6 sm:px-16">
         <div className="max-w-xl text-left">
         <h1 className="text-4xl sm:text-6xl font-bold">Build Websites Effortlessly</h1>
           <p className="text-base sm:text-lg">From Idea to Live Website - We Make It Seamless</p>
           <div className="text-xs sm:text-sm text-gray-400 mt-4">
             <span>No coding needed</span> | <span>AI powered design</span> | <span>Fast deployment</span>
           </div>
-          <button className="bg-green-400 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg mt-6">
+          <button className="bg-[#87C732] hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg mt-6">
             Start Building
           </button>
         </div>
@@ -155,7 +182,7 @@ const Home = () => {
       </div>
 
       {/* What We Offer Section */}
-      <section className="text-white text-center mt-40 p-8">
+      <section className="text-white text-center mt-22 p-8">
         <h2 className="text-4xl font-bold mb-6">What We Offer</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
@@ -171,7 +198,7 @@ const Home = () => {
             </div>
           ))}
         </div>
-        <button className="mt-6 bg- [#87C732 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg">
+        <button className="mt-6 bg-[#87C732] hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg">
           Try it Now
         </button>
       </section>
@@ -179,57 +206,60 @@ const Home = () => {
       <section className="mt-17 text-bklack  text-center px-4">
         <h2 className="text-3xl md:text-3xl font-bold">Pricing Plan</h2>
 
-        <div className="mt-7 flex flex-col md:flex-row justify-center items-center gap-6">
-          {/* Starter Plan */}
-          <div className="bg-[#DAEEBF] text-black p-6 rounded-2xl hover:xl: w-full sm:w-3/4 md:w-1/4 shadow-lg">
-            <h3 className="text-xl font-semibold ">Starter plan</h3>
-            <p className="text-2xl font-bold ">₹1,000 (One-Time) <span className="text-sm"></span></p>
-            <button className="mt-4 bg-green-500 text-white hover:text-black px-2 py-2 rounded-lg w-full">
-              Get Started
-            </button>
-            <ul className="mt-4 text-left space-y-2">
-              <li> Up to 3-page static website</li>
-              <li> Mobile-friendly & SEO-ready</li>
-              <li> Basic contact form </li>
-              <li> Lightweight, fast-loading design</li>
-              <li> customized page</li>
-            </ul>
+        <div className="bg-[#23272A] min-h-screen flex flex-col items-center justify-center p-6">
+      <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Starter Plan */}
+        <div className="bg-[#DAEEBF] text-black rounded-2xl p-8 flex flex-col justify-between">
+          <div>
+            <h2 className="text-2xl font-semibold mb-2">Starter</h2>
+            <p className="mb-6">Ideal for small businesses and personal brands</p>
+            <p className="text-4xl font-bold"> ₹1,000 <span className="text-sm font-normal">/(One-Time)</span></p>
           </div>
+          <button className="bg-[#7ED957] text-white font-semibold py-2 px-4 rounded-md mt-6">Get Started</button>
+          <ul className="mt-6 space-y-2 text-md">
+            <li> 5-page custom website</li>
+            <li> Mobile & SEO-friendly design</li>
+            <li> Basic contact form integration</li>
+            <li> Standard hosting (1 year)</li>
+            <li> Email support</li>
+          </ul>
+        </div>
 
-          {/* Professional Plan */}
-          <div className="bg-[#87C732] text-black p-6 rounded-2xl w-64 sm:w-3/4 md:w-1/5 shadow-lg relative">
-          <div className="absolute top-[-10px] left-1/2 -translate-x-1/2 bg-[#87C732] text-white px-3 py-1 text-sm rounded-lg">
-          Most Popular
-            </div>
-            <h3 className="text-xl font-semibold">Professional Plan</h3>
-            <p className="text-2xl font-bold"> ₹4,000 <span className="text-sm">/month</span></p>
-            <button className="mt-4 bg-white text-black hover:text-black px-4 py-2 rounded-lg w-full">
-              Get Started
-            </button>
-            <ul className="mt-4 text-left space-y-2">
-              <li> Mobile, SEO & speed optimized</li>
-              <li> Blog & social media integration</li>
-              <li> Standard hosting (1 year include)</li>
-              <li> 3 months of free maintenance</li>
-              <li> Priority support</li>
-            </ul>
+        {/* Professional Plan */}
+        <div className="bg-[#7ED957] text-black rounded-2xl p-8 flex flex-col justify-between relative">
+          <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#A9D18E] text-black px-4 py-1 text-sm font-semibold rounded-md">Most popular</div>
+          <div>
+            <h2 className="text-2xl font-semibold mb-2">Professional</h2>
+            <p className="mb-6">Best for growing businesses and startups</p>
+            <p className="text-4xl font-bold"> ₹4,000<span className="text-sm font-normal">/month</span></p>
           </div>
+          <button className="bg-white text-black font-semibold py-2 px-4 rounded-md mt-6">Get Started</button>
+          <ul className="mt-6 space-y-2 text-md">
+            <li> Mobile, SEO, & speed-optimized</li>
+            <li> Blog & social media integration</li>
+            <li> Standard hosting (1 year)</li>
+            <li> 3 months of free maintenance</li>
+            <li> Priority support</li>
+          </ul>
+        </div>
 
-          {/* Enterprise Plan */}
-          <div className="bg-[#DAEEBF] text-black p-6 rounded-2xl w-full sm:w-3/4 md:w-1/4 shadow-lg">
-            <h3 className="text-xl font-semibold">Enterprise Plan</h3>
-            <p className="text-2xl font-bold">₹10,000 <span className="text-sm">/month</span></p>
-            <button className="mt-4 bg-green-500 text-white hover:text-amber-50 px-4 py-2 rounded-lg w-full">
-              Get Started
-            </button>
-            <ul className="mt-4 text-left space-y-2">
-              <li> E-commerce,custom web app</li>
-              <li> API integrations & automation</li>
-              <li> Premium hosting (1 year include)</li>
-              <li> 5 months of free maintenance</li>
-              <li> Dedicated manager,24/7 support</li>
-            </ul>
+        {/* Enterprise Plan */}
+        <div className="bg-[#DAEEBF] text-black rounded-2xl p-8 flex flex-col justify-between">
+          <div>
+            <h2 className="text-2xl font-semibold mb-2">Enterprise</h2>
+            <p className="mb-6">For large-scale businesses and custom business</p>
+            <p className="text-4xl font-bold"> ₹10,000<span className="text-sm font-normal">/month</span></p>
           </div>
+          <button className="bg-[#7ED957] text-white font-semibold py-2 px-4 rounded-md mt-6">Get Started</button>
+          <ul className="mt-6 space-y-2 text-md">
+            <li> E-commerce & custom web applications</li>
+            <li> API integrations & automation</li>
+            <li> Premium hosting (1 year)</li>
+            <li> 6 months of free maintenance</li>
+            <li> Dedicated manager & 24/7 support</li>
+          </ul>
+        </div>
+        </div>
         </div>
       </section>
 
@@ -292,40 +322,6 @@ const Home = () => {
                 <p>📞 +91 90043 17329</p>
               </div>
             </div>
-            {/* Right Column */}
-            <div className="space-y-8 col-span-2">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Business Information */}
-                {/* <div>
-                  <h3 className="text-2xl font-bold p-3">Business Information</h3>
-                  <div className="grid grid-cols-1 gap-4">
-                    <input className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="Full Name*" />
-                    <input className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="Email Address*" />
-                    <input className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="Phone Number*" />
-                    <input className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="Business Name*" />
-                    <textarea className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="Brief Description of Business" rows= {3}></textarea>
-                  </div>
-                </div> */}
-
-                {/* Project Information */}
-                {/* <div>
-                  <h3 className="text-2xl font-bold p-3">Project Information</h3>
-                  // <div className="grid grid-cols-1 gap-4">
-                    <input className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="Type of Website*" />
-                    <select
-                      className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md">
-                      defaultValue=""
-                      <option className="bg-[#222222] text-white" value="" disabled>Select Service*</option>
-                      <option className="bg-[#222222] text-white" value="web-design">Web Design</option>
-                      <option className="bg-[#222222] text-white" value="erp">ERP</option>
-                      <option className="bg-[#222222] text-white" value="ecommerce">E-commerce site</option>
-                    </select>
-                    <input className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="Do you have existing website?" />
-                    <textarea className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="If yes, please describe" rows= {1}></textarea>
-                    <textarea className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md" placeholder="Brief Description of Project" rows={3}></textarea>
-                  </div>
-                </div> */}
-
 <form onSubmit={handleSubmit}>
       <input
         type="text"
@@ -334,7 +330,7 @@ const Home = () => {
         value={formData.Name}
         onChange={handleChange}
         required
-        className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md mt-3"
+        className="w-full p-3 border border-[#87C732] bg-transparent text-white placeholder-[#A8A8A8] rounded-md mt-3"
       />
       <input
         type="email"
@@ -343,7 +339,7 @@ const Home = () => {
         value={formData.Email}
         onChange={handleChange}
         required
-        className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md mt-3"
+        className="w-full p-3 border border-[#87C732] bg-transparent text-white placeholder-[#A8A8A8] rounded-md mt-3"
       />
       <textarea
         name="Message"
@@ -351,65 +347,67 @@ const Home = () => {
         value={formData.Message}
         onChange={handleChange}
         required
-         className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#A8A8A8] rounded-md mt-3 mb-3"
+         className="w-full p-3 border border-[#87C732] bg-transparent text-white placeholder-[#A8A8A8] rounded-md mt-3 mb-3"
       />
-      <button type="submit" className="bg-[#7ED957] text-white font-bold py-3 px-9 rounded-md hover:bg-[#6cc44a] transition">Submit</button>
+      <button type="submit" className="bg-[#87C732] text-white font-bold py-3 px-9 rounded-md hover:bg-[#6cc44a] transition">Submit</button>
     </form>
-
-
-              </div>
-                            {/* Submit Button */}
-                            {/* <div className="flex justify-center mt-8">
-                <button className="bg-[#7ED957] text-black font-bold py-3 px-9 rounded-md hover:bg-[#6cc44a] transition">Submit</button></div> */}
+         </div>
             </div> 
-          </div>
-        </div>
       </section>
             </>
-            <footer className="bg-[#23272A] text-gray-300">
-    <div className="border-b-2 w-full border-gray-500"></div>
-      <div className="max-w-6xl mx-auto px-6">
+        <footer className="bg-[#23272A] text-gray-300 mt-10">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+              <div>
+                <h3 className="text-white font-semibold text-lg mb-3">
+                  Minimalistic Technology
+                </h3>
+                <ul className="space-y-2">
+                  <li>
+                    <a href="#" className="hover:text-white transition">
+                      About Us
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="hover:text-white transition">
+                      Services
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="hover:text-white transition">
+                      Contact Us
+                    </a>
+                  </li>
+                </ul>
+              </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+              <div>
+                <h3 className="text-white font-semibold text-lg mb-3">Services</h3>
+                <ul className="space-y-2">
+                  <li>
+                    <a href="#" className="hover:text-white transition">
+                      Book a Service
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="hover:text-white transition">
+                      Domain Name
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="hover:text-white transition">
+                      Support
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
 
-          <div>
-            <h3 className="text-white font-semibold text-lg mb-3">Minimalistic Learning</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="hover:text-white transition">About Us</a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition">Services</a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition">Contact Us</a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-white font-semibold text-lg mb-3">Services</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="hover:text-white transition">Book a Service</a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition">Domain Name</a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition">Support</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="absolute left-0 right-0 border-b-2 border-gray-700 "></div>
-        <div className="text-white flex space-x-4 text-start h-3 md:mt-0">@ 2025 Minimilistic Technology All Rights Resserved</div>
-        <div className="flex space-x-4 justify-end mt-4 mb-5 md:mt-0">
-          <a href="#" className="hover:text-white transition">
-            <FaFacebook size={24} className="text-white hover:text-white" />
-          </a>
-
+            <div className="absolute left-0 right-0 border-b-2 border-gray-700"></div>
+            <div className="text-white text-sm h-6 mt-6">
+              © 2025 Minimalistic Technology. All Rights Reserved.
+            </div>
+            <div className="flex space-x-4 justify-end mt-4 mb-5">
           <a 
             href="https://x.com/TechMinimalists" 
             target="_blank" 
@@ -436,15 +434,9 @@ const Home = () => {
           >
             <FaLinkedin size={24} />
           </a>
-
-          <a href="#" className="hover:text-white transition">
-            <FaYoutube size={24} className="text-white hover:text-white" />
-          </a>
-        </div>
-
-
-        </div>
-    </footer>
+            </div>
+          </div>
+        </footer>
           </div>
         );
       }
