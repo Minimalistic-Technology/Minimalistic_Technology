@@ -1,0 +1,191 @@
+"use client";
+
+import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { X, Menu, } from "lucide-react";
+import { FaFacebook, FaTwitter, FaYoutube, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  weight: ["400", "600", "700"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const Team = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const highAuthorities = [
+    { name: "Harsh", position: "Chief Executive Officer (CEO),Founder", img: "/men.jpg" },
+    { name: "Parth", position: "Chief Technology Officer (CTO),Founder", img: "/men1.jpg" },
+    // { name: "Priyal", position: "Chief Operating Officer (COO)", img: "/women.jpg" },
+    { name: "Sumeet", position: "Data Science", img: "/sumeet.jpg" },
+    // { name: "Sneha", position: "Technical Lead", img: "/sneha.jpg" },
+  ];
+
+  const interns = [
+    { name: "Sadhashiv Zore", position: "Jr.Software developer", img: "/Sadashiv.jpg" },
+    { name: "Manan Doshi", position: "Jr.Software developer", img: "/manan.jpg" },
+    { name: "Sandip Baranwal", position: "Jr.Software developer", img: "/sandip.jpg" },
+    { name: "Sunny Radhakrishana", position: "Jr.Software developer", img: "/sunny.jpg" },
+    { name: "Mahesh Kumar", position: "Jr.Software developer", img: "/Mahesh.jpg" },
+  ];
+
+  return (
+    <div className={`${poppins.className} flex flex-col min-h-screen bg-[#23272A] text-[#87C732]`}>
+      {/* Header */}
+      <header className="fixed top-0 left-0 w-full z-50 bg-[#23272A]/90 backdrop-blur-md p-4 md:flex md:justify-between md:items-center">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <Image src="/logo.jpg" alt="Logo" className="backdrop-blur-2xl bg-[#23272A]" width={40} height={40} />
+            <div className="flex flex-col text-[#87C732] text-xl font-bold">
+              <span>Minimilistic</span>
+              <span>Technology</span>
+            </div>
+          </div>
+
+          <button className="md:hidden p-2" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X size={30} /> : <Menu size={30} />}
+          </button>
+        </div>
+
+        <nav
+          className={`absolute top-full left-0 w-full bg-[#23272A] p-4 space-y-4 md:static md:w-auto md:p-0 md:flex md:space-x-6 md:space-y-0 ${
+            isOpen ? "block" : "hidden"
+          }`}
+        >
+          <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
+            <li className="hover:text-[#87C732] cursor-pointer"><Link href="/">Home</Link></li>
+            <li className="hover:text-[#87C732] cursor-pointer"><Link href="/AboutUs">About Us</Link></li>
+            <li className="hover:text-[#87C732] cursor-pointer">Services</li>
+          </ul>
+        </nav>
+
+        <div className="hidden md:flex space-x-2">
+        <Link href="/getstrted">
+            <button className="px-4 py-2 bg-[#87C732] text-white rounded-lg hover:bg-green-500 transition">
+              Get Started
+            </button>
+          </Link>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="flex-1 pt-28 px-4 md:px-20">
+        <section className="text-center mb-16">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">Meet Our Team</h1>
+          <p className="text-[#fffacd] max-w-2xl mx-auto">
+            Our team of passionate leaders and young talents drive innovation and excellence every day.
+          </p>
+        </section>
+
+        {/* High Authorities */}
+        <section className="mb-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            {highAuthorities.map((person, index) => (
+              <div
+                key={index}
+                className="bg-[#2c2c2c] rounded-lg overflow-hidden shadow-lg hover:scale-105 hover:shadow-white/50 transform transition duration-300"
+              >
+                <Image
+                  src={person.img}
+                  alt={person.name}
+                  width={300}
+                  height={300}
+                  className="w-full h-56 object-cover"
+                />
+                <div className="p-4 text-center">
+                  <h3 className="text-lg font-semibold text-white">{person.name}</h3>
+                  <p className="text-gray-300 text-sm">{person.position}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Interns */}
+        <section className="mb-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            {interns.map((intern, index) => (
+              <div
+                key={index}
+                className="bg-[#2c2c2c] rounded-lg overflow-hidden shadow-lg hover:scale-105 hover:shadow-white/50 transform transition duration-300"
+              >
+                <Image
+                  src={intern.img}
+                  alt={intern.name}
+                  width={300}
+                  height={300}
+                  className="w-full h-56 object-cover"
+                />
+                <div className="p-4 text-center">
+                  <h3 className="text-lg font-semibold text-white">{intern.name}</h3>
+                  <p className="text-gray-300 text-sm">{intern.position}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-[#23272A] text-gray-300">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+              <div>
+                <h3 className="text-white font-semibold text-lg mb-3">Minimalistic Technology</h3>
+                <ul className="space-y-2">
+                <li className="hover:text-white cursor-pointer"><Link href="/AboutUs">AboutUs</Link></li>
+                  <li><a href="#" className="hover:text-white transition">Services</a></li>
+                  <li><a href="#" className="hover:text-white transition">Contact Us</a></li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-white font-semibold text-lg mb-3">Services</h3>
+                <ul className="space-y-2">
+                  <li><a href="#" className="hover:text-white transition">Book a Service</a></li>
+                  <li><a href="#" className="hover:text-white transition">Domain Name</a></li>
+                  <li><a href="#" className="hover:text-white transition">Support</a></li>
+                </ul>
+              </div>
+            </div>
+            <div className="absolute left-0 right-0 border-b-2 border-gray-700"></div>
+            <div className="text-white text-sm mt-6">
+              © 2025 Minimalistic Technology. All Rights Reserved.
+            </div>
+            <div className="flex space-x-4 justify-end mt-4 mb-5">
+          <a 
+            href="https://x.com/TechMinimalists" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-white hover:text-white transition"
+          >
+            <FaTwitter size={24} />
+          </a>
+
+          <a 
+            href="https://www.instagram.com/minimalistictechnology?utm_source=qr&igsh=MTRucHg5bm5wNDBnYg==" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-white hover:text-white transition"
+          >
+            <FaInstagram size={24} />
+          </a>
+
+          <a 
+            href="https://www.linkedin.com/showcase/minimalistictechnology/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-white hover:text-white transition"
+          >
+            <FaLinkedin size={24} />
+          </a>
+            </div>
+          </div>
+        </footer>
+    </div>
+  );
+};
+
+export default Team;

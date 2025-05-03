@@ -4,7 +4,7 @@ import React from "react";
 
 export const BackgroundGradient = () => {
   return (
-    <div className="flex justify-center items-center min-h-screen bg-[#222222] p-6">
+    <div className="flex justify-center items-center min-h-screen bg-[#23272A] p-6">
       <div className="flex gap-6">
         {/* First Card  */}
         <motion.div
