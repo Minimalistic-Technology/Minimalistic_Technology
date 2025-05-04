@@ -17,19 +17,22 @@ const Team = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const highAuthorities = [
-    { name: "Harsh", position: "Chief Executive Officer (CEO),Founder", img: "/men.jpg" },
-    { name: "Parth", position: "Chief Technology Officer (CTO),Founder", img: "/men1.jpg" },
+    { name: "Harsh", position: "Chief Executive Officer (CEO),Founder", img: "/harsh.jpg" },
+    { name: "Parth", position: "Chief Technology Officer (CTO),Founder", img: "/harsh.jpg" },
     // { name: "Priyal", position: "Chief Operating Officer (COO)", img: "/women.jpg" },
-    { name: "Sumeet", position: "Data Science", img: "/sumeet.jpg" },
+    { name: "Sumit borate", position: "data scientist", img: "/sumeet.jpg" },
     // { name: "Sneha", position: "Technical Lead", img: "/sneha.jpg" },
+    { name: "Sadhashiv Zore", position: "Jr.Software developer", img: "/Sadhashiv.jpg" },
+    { name: "Manan Doshi", position: "Jr.Software developer", img: "/fool.jpg" }
   ];
 
   const interns = [
-    { name: "Sadhashiv Zore", position: "Jr.Software developer", img: "/Sadashiv.jpg" },
-    { name: "Manan Doshi", position: "Jr.Software developer", img: "/manan.jpg" },
-    { name: "Sandip Baranwal", position: "Jr.Software developer", img: "/sandip.jpg" },
-    { name: "Sunny Radhakrishana", position: "Jr.Software developer", img: "/sunny.jpg" },
-    { name: "Mahesh Kumar", position: "Jr.Software developer", img: "/Mahesh.jpg" },
+    // { name: "Sadhashiv Zore", position: "Jr.Software developer", img: "/Sadhashiv.jpg" },
+    // { name: "Manan Doshi", position: "Jr.Software developer", img: "/manan.jpg" },
+    { name: "Varshini Varma", position: "Jr.Software developer", img: "/varshini varma.jpg" },
+    { name: "Sandip Baranwal", position: "Jr.Software developer", img: "/majdoor.jpg" },
+    { name: "Sunny Radhakrishana", position: "Jr.Software developer", img: "/leone.jpg" },
+    { name: "Mahesh Kumar", position: "Jr.Software developer", img: "/mahesh.jpg" },
   ];
 
   return (
@@ -144,13 +147,13 @@ const Team = () => {
               <div>
                 <h3 className="text-white font-semibold text-lg mb-3">Services</h3>
                 <ul className="space-y-2">
-                  <li><a href="#" className="hover:text-white transition">Book a Service</a></li>
-                  <li><a href="#" className="hover:text-white transition">Domain Name</a></li>
-                  <li><a href="#" className="hover:text-white transition">Support</a></li>
+                  <li><a href="/getstrted"  className="hover:text-white transition">Book a Service</a></li>
+                  {/* <li><a href="#" className="hover:text-white transition">Domain Name</a></li>
+                  <li><a href="#" className="hover:text-white transition">Support</a></li> */}
                 </ul>
               </div>
             </div>
-            <div className="absolute left-0 right-0 border-b-2 border-gray-700"></div>
+            {/* <div className="absolute left-0 right-0 border-b-2 border-gray-700"></div> */}
             <div className="text-white text-sm mt-6">
               © 2025 Minimalistic Technology. All Rights Reserved.
             </div>

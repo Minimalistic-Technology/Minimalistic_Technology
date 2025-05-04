@@ -285,11 +285,11 @@ const Services = () => {
                 <h3 className="text-white font-semibold text-lg mb-3">Services</h3>
                 <ul className="space-y-2">
                   <li>
-                    <a href="#" className="hover:text-white transition">
+                    <a href="/getstrted" className="hover:text-white transition">
                       Book a Service
                     </a>
                   </li>
-                  <li>
+                  {/* <li>
                     <a href="#" className="hover:text-white transition">
                       Domain Name
                     </a>
@@ -298,12 +298,12 @@ const Services = () => {
                     <a href="#" className="hover:text-white transition">
                       Support
                     </a>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>
 
-            <div className="absolute left-0 right-0 border-b-2 border-gray-700"></div>
+            {/* <div className="absolute left-0 right-0 border-b-2 border-gray-700"></div> */}
             <div className="text-white text-sm mt-6">
               © 2025 Minimalistic Technology. All Rights Reserved.
             </div>

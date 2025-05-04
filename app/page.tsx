@@ -12,24 +12,47 @@ import { Inter } from "next/font/google";
 const poppins = Inter({ subsets: ["latin"] });
 
 const testimonials = [
+  // {
+  //   text: "Minimalistic Technology turned our vision into reality with precision and speed. Their team delivered a stunning, fully functional website that exceeded our expectations.",
+  //   name: "Varshini Varma",
+  //   role: "client,mimimilistic Technology",
+  //   image: "varshini varma.jpg",
+  // },
   {
-    text: "This web app has completely transformed how we manage our deliveries. It’s seamless, efficient, and a game-changer for logistics!",
-    name: "Daniel Martins",
-    role: "Operations Manager, Swift Logistics Ltd.",
-    image: "men.jpg",
+    text: "Working with Minimalistic Technology was a seamless experience. Their secure, full-stack solution and technical precision helped streamline our digital workflow effortlessly.",
+    name: "Manan Doshi",
+    role: "client,mimimilistic Technology",
+    image: "fool.jpg",
   },
   {
-    text: "Minimalistic Technology's platform has helped us reduce delays and improve tracking. Our clients love the transparency!",
-    name: "Elene Rodriguez",
-    role: "Founder, Express Freight",
-    image: "women.jpg",
+    text: "From the first meeting to final deployment, Minimalistic Technology showed unmatched professionalism. Our site now looks and works great.",
+    name: "Mahesh Kumar",
+    role: "client,mimimilistic Technology ",
+    image: "mahesh.jpg",
   },
+
   {
-    text: "Minimalistic Technology's platform has helped us reduce delays and improve tracking. Our clients love the transparency!",
-    name: "Durgesh Nai",
-    role: "Founder, Express Freight",
-    image: "men1.jpg",
+    text: "Minimalistic Technology brought our concept to life with precision and creativity Their attention to detail and commitment to deadlines made the entire process smooth.",
+    name: "Sadhashiv Zore",
+    role: "client,mimimilistic Technology ",
+    image: "Sadhashiv.jpg",
   },
+
+  {
+    text: "The team delivered a fast, secure, and elegant solution that fit perfectly with our goalsCommunication was always clear, timely, and professional.",
+    name: "sunny Radhakrishna",
+    role: "client,mimimilistic Technology ",
+    image: "leone.jpg",
+  },
+
+  {
+    text: "Working with Minimalistic Technology was a game-changer. Their intuitive design, fast turnaround, and professional approach helped us launch our website without any hassle.",
+    name: "Sandip Baranwal",
+    role: "client,mimimilistic Technology ",
+    image: "majdoor.jpg",
+  },
+
+
 ];
 
 const Home = () => {
@@ -209,21 +232,28 @@ const Home = () => {
         <div className="bg-[#23272A] min-h-screen flex flex-col items-center justify-center p-6">
       <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Starter Plan */}
-        <div className="bg-[#DAEEBF] text-black rounded-2xl p-8 flex flex-col justify-between">
-          <div>
-            <h2 className="text-2xl font-semibold mb-2">Starter</h2>
-            <p className="mb-6">Ideal for small businesses and personal brands</p>
-            <p className="text-4xl font-bold"> ₹1,000 <span className="text-sm font-normal">/(One-Time)</span></p>
+
+
+
+          <div className="bg-[#DAEEBF] text-black rounded-2xl p-8 flex flex-col justify-between">
+            <div>
+              <h2 className="text-2xl font-semibold mb-2">Starter</h2>
+              <p className="mb-6">Ideal for small businesses and personal brands</p>
+              <p className="text-4xl font-bold"> ₹1000<span className="text-sm font-normal">/(One-Time)</span></p>
+            </div>
+            <Link href="/getstrted" passHref>
+              <button className="bg-[#7ED957] text-white font-semibold py-2 px-4 rounded-md mt-6 w-full">
+                Get Started
+              </button>
+            </Link>
+            <ul className="mt-6 space-y-2 text-md">
+              <li> 5-page custom website</li>
+              <li> Mobile & SEO-friendly design</li>
+              <li> Basic contact form integration</li>
+              <li> Standard hosting (1 year)</li>
+              <li> Email support</li>
+            </ul>
           </div>
-          <button className="bg-[#7ED957] text-white font-semibold py-2 px-4 rounded-md mt-6">Get Started</button>
-          <ul className="mt-6 space-y-2 text-md">
-            <li> 5-page custom website</li>
-            <li> Mobile & SEO-friendly design</li>
-            <li> Basic contact form integration</li>
-            <li> Standard hosting (1 year)</li>
-            <li> Email support</li>
-          </ul>
-        </div>
 
         {/* Professional Plan */}
         <div className="bg-[#7ED957] text-black rounded-2xl p-8 flex flex-col justify-between relative">
@@ -233,7 +263,11 @@ const Home = () => {
             <p className="mb-6">Best for growing businesses and startups</p>
             <p className="text-4xl font-bold"> ₹4,000<span className="text-sm font-normal">/month</span></p>
           </div>
-          <button className="bg-white text-black font-semibold py-2 px-4 rounded-md mt-6">Get Started</button>
+          <Link href="/getstrted" passHref>
+            <button className="bg-white text-black font-semibold py-2 px-4 rounded-md mt-6 w-full">
+              Get Started
+            </button>
+          </Link>
           <ul className="mt-6 space-y-2 text-md">
             <li> Mobile, SEO, & speed-optimized</li>
             <li> Blog & social media integration</li>
@@ -250,7 +284,11 @@ const Home = () => {
             <p className="mb-6">For large-scale businesses and custom business</p>
             <p className="text-4xl font-bold"> ₹10,000<span className="text-sm font-normal">/month</span></p>
           </div>
-          <button className="bg-[#7ED957] text-white font-semibold py-2 px-4 rounded-md mt-6">Get Started</button>
+          <Link href="/getstrted" passHref>
+            <button className="bg-[#7ED957] text-white font-semibold py-2 px-4 rounded-md mt-6 w-full">
+              Get Started
+            </button>
+          </Link>
           <ul className="mt-6 space-y-2 text-md">
             <li> E-commerce & custom web applications</li>
             <li> API integrations & automation</li>
@@ -385,11 +423,11 @@ const Home = () => {
                 <h3 className="text-white font-semibold text-lg mb-3">Services</h3>
                 <ul className="space-y-2">
                   <li>
-                    <a href="#" className="hover:text-white transition">
+                    <a href="/getstrted" className="hover:text-white transition">
                       Book a Service
                     </a>
                   </li>
-                  <li>
+                  {/* <li>
                     <a href="#" className="hover:text-white transition">
                       Domain Name
                     </a>
@@ -398,12 +436,12 @@ const Home = () => {
                     <a href="#" className="hover:text-white transition">
                       Support
                     </a>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>
 
-            <div className="absolute left-0 right-0 border-b-2 border-gray-700"></div>
+            {/* <div className="absolute left-0 right-0 border-b-2 border-gray-700"></div> */}
             <div className="text-white text-sm h-6 mt-6">
               © 2025 Minimalistic Technology. All Rights Reserved.
             </div>
