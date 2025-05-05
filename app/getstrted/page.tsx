@@ -157,7 +157,7 @@ const Get: React.FC = () => {
               <li className="hover:text-white cursor-pointer">
                 <Link href="/">Home</Link>
               </li>
-              <li className="hover:text-white cursor-pointer">About Us</li>
+              <li className="hover:text-white cursor-pointer"><Link href="/AboutUs">About Us</Link></li>
               <li className="hover:text-white cursor-pointer">
                 <Link href="/Services">Services</Link>
               </li>
@@ -196,7 +196,7 @@ const Get: React.FC = () => {
                   <div>
                     <h3 className="text-2xl font-bold p-3">Project Information</h3>
                     <div className="grid grid-cols-1 gap-4">
-                      <input name="websiteType" className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-[#7ED957] rounded-md" placeholder="Type of Website*" />
+                      <input name="websiteType" className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-white rounded-md" placeholder="Type of Website*" />
                       <select name="service" className="w-full p-3 border border-[#7ED957] bg-transparent text-white rounded-md" defaultValue="">
                         <option className="bg-[#23272A] text-white" value="" disabled>Select Service*</option>
                         <option className="bg-[#23272A] text-white" value="web-design">UI /Ux support</option>

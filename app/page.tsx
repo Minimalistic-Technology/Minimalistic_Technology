@@ -19,7 +19,7 @@ const testimonials = [
   //   image: "varshini varma.jpg",
   // },
   {
-    text: "Working with Minimalistic Technology was a seamless experience. Their secure, full-stack solution and technical precision helped streamline our digital workflow effortlessly.",
+    text: "minimilistic technology not only delivered on time but elevated our entire digital presence. Minimalistic Technology is the real deal..",
     name: "Manan Doshi",
     role: "client,mimimilistic Technology",
     image: "fool.jpg",
@@ -194,9 +194,11 @@ const Home = () => {
           <div className="text-xs sm:text-sm text-gray-400 mt-4">
             <span>No coding needed</span> | <span>AI powered design</span> | <span>Fast deployment</span>
           </div>
+          <Link href="/getstrted">
           <button className="bg-[#87C732] hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg mt-6">
             Start Building
           </button>
+          </Link>
         </div>
 
         <div className="rounded flex justify-end w-full">

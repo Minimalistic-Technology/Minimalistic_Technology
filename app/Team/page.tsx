@@ -21,14 +21,15 @@ const Team = () => {
     { name: "Parth", position: "Chief Technology Officer (CTO),Founder", img: "/harsh.jpg" },
     // { name: "Priyal", position: "Chief Operating Officer (COO)", img: "/women.jpg" },
     { name: "Sumit borate", position: "data scientist", img: "/sumeet.jpg" },
+    { name: "pops", position: "UI/UX developer", img: "/pops.jpg" },
+    { name: "Harsh Bhavsar", position: "Digital Marketing", img: "/DM.jpg" },
     // { name: "Sneha", position: "Technical Lead", img: "/sneha.jpg" },
-    { name: "Sadhashiv Zore", position: "Jr.Software developer", img: "/Sadhashiv.jpg" },
-    { name: "Manan Doshi", position: "Jr.Software developer", img: "/fool.jpg" }
+   
   ];
 
   const interns = [
-    // { name: "Sadhashiv Zore", position: "Jr.Software developer", img: "/Sadhashiv.jpg" },
-    // { name: "Manan Doshi", position: "Jr.Software developer", img: "/manan.jpg" },
+    { name: "Sadhashiv Zore", position: "Jr.Software developer", img: "/Sadhashiv.jpg" },
+    { name: "Manan Doshi", position: "Jr.Software developer", img: "/fool.jpg" },
     { name: "Varshini Varma", position: "Jr.Software developer", img: "/varshini varma.jpg" },
     { name: "Sandip Baranwal", position: "Jr.Software developer", img: "/majdoor.jpg" },
     { name: "Sunny Radhakrishana", position: "Jr.Software developer", img: "/leone.jpg" },
@@ -61,7 +62,7 @@ const Team = () => {
           <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
             <li className="hover:text-[#87C732] cursor-pointer"><Link href="/">Home</Link></li>
             <li className="hover:text-[#87C732] cursor-pointer"><Link href="/AboutUs">About Us</Link></li>
-            <li className="hover:text-[#87C732] cursor-pointer">Services</li>
+            <li className="hover:text-[#87C732] cursor-pointer"><Link href="/Services">Services</Link></li>
           </ul>
         </nav>
 
