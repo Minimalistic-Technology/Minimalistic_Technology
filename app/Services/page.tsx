@@ -238,10 +238,10 @@ const Services = () => {
                 <Mail size={20} />
                 <span>Hi@minimalisticTechnology.com</span>
               </div>
-              <div className="flex items-center space-x-2 text-green-300">
+              {/* <div className="flex items-center space-x-2 text-green-300">
                 <Phone size={20} />
-                <span>+91 90043 17329</span>
-              </div>
+                {/* <span>+91 90043 17329</span>
+              </div> */}
             </div>
           </div>
 

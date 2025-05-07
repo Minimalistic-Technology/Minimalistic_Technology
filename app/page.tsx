@@ -358,8 +358,8 @@ const Home = () => {
             <div className="col-span-1 flex flex-col items-center min-h-[50vh] justify-end lg:justify-center text-center">
               <div className="text-[#A8A8A8] text-center">
                 <p>Join 1000+ businesses using Minimalistic Technology to build their dream website.</p>
-                <p className="mt-2">📧 MinimalisticTechnology.com</p>
-                <p>📞 +91 90043 17329</p>
+                <p className="mt-2">📧 Hi@minimalisticTechnology.com</p>
+                {/* <p>📞 +91 90043 17329</p> */}
               </div>
             </div>
 <form onSubmit={handleSubmit}>
