@@ -134,9 +134,11 @@ const Services = () => {
           <p className="text-sm mt-3 mb-6">
             No coding needed | Super user-friendly | Fast deployment
           </p>
-          <button className="bg-[#87C732] text-black px-6 py-2 rounded hover:bg-green-500 transition mt-2">
+          <Link href="/getstrted">
+          <button className="bg-[#87C732] hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg mt-6">
             Start Building
           </button>
+          </Link>
         </section>
 
         <div className="overflow-x-auto whitespace-nowrap py-8 px-4 flex gap-4 items-center scrollbar-hide">
@@ -236,10 +238,10 @@ const Services = () => {
                 <Mail size={20} />
                 <span>Hi@minimalisticTechnology.com</span>
               </div>
-              <div className="flex items-center space-x-2 text-green-300">
+              {/* <div className="flex items-center space-x-2 text-green-300">
                 <Phone size={20} />
-                <span>+91 90043 17329</span>
-              </div>
+                {/* <span>+91 90043 17329</span>
+              </div> */}
             </div>
           </div>
 

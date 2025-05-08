@@ -108,9 +108,11 @@ const AboutUs = () => {
             <h1 className="text-3xl md:text-5xl font-bold leading-tight">
               We help <br /> <span className="text-[#87C732]">Startups</span> <br /> bring their ideas to life
             </h1>
-            <button className="mt-6 px-6 py-3 bg-[#87C732] text-white rounded-lg font-bold hover:bg-green-600 transition">
-              Start Building
-            </button>
+            <Link href="/getstrted">
+          <button className="bg-[#87C732] hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg mt-6">
+            Start Building
+          </button>
+          </Link>
           </div>
           <div className="mt-8 md:mt-0 md:w-1/2 flex justify-center">
             <Image src="/aboutus.jpg" alt="Startup Illustration" width={500} height={350} className="w-full max-w-md mt-7 rounded-2xl" />
