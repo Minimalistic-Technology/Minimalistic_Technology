@@ -14,6 +14,7 @@ import {
   Mail,
   Phone,
 } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { FaFacebook, FaTwitter, FaYoutube, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { Poppins } from "next/font/google";
 
@@ -26,6 +27,7 @@ const poppins = Poppins({
 const Services = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
+  const pathname = usePathname();
 
   const steps = [
     {
@@ -57,27 +59,32 @@ const Services = () => {
         "Access learning resources and tutorials to enhance your skills.",
     },
   ];
+    const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "About Us", path: "/AboutUs" },
+    { name: "Services", path: "/Services" },
+  ];
 
   return (
     <div className={`${poppins.className} bg-[#23272A] min-h-screen text-white`}>
-      <header className="fixed top-0 left-0 w-full z-50 bg-[#23272A]/90 backdrop-blur-md text-white p-4">
-  <div className="flex justify-between items-center max-w-7xl mx-auto">
-    {/* Logo & Brand */}
-    <div className="flex items-center space-x-3">
-      <Image
-        src="/logo.jpg"
-        alt="Logo"
-        width={40}
-        height={40}
-        className="rounded-full bg-[#23272A]"
-      />
-      <div className="flex flex-col text-[#87C732] text-lg font-bold leading-tight">
-        <span>Minimalistic</span>
-        <span>Technology</span>
-      </div>
-    </div>
+      <header className="fixed top-0 left-0 w-full z-50 bg-[#23272A]/10 backdrop-blur-md  text-white p-4 md:flex-auto md:justify-between md:items-center">
+        <div className="flex justify-between items-center max-w-full 7xl">
+          {/* Logo & Brand */}
+          <div className="flex items-center space-x-3">
+            <Image
+              src="/logo.jpg"
+              alt="Logo"
+              width={40}
+              height={40}
+              className="rounded-full bg-[#23272A]"
+             />
+              <div className="flex flex-col text-[#87C732] text-lg font-bold leading-tight">
+                <span>Minimalistic</span>
+                <span>Technology</span>
+             </div>
+          </div>
 
-    {/* Hamburger Menu Button (Mobile) */}
+            {/* Hamburger Menu Button (Mobile) */}
     <button
       className="md:hidden"
       onClick={() => setIsOpen(!isOpen)}
@@ -87,36 +94,44 @@ const Services = () => {
     </button>
 
     {/* Navigation Menu */}
-    <nav
-      className={`absolute top-full left-0 w-full bg-[#23272A] p-4 space-y-4 
-      md:static md:w-auto md:p-0 md:flex md:space-x-6 md:space-y-0 
-      ${isOpen ? "block" : "hidden"}`}
-    >
-      <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
-        <li className="hover:text-green-600 cursor-pointer">
-          <Link href="/">Home</Link>
-        </li>
-        <li className="hover:text-green-600 cursor-pointer">
-          <Link href="/AboutUs">About Us</Link>
-        </li>
-        <li className="hover:text-green-600 cursor-pointer">
-          <Link href="/Services">Services</Link>
-        </li>
+          {/* Nav Menu */}
+          <nav
+            className={`absolute top-full left-0 w-full p-4 space-y-4 
+            md:static md:w-auto md:p-0 md:flex md:space-x-6 md:space-y-0 
+            ${isOpen ? "block" : "hidden"}`}
+           >
+            <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
+              {navLinks.map((link) => {
+                const isActive = pathname === link.path;
+                return (
+                  <li key={link.name} className="relative group">
+                    <Link href={link.path}>
+                      <span
+                        className={`pb-1 border-b-2 transition-all duration-300 
+                          ${isActive ? "text-[#87C732] border-[#87C732]" : "border-transparent text-white group-hover:text-[#87C732] group-hover:border-[#87C732]"}
+                        `}
+                      >
+                        {link.name}
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
 
-        {/* Get Started Button (Mobile Only) */}
-        <li className="md:hidden">
-          <Link href="/getstrted">
-            <button className="w-full px-4 py-2 bg-[#87C732] text-white rounded-lg hover:bg-green-500 transition">
-              Get Started
-            </button>
-          </Link>
-        </li>
-      </ul>
-    </nav>
+              {/* Get Started Button (Mobile) */}
+              <li className="md:hidden">
+                <Link href="/#get-started-section">
+                  <button className="w-full px-4 py-2 bg-[#87C732] text-white rounded-lg hover:bg-green-500 transition">
+                    Get Started
+                  </button>
+                </Link>
+              </li>
+            </ul>
+          </nav>
 
     {/* Get Started Button (Desktop Only) */}
     <div className="hidden md:flex space-x-2">
-      <Link href="/getstrted">
+      <Link href="/#get-started-section">
         <button className="px-4 py-2 bg-[#87C732] text-white rounded-lg hover:bg-green-500 transition">
           Get Started
         </button>
@@ -134,7 +149,7 @@ const Services = () => {
           <p className="text-sm mt-3 mb-6">
             No coding needed | Super user-friendly | Fast deployment
           </p>
-          <Link href="/getstrted">
+          <Link href="/#get-started-section">
           <button className="bg-[#87C732] hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg mt-6">
             Start Building
           </button>
@@ -221,9 +236,11 @@ const Services = () => {
         </div>
 
         <div className="flex justify-center py-4">
+          <Link href="/#get-started-section">
           <button className="text-black bg-[#87C732] py-3 px-10 rounded-lg mb-10">
             Try Now
           </button>
+          </Link>
         </div>
 
         <section className="flex flex-col md:flex-row items-center justify-between p-8 rounded-lg relative">
@@ -235,9 +252,16 @@ const Services = () => {
 
             <div className="space-y-3">
               <div className="flex items-center space-x-2 text-green-300">
-                <Mail size={20} />
-                <span>Hi@minimalisticTechnology.com</span>
-              </div>
+              <Mail size={20} />
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=Hi@minimalisticTechnology.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                Hi@minimalisticTechnology.com
+              </a>
+            </div>
               {/* <div className="flex items-center space-x-2 text-green-300">
                 <Phone size={20} />
                 {/* <span>+91 90043 17329</span>
@@ -258,7 +282,7 @@ const Services = () => {
         </section>
 
         <footer className="bg-[#23272A] text-gray-300 mt-10">
-          <div className="max-w-6xl mx-auto px-6">
+          <div className="max-w-full mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
               <div>
                 <h3 className="text-white font-semibold text-lg mb-3">
@@ -287,7 +311,7 @@ const Services = () => {
                 <h3 className="text-white font-semibold text-lg mb-3">Services</h3>
                 <ul className="space-y-2">
                   <li>
-                    <a href="/getstrted" className="hover:text-white transition">
+                    <a href="/#get-started-section" className="hover:text-white transition">
                       Book a Service
                     </a>
                   </li>

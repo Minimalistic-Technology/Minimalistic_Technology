@@ -129,3 +129,6 @@
     @apply bg-[#23272A];
   }
 }
+html {
+  scroll-behavior: smooth;
+}
