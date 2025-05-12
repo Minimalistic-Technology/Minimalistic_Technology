@@ -1,23 +1,18 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { BackgroundGradient } from "../components/BackgroundGradient";
 import { Cpu, Layout, Rocket, Headset, Menu, X, ArrowLeft, ArrowRight } from "lucide-react";
 import { FaFacebook, FaTwitter, FaYoutube, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { useState, useEffect } from "react";
-import emailjs from "emailjs-com";
+import  GetStretdForm  from "../components/GetStretdForm";
 
-// Load Google Fonts: Poppins
+
 import { Inter } from "next/font/google";
 const poppins = Inter({ subsets: ["latin"] });
 
 const testimonials = [
-  // {
-  //   text: "Minimalistic Technology turned our vision into reality with precision and speed. Their team delivered a stunning, fully functional website that exceeded our expectations.",
-  //   name: "Varshini Varma",
-  //   role: "client,mimimilistic Technology",
-  //   image: "varshini varma.jpg",
-  // },
   {
     text: "minimilistic technology not only delivered on time but elevated our entire digital presence. Minimalistic Technology is the real deal..",
     name: "Manan Doshi",
@@ -30,36 +25,34 @@ const testimonials = [
     role: "client,mimimilistic Technology ",
     image: "mahesh.jpg",
   },
-
   {
     text: "Minimalistic Technology brought our concept to life with precision and creativity Their attention to detail and commitment to deadlines made the entire process smooth.",
     name: "Sadhashiv Zore",
     role: "client,mimimilistic Technology ",
     image: "Sadhashiv.jpg",
   },
-
   {
     text: "The team delivered a fast, secure, and elegant solution that fit perfectly with our goalsCommunication was always clear, timely, and professional.",
     name: "sunny Radhakrishna",
     role: "client,mimimilistic Technology ",
     image: "leone.jpg",
   },
-
   {
     text: "Working with Minimalistic Technology was a game-changer. Their intuitive design, fast turnaround, and professional approach helped us launch our website without any hassle.",
     name: "Sandip Baranwal",
     role: "client,mimimilistic Technology ",
     image: "majdoor.jpg",
   },
-
-
 ];
+
+
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [current, setCurrent] = useState(0);
   const [windowWidth, setWindowWidth] = useState(1024);
   const [slideWidth, setSlideWidth] = useState(33.33);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -80,121 +73,99 @@ const Home = () => {
     setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
-  const [formData, setFormData] = useState({
-    Name: "",
-    Email: "",
-    Message: "",
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  // Handle form submission
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const sendData = {
-      name: formData.Name,
-      email: formData.Email,
-      message: formData.Message,
-    };
-
-    emailjs
-      .send("service_pw3837d", "template_2nfoejq", sendData, "UyZxk9SsnFm5_tP-I")
-      .then(
-        (response) => {
-          console.log("SUCCESS!", response);
-          alert("Message sent successfully!");
-          setFormData({ Name: "", Email: "", Message: "" });
-        },
-        (error) => {
-          console.error("FAILED...", error);
-          alert(`Failed to send message: ${error.text || "Unknown error"}`);
-        }
-      );
-  };
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "About Us", path: "/AboutUs" },
+    { name: "Services", path: "/Services" },
+  ];
 
   return (
     <div className={`min-h-screen ${poppins.className} bg-[#23272A] text-white`}>
       {/* Header/Navbar */}
       <header className="fixed top-0 left-0 w-full z-50 bg-[#23272A]/90 backdrop-blur-md text-white p-4">
-  <div className="flex justify-between items-center max-w-7xl mx-auto">
-    {/* Logo & Brand */}
-    <div className="flex items-center space-x-3">
-      <Image
-        src="/logo.jpg"
-        alt="Logo"
-        width={40}
-        height={40}
-        className="rounded-full bg-[#23272A]"
-      />
-      <div className="flex flex-col text-[#87C732] text-lg font-bold leading-tight">
-        <span>Minimalistic</span>
-        <span>Technology</span>
-      </div>
-    </div>
+        <div className="flex justify-between items-center mx-auto">
+          {/* Logo & Brand */}
+          <div className="flex items-center space-x-3">
+            <Image
+              src="/logo.jpg"
+              alt="Logo"
+              width={40}
+              height={40}
+              className="rounded-full bg-[#23272A]"
+            />
+            <div className="flex flex-col text-[#87C732] text-lg font-bold leading-tight">
+              <span>Minimalistic</span>
+              <span>Technology</span>
+            </div>
+          </div>
 
-    {/* Hamburger Menu Button (Mobile) */}
-    <button
-      className="md:hidden"
-      onClick={() => setIsOpen(!isOpen)}
-      aria-label="Toggle Menu"
-    >
-      {isOpen ? <X size={28} /> : <Menu size={28} />}
-    </button>
+          {/* Hamburger Menu */}
+          <button
+            className="md:hidden"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle Menu"
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
 
-    {/* Navigation Menu */}
-    <nav
-      className={`absolute top-full left-0 w-full bg-[#23272A] p-4 space-y-4 
-      md:static md:w-auto md:p-0 md:flex md:space-x-6 md:space-y-0 
-      ${isOpen ? "block" : "hidden"}`}
-    >
-      <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
-        <li className="hover:text-green-600 cursor-pointer">
-          <Link href="/">Home</Link>
-        </li>
-        <li className="hover:text-green-600 cursor-pointer">
-          <Link href="/AboutUs">About Us</Link>
-        </li>
-        <li className="hover:text-green-600 cursor-pointer">
-          <Link href="/Services">Services</Link>
-        </li>
+          {/* Nav Menu */}
+          <nav
+            className={`absolute top-full left-0 w-full  p-4 space-y-4 
+            md:static md:w-auto md:p-0 md:flex md:space-x-6 md:space-y-0 
+            ${isOpen ? "block" : "hidden"}`}
+          >
+            <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
+              {navLinks.map((link) => {
+                const isActive = pathname === link.path;
+                return (
+                  <li key={link.name} className="relative group">
+                    <Link href={link.path}>
+                      <span
+                        className={`pb-1 border-b-2 transition-all duration-300 
+                          ${isActive ? "text-[#87C732] border-[#87C732]" : "border-transparent text-white group-hover:text-[#87C732] group-hover:border-[#87C732]"}
+                        `}
+                      >
+                        {link.name}
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
 
-        {/* Get Started Button (Mobile Only) */}
-        <li className="md:hidden">
-          <Link href="/getstrted">
-            <button className="w-full px-4 py-2 bg-[#87C732] text-white rounded-lg hover:bg-green-500 transition">
-              Get Started
-            </button>
-          </Link>
-        </li>
-      </ul>
-    </nav>
+              {/* Get Started Button (Mobile) */}
+            <li className="md:hidden">
+              <a href="#get-started-section">
+                <button className="w-full px-4 py-2 bg-[#87C732] text-white rounded-lg hover:bg-green-500 transition">
+                  Get Started
+                </button>
+              </a>
+            </li>
 
-    {/* Get Started Button (Desktop Only) */}
-    <div className="hidden md:flex space-x-2">
-      <Link href="/getstrted">
-        <button className="px-4 py-2 bg-[#87C732] text-white rounded-lg hover:bg-green-500 transition">
-          Get Started
-        </button>
-      </Link>
-    </div>
-  </div>
-</header>
+            </ul>
+          </nav>
+
+          {/* Get Started Button (Desktop) */}
+          <div className="hidden md:flex space-x-2">
+            <Link href="#get-started-section">
+              <button className="px-4 py-2 bg-[#87C732] text-white rounded-lg hover:bg-green-500 transition">
+                Get Started
+              </button>
+            </Link>
+          </div>
+        </div>
+      </header>
 
 
 
       {/* Hero Section */}
       <div className="flex flex-col md:flex-row items-center justify-between w-full mt-40 sm:mt-60 px-6 sm:px-16">
-        <div className="max-w-xl text-left">
+        <div className="max-w- text-left">
         <h1 className="text-4xl sm:text-6xl font-bold">Build Websites Effortlessly</h1>
           <p className="text-base sm:text-lg">From Idea to Live Website - We Make It Seamless</p>
           <div className="text-xs sm:text-sm text-gray-400 mt-4">
             <span>No coding needed</span> | <span>AI powered design</span> | <span>Fast deployment</span>
           </div>
-          <Link href="/getstrted">
+          <Link href="#get-started-section">
           <button className="bg-[#87C732] hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg mt-6">
             Start Building
           </button>
@@ -207,9 +178,9 @@ const Home = () => {
       </div>
 
       {/* What We Offer Section */}
-      <section className="text-white text-center mt-22 p-8">
-        <h2 className="text-4xl font-bold mb-6">What We Offer</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <section className="text-white text-center mt-30 p-8">
+        <h2 className="text-4xl font-bold mt-22 mb-6">What We Offer</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-32 gap-8">
           {[
             { Icon:Cpu, title: "AI Powered Website Builder", desc: "Generate layout tailored to your needs" },
             { Icon:Layout, title: "Custom UI/UX Design", desc: "Crafted by expert designers" },
@@ -223,27 +194,29 @@ const Home = () => {
             </div>
           ))}
         </div>
-        <button className="mt-6 bg-[#87C732] hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg">
+        <Link href="#get-started-section">
+        <button className="mt-30 bg-[#87C732] hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg">
           Try it Now
         </button>
+        </Link>
       </section>
   
-      <section className="mt-17 text-bklack  text-center px-4">
-        <h2 className="text-3xl md:text-3xl font-bold">Pricing Plan</h2>
+      <section className="mt-17 text-bklack max-w-full text-center px-4">
+        <h2 className="text-3xl md:text-3xl mt-20 mb-20 font-bold">Pricing Plan</h2>
 
         <div className="bg-[#23272A] min-h-screen flex flex-col items-center justify-center p-6">
-      <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="w-full max-w-full grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Starter Plan */}
 
 
 
-          <div className="bg-[#DAEEBF] text-black rounded-2xl p-8 flex flex-col justify-between">
+          <div className="bg-[#DAEEBF] text-black rounded-2xl p-8 flex flex-col justify-between transition shadow-md hover:shadow-[0_10px_20px_#DAEEBF] hover:-translate-y-1">
             <div>
               <h2 className="text-2xl font-semibold mb-2">Starter</h2>
               <p className="mb-6">Ideal for small businesses and personal brands</p>
               <p className="text-4xl font-bold"> ₹1000<span className="text-sm font-normal">/(One-Time)</span></p>
             </div>
-            <Link href="/getstrted" passHref>
+            <Link href="#get-started-section" passHref>
               <button className="bg-[#7ED957] text-white font-semibold py-2 px-4 rounded-md mt-6 w-full">
                 Get Started
               </button>
@@ -258,14 +231,14 @@ const Home = () => {
           </div>
 
         {/* Professional Plan */}
-        <div className="bg-[#7ED957] text-black rounded-2xl p-8 flex flex-col justify-between relative">
+        <div className="bg-[#7ED957] text-black rounded-2xl p-8 flex flex-col justify-between relative transition shadow-md hover:shadow-[0_10px_20px_#7ED957] hover:-translate-y-1">
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#A9D18E] text-black px-4 py-1 text-sm font-semibold rounded-md">Most popular</div>
           <div>
             <h2 className="text-2xl font-semibold mb-2">Professional</h2>
             <p className="mb-6">Best for growing businesses and startups</p>
             <p className="text-4xl font-bold"> ₹4,000<span className="text-sm font-normal">/month</span></p>
           </div>
-          <Link href="/getstrted" passHref>
+          <Link href="#get-started-section" passHref>
             <button className="bg-white text-black font-semibold py-2 px-4 rounded-md mt-6 w-full">
               Get Started
             </button>
@@ -280,13 +253,13 @@ const Home = () => {
         </div>
 
         {/* Enterprise Plan */}
-        <div className="bg-[#DAEEBF] text-black rounded-2xl p-8 flex flex-col justify-between">
+        <div className="bg-[#DAEEBF] text-black rounded-2xl p-8 flex flex-col justify-between transition shadow-md hover:shadow-[0_10px_20px_#DAEEBF] hover:-translate-y-1">
           <div>
             <h2 className="text-2xl font-semibold mb-2">Enterprise</h2>
             <p className="mb-6">For large-scale businesses and custom business</p>
             <p className="text-4xl font-bold"> ₹10,000<span className="text-sm font-normal">/month</span></p>
           </div>
-          <Link href="/getstrted" passHref>
+          <Link href="#get-started-section" passHref>
             <button className="bg-[#7ED957] text-white font-semibold py-2 px-4 rounded-md mt-6 w-full">
               Get Started
             </button>
@@ -343,60 +316,16 @@ const Home = () => {
           </div>
         </div>
       </section> 
-                {/* <div className=" mt-7">
-            <BackgroundGradient>
 
-            </BackgroundGradient>
-          </div> */}
-      {/* Form */}
-      <section className="bg-[#23272A] text-white py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2  className="text-3xl font-bold text-center mb-2">Get Started Today</h2>
-          <p className="text-center mb-10">Kindly fill this form to get started</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Left Column */}
-            <div className="col-span-1 flex flex-col items-center min-h-[50vh] justify-end lg:justify-center text-center">
-              <div className="text-[#A8A8A8] text-center">
-                <p>Join 1000+ businesses using Minimalistic Technology to build their dream website.</p>
-                <p className="mt-2">📧 Hi@minimalisticTechnology.com</p>
-                {/* <p>📞 +91 90043 17329</p> */}
-              </div>
-            </div>
-<form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="Name"
-        placeholder="Full Name"
-        value={formData.Name}
-        onChange={handleChange}
-        required
-        className="w-full p-3 border border-[#87C732] bg-transparent text-white placeholder-[#A8A8A8] rounded-md mt-3"
-      />
-      <input
-        type="email"
-        name="Email"
-        placeholder="Email Address"
-        value={formData.Email}
-        onChange={handleChange}
-        required
-        className="w-full p-3 border border-[#87C732] bg-transparent text-white placeholder-[#A8A8A8] rounded-md mt-3"
-      />
-      <textarea
-        name="Message"
-        placeholder="Your Message"
-        value={formData.Message}
-        onChange={handleChange}
-        required
-         className="w-full p-3 border border-[#87C732] bg-transparent text-white placeholder-[#A8A8A8] rounded-md mt-3 mb-3"
-      />
-      <button type="submit" className="bg-[#87C732] text-white font-bold py-3 px-9 rounded-md hover:bg-[#6cc44a] transition">Submit</button>
-    </form>
-         </div>
-            </div> 
-      </section>
             </>
+
+        <main id="get-started-section">
+          <GetStretdForm />
+        </main>
+
+
         <footer className="bg-[#23272A] text-gray-300 mt-10">
-          <div className="max-w-6xl mx-auto px-6">
+          <div className="max-w-full mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
               <div>
                 <h3 className="text-white font-semibold text-lg mb-3">
@@ -425,7 +354,7 @@ const Home = () => {
                 <h3 className="text-white font-semibold text-lg mb-3">Services</h3>
                 <ul className="space-y-2">
                   <li>
-                    <a href="/getstrted" className="hover:text-white transition">
+                    <a href="#get-started-section" className="hover:text-white transition">
                       Book a Service
                     </a>
                   </li>
