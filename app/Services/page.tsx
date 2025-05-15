@@ -67,7 +67,7 @@ const Services = () => {
 
   return (
     <div className={`${poppins.className} bg-[#23272A] min-h-screen text-white`}>
-      <header className="fixed top-0 left-0 w-full z-50 bg-[#23272A]/10 backdrop-blur-md  text-white p-4 md:flex-auto md:justify-between md:items-center">
+      <header className="fixed top-0 left-0 w-full z-50 bg-[#23272A] text-white p-4 md:flex-auto md:justify-between md:items-center">
         <div className="flex justify-between items-center max-w-full 7xl">
           {/* Logo & Brand */}
           <div className="flex items-center space-x-3">
@@ -96,7 +96,7 @@ const Services = () => {
     {/* Navigation Menu */}
           {/* Nav Menu */}
           <nav
-            className={`absolute top-full left-0 w-full p-4 space-y-4 
+            className={`absolute top-full left-0 w-full p-4 space-y-4 bg-[#23272A]
             md:static md:w-auto md:p-0 md:flex md:space-x-6 md:space-y-0 
             ${isOpen ? "block" : "hidden"}`}
            >
@@ -156,34 +156,37 @@ const Services = () => {
           </Link>
         </section>
 
-        <div className="overflow-x-auto whitespace-nowrap py-8 px-4 flex gap-4 items-center scrollbar-hide">
-          {steps.map((step, index) => (
-            <div key={index} className="flex items-center">
-              <div
-                className={`inline-block w-64 flex-shrink-0 cursor-pointer ${
-                  activeStep === index ? "scale-105" : "opacity-80"
-                } transition-transform`}
-                onClick={() => setActiveStep(index)}
-              >
-                <Image
-                  src={step.src}
-                  alt={step.label}
-                  width={256}
-                  height={300}
-                  className="rounded-xl w-full h-50 object-cover mb-2"
-                />
-                <p className="text-center text-white font-semibold">
-                  {step.label}
-                </p>
-              </div>
-              {index < steps.length - 1 && (
-                <div className="mx-2 text-white">
-                  <ArrowRight size={30} />
-                </div>
-              )}
-            </div>
-          ))}
+<div className="w-full flex justify-center">
+  <div className="overflow-x-auto whitespace-nowrap py-8 px-4 flex gap-4 items-center scrollbar-hide">
+    {steps.map((step, index) => (
+      <div key={index} className="flex items-center">
+        <div
+          className={`inline-block w-64 flex-shrink-0 cursor-pointer ${
+            activeStep === index ? "scale-105" : "opacity-80"
+          } transition-transform`}
+          onClick={() => setActiveStep(index)}
+        >
+          <Image
+            src={step.src}
+            alt={step.label}
+            width={256}
+            height={300}
+            className="rounded-xl w-full h-50 object-cover mb-2"
+          />
+          <p className="text-center text-white font-semibold">
+            {step.label}
+          </p>
         </div>
+        {index < steps.length - 1 && (
+          <div className="mx-2 text-white">
+            <ArrowRight size={30} />
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</div>
+
 
         <div className="text-center px-6 mt-6">
           <h3 className="text-3xl font-bold text-white mb-2">
@@ -204,44 +207,29 @@ const Services = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-10 mt-10">
-          {[ 
-            {
-              Icon: Cpu,
-              title: "AI Powered Website Builder",
-              desc: "Generate layout tailored to your needs",
-            },
-            {
-              Icon: Layout,
-              title: "Custom UI/UX Design",
-              desc: "Crafted by expert designers",
-            },
-            {
-              Icon: Rocket,
-              title: "Fast Deployment",
-              desc: "Get your site live in 6 weeks",
-            },
-            {
-              Icon: Headset,
-              title: "24/7 Support",
-              desc: "We're here whenever you need help",
-            },
-          ].map((offer, index) => (
-            <div key={index} className="flex flex-col items-start">
-              <offer.Icon size={40} className="bg-white text-black  p-1" />
+      {/* What We Offer Section */}
+      <section className="text-white text-center mt-30 p-8">
+        <h2 className="text-4xl font-bold mt-22 mb-6">What We Offer</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-32 gap-8">
+          {[
+            { Icon:Cpu, title: "AI Powered Website Builder", desc: "Generate layout tailored to your needs" },
+            { Icon:Layout, title: "Custom UI/UX Design", desc: "Crafted by expert designers" },
+            { Icon:Rocket, title: "Fast Deployment", desc: "Get your site live in 6 weeks" },
+            { Icon:Headset,  title: "24/7 Support", desc: "Were here whenever you need help" },
+           ].map((offer, index) => (
+            <div key={index} className="flex flex-col items-center">
+              <offer.Icon size={40} className="bg-white text-black" />  
               <h3 className="text-lg font-semibold mt-2">{offer.title}</h3>
               <p className="text-gray-400 text-sm">{offer.desc}</p>
             </div>
           ))}
         </div>
-
-        <div className="flex justify-center py-4">
-          <Link href="/#get-started-section">
-          <button className="text-black bg-[#87C732] py-3 px-10 rounded-lg mb-10">
-            Try Now
-          </button>
-          </Link>
-        </div>
+        <Link href="#get-started-section">
+        <button className="mt-30 bg-[#87C732] hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg">
+          Try it Now
+        </button>
+        </Link>
+      </section>
 
         <section className="flex flex-col md:flex-row items-center justify-between p-8 rounded-lg relative">
           <div className="md:w-1/2 text-white">
@@ -254,18 +242,14 @@ const Services = () => {
               <div className="flex items-center space-x-2 text-green-300">
               <Mail size={20} />
               <a
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=Hi@minimalisticTechnology.com"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=hi@minimalistictechnology.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:underline"
               >
-                Hi@minimalisticTechnology.com
+                hi@minimalistictechnology.com
               </a>
             </div>
-              {/* <div className="flex items-center space-x-2 text-green-300">
-                <Phone size={20} />
-                {/* <span>+91 90043 17329</span>
-              </div> */}
             </div>
           </div>
 

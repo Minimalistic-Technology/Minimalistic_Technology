@@ -82,78 +82,80 @@ const Home = () => {
   return (
     <div className={`min-h-screen ${poppins.className} bg-[#23272A] text-white`}>
       {/* Header/Navbar */}
-      <header className="fixed top-0 left-0 w-full z-50 bg-[#23272A]/90 backdrop-blur-md text-white p-4">
-        <div className="flex justify-between items-center mx-auto">
-          {/* Logo & Brand */}
-          <div className="flex items-center space-x-3">
-            <Image
-              src="/logo.jpg"
-              alt="Logo"
-              width={40}
-              height={40}
-              className="rounded-full bg-[#23272A]"
-            />
-            <div className="flex flex-col text-[#87C732] text-lg font-bold leading-tight">
-              <span>Minimalistic</span>
-              <span>Technology</span>
-            </div>
-          </div>
+<header className="fixed top-0 left-0 w-full z-50 bg-[#23272A] text-white p-4">
+  <div className="flex justify-between items-center mx-auto">
+    {/* Logo & Brand */}
+    <div className="flex items-center space-x-3">
+      <Image
+        src="/logo.jpg"
+        alt="Logo"
+        width={40}
+        height={40}
+        className="rounded-full bg-[#23272A]"
+      />
+      <div className="flex flex-col text-[#87C732] text-lg font-bold leading-tight">
+        <span>Minimalistic</span>
+        <span>Technology</span>
+      </div>
+    </div>
 
-          {/* Hamburger Menu */}
-          <button
-            className="md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle Menu"
-          >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
+    {/* Hamburger Menu */}
+    <button
+      className="md:hidden"
+      onClick={() => setIsOpen(!isOpen)}
+      aria-label="Toggle Menu"
+    >
+      {isOpen ? <X size={28} /> : <Menu size={28} />}
+    </button>
 
-          {/* Nav Menu */}
-          <nav
-            className={`absolute top-full left-0 w-full  p-4 space-y-4 
-            md:static md:w-auto md:p-0 md:flex md:space-x-6 md:space-y-0 
-            ${isOpen ? "block" : "hidden"}`}
-          >
-            <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
-              {navLinks.map((link) => {
-                const isActive = pathname === link.path;
-                return (
-                  <li key={link.name} className="relative group">
-                    <Link href={link.path}>
-                      <span
-                        className={`pb-1 border-b-2 transition-all duration-300 
-                          ${isActive ? "text-[#87C732] border-[#87C732]" : "border-transparent text-white group-hover:text-[#87C732] group-hover:border-[#87C732]"}
-                        `}
-                      >
-                        {link.name}
-                      </span>
-                    </Link>
-                  </li>
-                );
-              })}
-
-              {/* Get Started Button (Mobile) */}
-            <li className="md:hidden">
-              <a href="#get-started-section">
-                <button className="w-full px-4 py-2 bg-[#87C732] text-white rounded-lg hover:bg-green-500 transition">
-                  Get Started
-                </button>
-              </a>
+    {/* Nav Menu */}
+    <nav
+      className={`absolute top-full left-0 w-full bg-[#23272A] p-4 space-y-4 
+      md:static md:w-auto md:p-0 md:flex md:space-x-6 md:space-y-0 
+      ${isOpen ? "block" : "hidden"}`}
+    >
+      <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
+        {navLinks.map((link) => {
+          const isActive = pathname === link.path;
+          return (
+            <li key={link.name} className="relative group">
+              <Link href={link.path}>
+                <span
+                  className={`pb-1 border-b-2 transition-all duration-300 
+                    ${isActive
+                      ? "text-[#87C732] border-[#87C732]"
+                      : "border-transparent text-white group-hover:text-[#87C732] group-hover:border-[#87C732]"
+                    }`}
+                >
+                  {link.name}
+                </span>
+              </Link>
             </li>
+          );
+        })}
 
-            </ul>
-          </nav>
+        {/* Get Started Button (Mobile) */}
+        <li className="md:hidden">
+          <a href="#get-started-section">
+            <button className="w-full px-4 py-2 bg-[#87C732] text-white rounded-lg hover:bg-green-500 transition">
+              Get Started
+            </button>
+          </a>
+        </li>
+      </ul>
+    </nav>
 
-          {/* Get Started Button (Desktop) */}
-          <div className="hidden md:flex space-x-2">
-            <Link href="#get-started-section">
-              <button className="px-4 py-2 bg-[#87C732] text-white rounded-lg hover:bg-green-500 transition">
-                Get Started
-              </button>
-            </Link>
-          </div>
-        </div>
-      </header>
+    {/* Get Started Button (Desktop) */}
+    <div className="hidden md:flex space-x-2">
+      <Link href="#get-started-section">
+        <button className="px-4 py-2 bg-[#87C732] text-white rounded-lg hover:bg-green-500 transition">
+          Get Started
+        </button>
+      </Link>
+    </div>
+  </div>
+</header>
+
 
 
 
@@ -210,7 +212,7 @@ const Home = () => {
 
 
 
-          <div className="bg-[#DAEEBF] text-black rounded-2xl p-8 flex flex-col justify-between transition shadow-md hover:shadow-[0_10px_20px_#DAEEBF] hover:-translate-y-1">
+           <div className="bg-[#DAEEBF] text-black rounded-2xl p-8 flex flex-col justify-between shadow-lg transition-transform duration-300 transform hover:-translate-y-1 hover:shadow-[0_10px_20px_#DAEEBF] active:shadow-[0_10px_20px_#DAEEBF] active:-translate-y-1">
             <div>
               <h2 className="text-2xl font-semibold mb-2">Starter</h2>
               <p className="mb-6">Ideal for small businesses and personal brands</p>
@@ -230,9 +232,8 @@ const Home = () => {
             </ul>
           </div>
 
-        {/* Professional Plan */}
-        <div className="bg-[#7ED957] text-black rounded-2xl p-8 flex flex-col justify-between relative transition shadow-md hover:shadow-[0_10px_20px_#7ED957] hover:-translate-y-1">
-          <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#A9D18E] text-black px-4 py-1 text-sm font-semibold rounded-md">Most popular</div>
+           {/* Professional Plan */}
+         <div className="bg-[#7ED957] text-black rounded-2xl p-8 flex flex-col justify-between relative shadow-lg transition-transform duration-300 transform hover:-translate-y-1 hover:shadow-[0_10px_20px_#7ED957] active:shadow-[0_10px_20px_#7ED957] active:-translate-y-1">          <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#A9D18E] text-black px-4 py-1 text-sm font-semibold rounded-md">Most popular</div>
           <div>
             <h2 className="text-2xl font-semibold mb-2">Professional</h2>
             <p className="mb-6">Best for growing businesses and startups</p>
@@ -253,7 +254,7 @@ const Home = () => {
         </div>
 
         {/* Enterprise Plan */}
-        <div className="bg-[#DAEEBF] text-black rounded-2xl p-8 flex flex-col justify-between transition shadow-md hover:shadow-[0_10px_20px_#DAEEBF] hover:-translate-y-1">
+       <div className="bg-[#DAEEBF] text-black rounded-2xl p-8 flex flex-col justify-between shadow-lg transition-transform duration-300 transform hover:-translate-y-1 hover:shadow-[0_10px_20px_#DAEEBF] active:shadow-[0_10px_20px_#DAEEBF] active:-translate-y-1">
           <div>
             <h2 className="text-2xl font-semibold mb-2">Enterprise</h2>
             <p className="mb-6">For large-scale businesses and custom business</p>

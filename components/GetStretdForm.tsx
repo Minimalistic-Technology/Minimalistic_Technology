@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { Mail } from "lucide-react";
 import emailjs from "emailjs-com";
 
 const GetStartedForm: React.FC = () => {
@@ -41,11 +42,17 @@ const GetStartedForm: React.FC = () => {
             <form onSubmit={sendEmail} className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Left Column */}
               <div className="col-span-1 flex flex-col items-center min-h-[50vh] justify-end lg:justify-center text-center">
-                <div className="text-[#A8A8A8] text-center">
-                  <p>Join 1000+ businesses using Minimalistic Technology to build their dream website.</p>
-                  <p className="mt-2">📧 Hi@minimalisticTechnology.com</p>
-                  {/* <p>📞 +91 90043 17329</p> */}
-                </div>
+              <div className="flex items-center space-x-2 text-green-300">
+              <Mail size={20} />
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=hi@minimalistictechnology.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                hi@minimalistictechnology.com
+              </a>
+            </div>
               </div>
               {/* Right Column */}
               <div className="space-y-8 col-span-2">
