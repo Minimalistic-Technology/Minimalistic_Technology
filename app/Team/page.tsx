@@ -23,17 +23,21 @@ const Team = () => {
     { name: "Sumit borate", position: "data scientist", img: "/sumeet.jpg" },
     { name: "pops", position: "UI/UX developer", img: "/pops.jpg" },
     { name: "Harsh Bhavsar", position: "Digital Marketing", img: "/DM.jpg" },
-    // { name: "Sneha", position: "Technical Lead", img: "/sneha.jpg" },
+    { name: "Sneha", position: "Manager", img: "/harsh.jpg" },
+    { name: "Tushar Shukla", position: "Jr.Software developer", img: "/tushar.jpg" },
+    { name: "Manikanta", position: "Jr.Software developer", img: "/mani.jpg" },
+        { name: "Sadhashiv Zore", position: "Jr.Software developer", img: "/Sadhashiv.jpg" },
+    { name: "Manan Doshi", position: "Jr.Software developer", img: "/fool.jpg" },
    
   ];
 
   const interns = [
-    { name: "Sadhashiv Zore", position: "Jr.Software developer", img: "/Sadhashiv.jpg" },
-    { name: "Manan Doshi", position: "Jr.Software developer", img: "/fool.jpg" },
+    // { name: "Sadhashiv Zore", position: "Jr.Software developer", img: "/Sadhashiv.jpg" },
+    // { name: "Manan Doshi", position: "Jr.Software developer", img: "/fool.jpg" },
     { name: "Varshini Varma", position: "Jr.Software developer", img: "/varshini varma.jpg" },
     { name: "Sandip Baranwal", position: "Jr.Software developer", img: "/majdoor.jpg" },
     { name: "Sunny Radhakrishana", position: "Jr.Software developer", img: "/leone.jpg" },
-    { name: "Mahesh Kumar", position: "Jr.Software developer", img: "/mahesh.jpg" },
+    { name: "Mahesh Kumar", position: "Jr.Software developer", img: "/maheshT.jpg" },
   ];
 
   return (
