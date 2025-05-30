@@ -64,36 +64,35 @@ const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [current, setCurrent] = useState(0);
   const [windowWidth, setWindowWidth] = useState(1024);
-  const [slideWidth, setSlideWidth] = useState(33.33);
+  const [slideWidth, setSlideWidth] = useState(100);
   const pathname = usePathname();
+  const [cardsPerView, setCardsPerView] = useState(1);
 
   useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    handleResize();
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setWindowWidth(width);
+
+      const isMobile = width < 640;
+      setSlideWidth(isMobile ? 100 : 50);
+      setCardsPerView(isMobile ? 1 : 2);
+    };
+
+    handleResize(); 
     window.addEventListener("resize", handleResize);
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(() => {
-    const updateWidth = () => {
-      const isMobile = window.innerWidth < 640;
-      setSlideWidth(isMobile ? 100 : 50);
-    };
-    window.addEventListener("resize", updateWidth);
-    updateWidth();
-    return () => window.removeEventListener("resize", updateWidth);
-  }, []);
-
   const nextTestimonial = () => {
-    setCurrent((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setCurrent(
-      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+    setCurrent((prev) =>
+      prev + cardsPerView < testimonials.length ? prev + 1 : prev
     );
   };
 
+  const prevTestimonial = () => {
+    setCurrent((prev) => (prev > 0 ? prev - 1 : prev));
+  };
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About Us", path: "/AboutUs" },
@@ -374,7 +373,7 @@ const Home = () => {
               <div
                 className="flex transition-transform duration-700 ease-in-out gap-6"
                 style={{
-                  transform: `translateX(-${current * 100}%)`,
+                  transform: `translateX(-${current * slideWidth}%)`,
                 }}
               >
                 {testimonials.map((t, index) => (
