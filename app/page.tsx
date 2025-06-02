@@ -424,7 +424,6 @@ const Home = () => {
       </>
 
       {/* Get Started Section */}
-
       <main id="get-started-section">
         <GetStretdForm />
       </main>
