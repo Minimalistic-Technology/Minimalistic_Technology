@@ -148,13 +148,13 @@ const GetStartedForm: React.FC = () => {
                   <input
                     name="websiteType"
                     placeholder="Type of Website*"
-                    className="w-full p-3 border border-[#7ED957] bg-transparent text-white placeholder-white rounded-md"
+                    className="form-input"
                   />
                   <select
                     name="service"
                     value={service}
                     onChange={(e) => setService(e.target.value)}
-                    className="w-full p-3 border border-[#7ED957] bg-transparent text-white rounded-md"
+                    className="form-input"
                   >
                     <option
                       className="bg-[#23272A] text-white"
