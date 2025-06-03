@@ -74,7 +74,7 @@ const Home = () => {
       setWindowWidth(width);
 
       const isMobile = width < 640;
-      setSlideWidth(isMobile ? 100 : 50);
+      setSlideWidth(isMobile ? 100 : 52); 
       setCardsPerView(isMobile ? 1 : 2);
     };
 
@@ -84,15 +84,19 @@ const Home = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const nextTestimonial = () => {
-    setCurrent((prev) =>
-      prev + cardsPerView < testimonials.length ? prev + 1 : prev
-    );
-  };
+ const nextTestimonial = () => {
+  setCurrent((prev) => {
+    const maxIndex = testimonials.length - cardsPerView;
+    return prev < maxIndex ? prev + 1 : prev;
+  });
+};
+
+
 
   const prevTestimonial = () => {
-    setCurrent((prev) => (prev > 0 ? prev - 1 : prev));
-  };
+  setCurrent((prev) => (prev > 0 ? prev - 1 : prev));
+};
+
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About Us", path: "/AboutUs" },
