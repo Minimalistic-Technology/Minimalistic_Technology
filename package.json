@@ -11,7 +11,7 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@tailwindcss/oxide": "^4.1.4",
-    "axios": "^1.8.4",
+    "axios": "^1.9.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "emailjs": "^4.0.3",

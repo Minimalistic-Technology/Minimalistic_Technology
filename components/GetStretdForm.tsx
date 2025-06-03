@@ -3,7 +3,7 @@
 import React from "react";
 import { Mail } from "lucide-react";
 import emailjs from "emailjs-com";
-
+import api from "@/utils/api";
 const GetStartedForm: React.FC = () => {
   // const sendEmail = (e: any) => {
   //   e.preventDefault();
@@ -53,13 +53,9 @@ const GetStartedForm: React.FC = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/api/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
 
-      if (response.ok) {
+      const response = await api.post("/send-email", formData);
+      if (response.status === 200) {
         alert("Message sent successfully!");
       } else {
         alert("Failed to send message.");
