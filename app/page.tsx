@@ -164,7 +164,7 @@ const Home = () => {
               {/* Get Started Button (Mobile) */}
               <li className="md:hidden">
                 <a href="#get-started-section">
-                  <button className="w-full px-4 py-2 bg-[#87C732] text-white rounded-lg hover:bg-green-500 transition">
+                  <button className="w-full px-9 py-3 bg-[#7ED957] text-black rounded-md hover:bg-green-500 transition">
                     Get Started
                   </button>
                 </a>
@@ -175,7 +175,7 @@ const Home = () => {
           {/* Get Started Button (Desktop) */}
           <div className="hidden md:flex space-x-2">
             <Link href="#get-started-section">
-              <button className="px-4 py-2 bg-[#87C732] text-white rounded-lg hover:bg-green-500 transition">
+              <button className="bg-[#7ED957] text-black font-bold py-3 px-9 rounded-md hover:bg-green-500 transition disabled:opacity-50">
                 Get Started
               </button>
             </Link>
@@ -209,7 +209,7 @@ const Home = () => {
             <span>Fast deployment</span>
           </div>
           <Link href="#get-started-section">
-            <button className="bg-[#87C732] hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg mt-6">
+            <button className="bg-[#7ED957] hover:bg-green-500 text-black font-bold py-2 px-9 rounded-md mt-6">
               Start Building
             </button>
           </Link>
@@ -267,7 +267,7 @@ const Home = () => {
           ))}
         </div>
         <Link href="#get-started-section">
-          <button className="mt-30 bg-[#87C732] hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg">
+          <button className="mt-30 bg-[#7ED957] hover:bg-green-500 text-black font-bold py-2 px-9 rounded-md">
             Try it Now
           </button>
         </Link>
