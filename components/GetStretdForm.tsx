@@ -237,7 +237,6 @@
 
 // export default GetStartedForm;
 
-
 "use client";
 
 import React, { useState } from "react";
@@ -275,7 +274,7 @@ const GetStartedForm: React.FC = () => {
       const response = await api.post("/send-email", data);
       if (response.status === 200) {
         console.log("Message sent successfully!");
-        reset(); 
+        reset();
         setService("");
       } else {
         throw new Error("Failed to send message.");
@@ -289,7 +288,9 @@ const GetStartedForm: React.FC = () => {
   return (
     <section className="bg-[#23272A] text-white py-12">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-5xl font-bold text-center mb-2">Get Started Today</h2>
+        <h2 className="text-5xl font-bold text-center mb-2">
+          Get Started Today
+        </h2>
         <p className="text-center text-2xl mb-10">
           Kindly fill this form to get started
         </p>
@@ -326,7 +327,9 @@ const GetStartedForm: React.FC = () => {
                 <div className="grid grid-cols-1 gap-4">
                   <div>
                     <input
-                      {...register("fullName", { required: "Please fill out your full name" })}
+                      {...register("fullName", {
+                        required: "Please fill out your full name",
+                      })}
                       placeholder="Full Name*"
                       disabled={isSubmitting}
                       className={`form-input ${
@@ -334,13 +337,21 @@ const GetStartedForm: React.FC = () => {
                       }`}
                     />
                     {errors.fullName && (
-                      <p className="text-red-500 text-sm mt-1">{errors.fullName.message}</p>
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.fullName.message}
+                      </p>
                     )}
                   </div>
 
                   <div>
                     <input
-                      {...register("email", { required: "Please fill out the email address" })}
+                      {...register("email", {
+                        required: "Please fill out the email address",
+                        pattern: {
+                          value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                          message: "Please enter a valid email address",
+                        },
+                      })}
                       placeholder="Email Address*"
                       disabled={isSubmitting}
                       className={`form-input ${
@@ -348,13 +359,21 @@ const GetStartedForm: React.FC = () => {
                       }`}
                     />
                     {errors.email && (
-                      <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.email.message}
+                      </p>
                     )}
                   </div>
 
                   <div>
                     <input
-                      {...register("phone", { required: "Please fill out your phone number" })}
+                      {...register("phone", {
+                        required: "Please fill out your phone number",
+                        pattern: {
+                          value: /^[0-9]{10}$/,
+                          message: "Phone number must be exactly 10 digits",
+                        },
+                      })}
                       placeholder="Phone Number*"
                       disabled={isSubmitting}
                       className={`form-input ${
@@ -362,7 +381,9 @@ const GetStartedForm: React.FC = () => {
                       }`}
                     />
                     {errors.phone && (
-                      <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.phone.message}
+                      </p>
                     )}
                   </div>
 
@@ -393,7 +414,9 @@ const GetStartedForm: React.FC = () => {
                 <div className="grid grid-cols-1 gap-4">
                   <div>
                     <input
-                      {...register("websiteType", { required: "Please specify website type" })}
+                      {...register("websiteType", {
+                        required: "Please specify website type",
+                      })}
                       placeholder="Type of Website*"
                       disabled={isSubmitting}
                       className={`form-input ${
@@ -401,13 +424,17 @@ const GetStartedForm: React.FC = () => {
                       }`}
                     />
                     {errors.websiteType && (
-                      <p className="text-red-500 text-sm mt-1">{errors.websiteType.message}</p>
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.websiteType.message}
+                      </p>
                     )}
                   </div>
 
                   <div>
                     <select
-                      {...register("service", { required: "Please select a service" })}
+                      {...register("service", {
+                        required: "Please select a service",
+                      })}
                       value={service}
                       onChange={(e) => setService(e.target.value)}
                       disabled={isSubmitting}
@@ -415,16 +442,51 @@ const GetStartedForm: React.FC = () => {
                         errors.service ? "border-red-500 border" : ""
                       }`}
                     >
-                       <option className="bg-[#23272A] text-white" value="" disabled>Select Service*</option>
-                        <option className="bg-[#23272A] text-white" value="web-design">UI /Ux support</option>
-                        <option className="bg-[#23272A] text-white" value="erp">Website development</option>
-                        <option className="bg-[#23272A] text-white" value="ecommerce">Mobile App development </option>
-                        <option className="bg-[#23272A] text-white" value="ecommerce">Ai /ML support</option>
-                        <option className="bg-[#23272A] text-white" value="ecommerce">Domain support</option>
-                        <option className="bg-[#23272A] text-white" value="ecommerce">other</option>
+                      <option
+                        className="bg-[#23272A] text-white"
+                        value=""
+                        disabled
+                      >
+                        Select Service*
+                      </option>
+                      <option
+                        className="bg-[#23272A] text-white"
+                        value="web-design"
+                      >
+                        UI /Ux support
+                      </option>
+                      <option className="bg-[#23272A] text-white" value="erp">
+                        Website development
+                      </option>
+                      <option
+                        className="bg-[#23272A] text-white"
+                        value="ecommerce"
+                      >
+                        Mobile App development{" "}
+                      </option>
+                      <option
+                        className="bg-[#23272A] text-white"
+                        value="ecommerce"
+                      >
+                        Ai /ML support
+                      </option>
+                      <option
+                        className="bg-[#23272A] text-white"
+                        value="ecommerce"
+                      >
+                        Domain support
+                      </option>
+                      <option
+                        className="bg-[#23272A] text-white"
+                        value="ecommerce"
+                      >
+                        other
+                      </option>
                     </select>
                     {errors.service && (
-                      <p className="text-red-500 text-sm mt-1">{errors.service.message}</p>
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.service.message}
+                      </p>
                     )}
                   </div>
 
