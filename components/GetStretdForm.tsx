@@ -455,32 +455,33 @@ const GetStartedForm: React.FC = () => {
                       >
                         UI /Ux support
                       </option>
-                      <option className="bg-[#23272A] text-white" value="erp">
+                      <option className="bg-[#23272A] text-white" value="Website development">
+                      <option className="bg-[#23272A] text-white" value="Website development">
                         Website development
                       </option>
                       <option
                         className="bg-[#23272A] text-white"
-                        value="ecommerce"
+                        value="Mobile App development"
                       >
-                        Mobile App development{" "}
+                        Mobile App development
                       </option>
                       <option
                         className="bg-[#23272A] text-white"
-                        value="ecommerce"
+                        value="AI /ML support"
                       >
-                        Ai /ML support
+                        AI /ML support
                       </option>
                       <option
                         className="bg-[#23272A] text-white"
-                        value="ecommerce"
+                        value="Domain support"
                       >
                         Domain support
                       </option>
                       <option
                         className="bg-[#23272A] text-white"
-                        value="ecommerce"
+                        value="other"
                       >
-                        other
+                        Other
                       </option>
                     </select>
                     {errors.service && (
