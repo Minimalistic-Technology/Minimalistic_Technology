@@ -456,7 +456,6 @@ const GetStartedForm: React.FC = () => {
                         UI /Ux support
                       </option>
                       <option className="bg-[#23272A] text-white" value="Website development">
-                      <option className="bg-[#23272A] text-white" value="Website development">
                         Website development
                       </option>
                       <option
