@@ -64,29 +64,38 @@ const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [current, setCurrent] = useState(0);
   const [windowWidth, setWindowWidth] = useState(1024);
-  const [slideWidth, setSlideWidth] = useState(33.33);
+  const [slideWidth, setSlideWidth] = useState(100);
   const pathname = usePathname();
+  const [cardsPerView, setCardsPerView] = useState(1);
 
   useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    handleResize();
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setWindowWidth(width);
+
+      const isMobile = width < 640;
+      setSlideWidth(isMobile ? 100 : 52); 
+      setCardsPerView(isMobile ? 1 : 2);
+    };
+
+    handleResize(); 
     window.addEventListener("resize", handleResize);
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(() => {
-    setSlideWidth(windowWidth < 600 ? 100 : windowWidth < 1024 ? 50 : 33.33);
-  }, [windowWidth]);
+ const nextTestimonial = () => {
+  setCurrent((prev) => {
+    const maxIndex = testimonials.length - cardsPerView;
+    return prev < maxIndex ? prev + 1 : prev;
+  });
+};
 
-  const nextTestimonial = () => {
-    setCurrent((prev) => (prev + 1) % testimonials.length);
-  };
+
 
   const prevTestimonial = () => {
-    setCurrent(
-      (prev) => (prev - 1 + testimonials.length) % testimonials.length
-    );
-  };
+  setCurrent((prev) => (prev > 0 ? prev - 1 : prev));
+};
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -155,7 +164,7 @@ const Home = () => {
               {/* Get Started Button (Mobile) */}
               <li className="md:hidden">
                 <a href="#get-started-section">
-                  <button className="w-full px-4 py-2 bg-[#87C732] text-white rounded-lg hover:bg-green-500 transition">
+                  <button className="w-full px-9 py-3 bg-[#7ED957] text-black rounded-md hover:bg-green-500 transition">
                     Get Started
                   </button>
                 </a>
@@ -166,7 +175,7 @@ const Home = () => {
           {/* Get Started Button (Desktop) */}
           <div className="hidden md:flex space-x-2">
             <Link href="#get-started-section">
-              <button className="px-4 py-2 bg-[#87C732] text-white rounded-lg hover:bg-green-500 transition">
+              <button className="bg-[#7ED957] text-black font-bold py-3 px-9 rounded-md hover:bg-green-500 transition disabled:opacity-50">
                 Get Started
               </button>
             </Link>
@@ -200,7 +209,7 @@ const Home = () => {
             <span>Fast deployment</span>
           </div>
           <Link href="#get-started-section">
-            <button className="bg-[#87C732] hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg mt-6">
+            <button className="bg-[#7ED957] hover:bg-green-500 text-black font-bold py-2 px-9 rounded-md mt-6">
               Start Building
             </button>
           </Link>
@@ -258,7 +267,7 @@ const Home = () => {
           ))}
         </div>
         <Link href="#get-started-section">
-          <button className="mt-30 bg-[#87C732] hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg">
+          <button className="mt-30 bg-[#7ED957] hover:bg-green-500 text-black font-bold py-2 px-9 rounded-md">
             Try it Now
           </button>
         </Link>
@@ -362,40 +371,44 @@ const Home = () => {
             <h2 className="text-3xl font-bold text-center mb-8">
               Testimonials
             </h2>
-            <div className="relative overflow-hidden">
-  <div
-    className="flex transition-transform duration-700 ease-in-out"
-    style={{
-      transform: `translateX(-${current * slideWidth}%)`,
-      width: `${testimonials.length * slideWidth}%`,
-    }}
-  >
-    {testimonials.map((t, index) => (
-      <div
-        key={index}
-        className="w-full sm:w-[75%] lg:w-3/7 bg-white text-gray-900 rounded-2xl p-6 shadow-xl mx-3 shrink-0 h-auto min-h-[200px] hover:shadow-2xl transition-all duration-300 ease-in-out"
-      >
-        <p className="text-lg mb-6 leading-relaxed text-gray-700 italic">
-          “{t.text}”
-        </p>
-        <div className="flex items-center space-x-4">
-          <img
-            src={t.image}
-            alt={t.name}
-            className="w-14 h-14 rounded-full border-2 border-green-400 shadow-md object-cover"
-          />
-          <div>
-            <h4 className="font-semibold text-gray-900">{t.name}</h4>
-            <span className="text-sm text-white bg-[#87C732]  px-2 py-1 rounded-md font-medium">
-              {t.role}
-            </span>
-          </div>
-        </div>
-      </div>
-    ))}
-  </div>
-</div>
 
+            {/* Slider Container */}
+            <div className="relative overflow-x-auto scrollbar-hidden">
+              <div
+                className="flex transition-transform duration-700 ease-in-out gap-6"
+                style={{
+                  transform: `translateX(-${current * slideWidth}%)`,
+                }}
+              >
+                {testimonials.map((t, index) => (
+                  <div
+                    key={index}
+                    className="w-full sm:w-1/2 flex-shrink-0 box-border bg-white text-gray-900 rounded-2xl p-6 shadow-xl min-h-[200px] hover:shadow-2xl transition-all duration-300 ease-in-out"
+                  >
+                    <p className="text-lg mb-6 leading-relaxed text-gray-700 italic">
+                      “{t.text}”
+                    </p>
+                    <div className="flex items-center space-x-4">
+                      <img
+                        src={t.image}
+                        alt={t.name}
+                        className="w-14 h-14 rounded-full border-2 border-green-400 shadow-md object-cover"
+                      />
+                      <div>
+                        <h4 className="font-semibold text-gray-900">
+                          {t.name}
+                        </h4>
+                        <span className="text-sm text-white bg-[#87C732] px-2 py-1 rounded-md font-medium break-words max-w-[200px] block">
+                          {t.role}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Navigation Buttons */}
             <div className="flex justify-end space-x-4 mt-6">
               <button
                 onClick={prevTestimonial}
@@ -414,6 +427,7 @@ const Home = () => {
         </section>
       </>
 
+      {/* Get Started Section */}
       <main id="get-started-section">
         <GetStretdForm />
       </main>
