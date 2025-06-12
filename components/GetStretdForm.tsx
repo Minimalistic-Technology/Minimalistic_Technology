@@ -435,6 +435,9 @@ const GetStartedForm: React.FC = () => {
                       {...register("service", {
                         required: "Please select a service",
                       })}
+                      {...register("service", {
+                        required: "Please select a service",
+                      })}
                       value={service}
                       onChange={(e) => setService(e.target.value)}
                       disabled={isSubmitting}
