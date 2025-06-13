@@ -290,7 +290,7 @@ const Home = () => {
                 </p>
                 <p className="text-4xl font-bold">
                   {" "}
-                  ₹1000<span className="text-sm font-normal">/(One-Time)</span>
+                  ₹1,000<span className="text-sm font-normal">/(One-Time)</span>
                 </p>
               </div>
               <Link href="#get-started-section" passHref>
