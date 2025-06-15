@@ -59,7 +59,7 @@
 //       const response = await api.post("/send-email", formData);
 //       if (response.status === 200) {
 //         console.log("Message sent successfully!");
-//         form.reset(); // clear fields
+//         form.reset();
 //       } else {
 //         throw new Error("Failed to send message.");
 //       }
@@ -243,6 +243,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Mail } from "lucide-react";
 import api from "@/utils/api";
+import emailjs from "emailjs-com";
 
 type FormData = {
   fullName: string;
@@ -268,11 +269,53 @@ const GetStartedForm: React.FC = () => {
   const [service, setService] = useState("");
   const [error, setError] = useState<string | null>(null);
 
+  // const onSubmit = async (data: FormData) => {
+  //   try {
+  //     setError(null);
+  //     const response = await api.post("/send-email", data);
+  //     if (response.status === 200) {
+  //       console.log("Message sent successfully!");
+  //       reset();
+  //       setService("");
+  //     } else {
+  //       throw new Error("Failed to send message.");
+  //     }
+  //   } catch (err: any) {
+  //     console.error("Error occurred while sending:", err.message || err);
+  //     setError(err.message || "Something went wrong.");
+  //   }
+  // };
+
+  //emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_USER_ID!);
+
   const onSubmit = async (data: FormData) => {
     try {
       setError(null);
-      const response = await api.post("/send-email", data);
-      if (response.status === 200) {
+
+      const templateParams = {
+        name: data.fullName,
+        email: data.email,
+        title: "New Project Inquiry",
+        message: `
+        Phone: ${data.phone}
+        Business Name: ${data.businessName || "-"}
+        Business Description: ${data.businessDesc || "-"}
+        Website Type: ${data.websiteType}
+        Selected Service: ${service}
+        Existing Website: ${data.existingWebsite || "-"}
+        Existing Description: ${data.existingDesc || "-"}
+        Project Description: ${data.projectDesc || "-"}
+      `,
+      };
+
+      const response = await emailjs.send(
+        "service_8vx0ufi",
+        "template_g5yjqs9",
+        templateParams,
+        "xvO8nB8aPPNb7_kkH"
+      );
+
+      if (response.status === 200 || response.text === "OK") {
         console.log("Message sent successfully!");
         reset();
         setService("");
@@ -458,7 +501,10 @@ const GetStartedForm: React.FC = () => {
                       >
                         UI /Ux support
                       </option>
-                      <option className="bg-[#23272A] text-white" value="Website development">
+                      <option
+                        className="bg-[#23272A] text-white"
+                        value="Website development"
+                      >
                         Website development
                       </option>
                       <option
@@ -479,10 +525,7 @@ const GetStartedForm: React.FC = () => {
                       >
                         Domain support
                       </option>
-                      <option
-                        className="bg-[#23272A] text-white"
-                        value="other"
-                      >
+                      <option className="bg-[#23272A] text-white" value="other">
                         Other
                       </option>
                     </select>
