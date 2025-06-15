@@ -62,7 +62,7 @@ const Team = () => {
     {
       name: "Dr. Jagruti Sancheti",
       position: "Marketing and Product Manager",
-      img: "/harsh.jpg",
+      img: "/drJagruti.jpg",
     },
   ];
 
