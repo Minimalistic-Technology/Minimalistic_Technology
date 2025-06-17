@@ -23,9 +23,10 @@ import {
 import { useState, useEffect } from "react";
 import GetStretdForm from "../components/GetStretdForm";
 import { motion } from "framer-motion";
-
+import { useRef } from "react";
 import { Inter } from "next/font/google";
 const poppins = Inter({ subsets: ["latin"] });
+const gap = 24; // px
 
 const testimonials = [
   {
@@ -64,18 +65,32 @@ const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [current, setCurrent] = useState(0);
   const [windowWidth, setWindowWidth] = useState(1024);
-  const [slideWidth, setSlideWidth] = useState(100);
+  //const [slideWidth, setSlideWidth] = useState(100);
   const pathname = usePathname();
+  //const [cardsPerView, setCardsPerView] = useState(1);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const [slideWidth, setSlideWidth] = useState(0);
   const [cardsPerView, setCardsPerView] = useState(1);
 
   useEffect(() => {
     const handleResize = () => {
-      const width = window.innerWidth;
-      setWindowWidth(width);
+      if (!containerRef.current || !cardRef.current) return;
 
+      const width = window.innerWidth;
       const isMobile = width < 640;
-      setSlideWidth(isMobile ? 100 : 52); 
-      setCardsPerView(isMobile ? 1 : 2);
+
+      const cardWidth = isMobile
+        ? containerRef.current.offsetWidth
+        : cardRef.current.offsetWidth;
+      const gap = isMobile ? 0 : 24;
+
+      setSlideWidth(cardWidth + gap);
+
+      const containerWidth = containerRef.current.offsetWidth;
+      const perView = Math.floor(containerWidth / (cardWidth + gap));
+      setCardsPerView(perView || 1);
     };
 
     handleResize(); 
@@ -84,18 +99,16 @@ const Home = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
- const nextTestimonial = () => {
-  setCurrent((prev) => {
-    const maxIndex = testimonials.length - cardsPerView;
-    return prev < maxIndex ? prev + 1 : prev;
-  });
-};
-
-
+  const nextTestimonial = () => {
+    setCurrent((prev) => {
+      const maxIndex = testimonials.length - cardsPerView;
+      return prev < maxIndex ? prev + 1 : prev;
+    });
+  };
 
   const prevTestimonial = () => {
-  setCurrent((prev) => (prev > 0 ? prev - 1 : prev));
-};
+    setCurrent((prev) => (prev > 0 ? prev - 1 : prev));
+  };
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -184,7 +197,7 @@ const Home = () => {
       </header>
 
       {/* Hero Section */}
-      <div className="flex flex-col md:flex-row items-center justify-between w-full mt-40 sm:mt-60 px-6 sm:px-16">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full mt-25 sm:mt-25 px-6 sm:px-16">
         <div className="max-w- text-left">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -373,32 +386,33 @@ const Home = () => {
             </h2>
 
             {/* Slider Container */}
-            <div className="relative overflow-x-auto scrollbar-hidden">
+            <div className="overflow-hidden" ref={containerRef}>
               <div
-                className="flex transition-transform duration-700 ease-in-out gap-6"
+                className="flex transition-transform duration-500 ease-in-out gap-6"
                 style={{
-                  transform: `translateX(-${current * slideWidth}%)`,
+                  transform: `translateX(-${current * (slideWidth + gap)}px)`,
                 }}
               >
                 {testimonials.map((t, index) => (
                   <div
                     key={index}
-                    className="w-full sm:w-1/2 flex-shrink-0 box-border bg-white text-gray-900 rounded-2xl p-6 shadow-xl min-h-[200px] hover:shadow-2xl transition-all duration-300 ease-in-out"
+                    ref={index === 0 ? cardRef : null}
+                    className="w-full sm:w-[320px] lg:w-[350px] flex-shrink-0 bg-white text-gray-900 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300"
                   >
-                    <p className="text-lg mb-6 leading-relaxed text-gray-700 italic">
+                    <p className="text-base sm:text-lg mb-6 leading-relaxed text-gray-700 italic">
                       “{t.text}”
                     </p>
                     <div className="flex items-center space-x-4">
                       <img
                         src={t.image}
                         alt={t.name}
-                        className="w-14 h-14 rounded-full border-2 border-green-400 shadow-md object-cover"
+                        className="w-14 h-14 rounded-full border-2 border-green-400 object-cover"
                       />
                       <div>
                         <h4 className="font-semibold text-gray-900">
                           {t.name}
                         </h4>
-                        <span className="text-sm text-white bg-[#87C732] px-2 py-1 rounded-md font-medium break-words max-w-[200px] block">
+                        <span className="text-sm text-white bg-[#87C732] px-2 py-1 rounded-md block">
                           {t.role}
                         </span>
                       </div>

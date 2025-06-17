@@ -64,12 +64,12 @@ const Team = () => {
       position: "Marketing and Product Manager",
       img: "/drJagruti.jpg",
     },
-  ];
-
-  const interns = [
-    // { name: "Sadhashiv Zore", position: "Jr.Software developer", img: "/Sadhashiv.jpg" },
-    // { name: "Manan Doshi", position: "Jr.Software developer", img: "/fool.jpg" },
-    {
+     {
+      name: "Vyom Mehta",
+      position: "Jr.Software developer",
+      img: "/vyom.jpg",
+    },
+     {
       name: "Varshini Varma",
       position: "Jr.Software developer",
       img: "/varshini varma.jpg",
@@ -90,6 +90,12 @@ const Team = () => {
       img: "/maheshT.jpg",
     },
   ];
+
+  // const interns = [
+  //   // { name: "Sadhashiv Zore", position: "Jr.Software developer", img: "/Sadhashiv.jpg" },
+  //   // { name: "Manan Doshi", position: "Jr.Software developer", img: "/fool.jpg" },
+   
+  // ];
 
   return (
     <div
@@ -200,7 +206,7 @@ const Team = () => {
         </section>
 
         {/* Interns */}
-        <section className="mb-20">
+        {/* <section className="mb-20">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
             {interns.map((intern, index) => (
               <div
@@ -223,7 +229,7 @@ const Team = () => {
               </div>
             ))}
           </div>
-        </section>
+        </section> */}
       </main>
 
       {/* Footer */}
