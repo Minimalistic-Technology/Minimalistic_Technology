@@ -1,10 +1,21 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
-    domains: ['localhost'], // if your backend serves full image URLs
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "minimalistictechnology.com", 
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "3000",
+        pathname: "/**",
+      },
+    ],
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

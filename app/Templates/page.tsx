@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../utils/api"; 
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -29,7 +29,7 @@ export default function TemplatesPage() {
   useEffect(() => {
     const fetchTemplates = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/templates");
+        const res = await api.get("/templates");
         setTemplates(res.data);
       } catch (error) {
         console.error("Failed to fetch templates:", error);
@@ -64,7 +64,6 @@ export default function TemplatesPage() {
             Website Templates
           </motion.h1>
 
-          {/* Use one motion.div to group all text paragraphs if animation is same */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
