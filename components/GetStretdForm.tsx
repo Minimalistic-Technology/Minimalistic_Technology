@@ -329,7 +329,7 @@ const GetStartedForm: React.FC = () => {
   };
 
   return (
-    <section className="bg-[#23272A] text-white py-12">
+    <section className="bg-white text-black dark:bg-[#23272A] dark:text-white py-12">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-5xl font-bold text-center mb-2">
           Get Started Today
