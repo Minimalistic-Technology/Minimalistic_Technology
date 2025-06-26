@@ -162,11 +162,10 @@ const AboutUs = () => {
                   Minimalistic Technology
                 </h3>
                 <ul className="space-y-2">
-                  <li>
-                    <li className="hover:text-black dark:hover:text-white cursor-pointer">
-                      <Link href="/Team">Our Team</Link>
-                    </li>
+                  <li className="hover:text-black dark:hover:text-white cursor-pointer">
+                    <Link href="/Team">Our Team</Link>
                   </li>
+
                   <li>
                     <a
                       href="#"

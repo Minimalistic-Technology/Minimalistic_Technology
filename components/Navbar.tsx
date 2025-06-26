@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
@@ -92,17 +93,7 @@ const Navbar = () => {
               </button>
             </Link>
 
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="ml-4 p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition"
-              aria-label="Toggle Theme"
-            >
-              {theme === "dark" ? (
-                <Sun className="text-white" />
-              ) : (
-                <Moon className="text-black" />
-              )}
-            </button>
+            <ThemeToggle />
           </div>
         </div>
       </header>

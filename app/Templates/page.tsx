@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import api from "../../utils/api"; 
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -119,7 +120,6 @@ export default function TemplatesPage() {
             className="bg-white text-black dark:bg-[#2c3135] dark:text-white rounded-2xl p-5 shadow-lg hover:shadow-xl transition-shadow flex flex-col justify-between"
           >
             <div>
-              {/* Image Wrapper with fixed size */}
               <div className="w-full h-[250px] mb-4 overflow-hidden rounded-lg">
                 <Image
                   src={template.src}
