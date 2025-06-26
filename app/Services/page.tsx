@@ -15,25 +15,16 @@ import {
   Mail,
   Phone,
 } from "lucide-react";
-import { usePathname } from "next/navigation";
-import {
-  FaFacebook,
-  FaTwitter,
-  FaYoutube,
-  FaInstagram,
-  FaLinkedin,
-} from "react-icons/fa";
 import { Poppins } from "next/font/google";
-
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer"; 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
 
 const Services = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
-  const pathname = usePathname();
 
   const steps = [
     {
@@ -64,95 +55,14 @@ const Services = () => {
         "Access learning resources and tutorials to enhance your skills.",
     },
   ];
-  const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About Us", path: "/AboutUs" },
-    { name: "Services", path: "/Services" },
-  ];
 
   return (
     <div
-      className={`${poppins.className} bg-[#23272A] min-h-screen text-white`}
+      className={`${poppins.className} bg-white text-black dark:bg-[#23272A] dark:text-white`}
     >
-      <header className="fixed top-0 left-0 w-full z-50 bg-[#23272A] text-white p-4 md:flex-auto md:justify-between md:items-center">
-        <div className="flex justify-between items-center max-w-full 7xl">
-          {/* Logo & Brand */}
-          <div className="flex items-center space-x-3">
-            <Image
-              src="/logo.jpg"
-              alt="Logo"
-              width={40}
-              height={40}
-              className="rounded-full bg-[#23272A]"
-            />
-            <div className="flex flex-col text-[#87C732] text-lg font-bold leading-tight">
-              <span>Minimalistic</span>
-              <span>Technology</span>
-            </div>
-          </div>
-
-          {/* Hamburger Menu Button (Mobile) */}
-          <button
-            className="md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle Menu"
-          >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-
-          {/* Navigation Menu */}
-          {/* Nav Menu */}
-          <nav
-            className={`absolute top-full left-0 w-full p-4 space-y-4 bg-[#23272A]
-            md:static md:w-auto md:p-0 md:flex md:space-x-6 md:space-y-0 
-            ${isOpen ? "block" : "hidden"}`}
-          >
-            <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
-              {navLinks.map((link) => {
-                const isActive = pathname === link.path;
-                return (
-                  <li key={link.name} className="relative group">
-                    <Link href={link.path}>
-                      <span
-                        className={`pb-1 border-b-2 transition-all duration-300 
-                          ${
-                            isActive
-                              ? "text-[#87C732] border-[#87C732]"
-                              : "border-transparent text-white group-hover:text-[#87C732] group-hover:border-[#87C732]"
-                          }
-                        `}
-                      >
-                        {link.name}
-                      </span>
-                    </Link>
-                  </li>
-                );
-              })}
-
-              {/* Get Started Button (Mobile) */}
-              <li className="md:hidden">
-                <Link href="/#get-started-section">
-                  <button className="w-full px-9 py-3 bg-[#7ED957] text-black rounded-md hover:bg-green-500 transition">
-                    Get Started
-                  </button>
-                </Link>
-              </li>
-            </ul>
-          </nav>
-
-          {/* Get Started Button (Desktop Only) */}
-          <div className="hidden md:flex space-x-2">
-            <Link href="/#get-started-section">
-              <button className="bg-[#7ED957] text-black font-bold py-3 px-9 rounded-md hover:bg-green-500 transition disabled:opacity-50">
-                Get Started
-              </button>
-            </Link>
-          </div>
-        </div>
-      </header>
-
+      <Navbar></Navbar>
       <div>
-        <section className="flex flex-col items-center justify-center text-center min-h-[80vh] px-4 text-white pt-32">
+        <section className="flex flex-col items-center justify-center text-center min-h-[80vh] px-4 text-black dark:text-white pt-32">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -198,12 +108,12 @@ const Services = () => {
                     height={300}
                     className="rounded-xl w-full h-50 object-cover mb-2"
                   />
-                  <p className="text-center text-white font-semibold">
+                  <p className="text-center text-black dark:text-white font-semibold">
                     {step.label}
                   </p>
                 </div>
                 {index < steps.length - 1 && (
-                  <div className="mx-2 text-white">
+                  <div className="mx-2 text-black dark:text-white">
                     <ArrowRight size={30} />
                   </div>
                 )}
@@ -213,10 +123,10 @@ const Services = () => {
         </div>
 
         <div className="text-center px-6 mt-6">
-          <h3 className="text-3xl font-bold text-white mb-2">
+          <h3 className="text-3xl font-bold text-black dark:text-white mb-2">
             {steps[activeStep].title}
           </h3>
-          <p className="text-lg text-gray-300">
+          <p className="text-lg dark:text-gray-300 text-gray-800">
             {steps[activeStep].description}
           </p>
         </div>
@@ -232,7 +142,7 @@ const Services = () => {
         </div>
 
         {/* What We Offer Section */}
-        <section className="text-white text-center mt-30 p-8">
+        <section className="text-black dark:text-white text-center mt-30 p-8">
           <h2 className="text-4xl font-bold mt-22 mb-6">What We Offer</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-32 gap-8">
             {[
@@ -260,7 +170,7 @@ const Services = () => {
               <div key={index} className="flex flex-col items-center">
                 <offer.Icon size={40} className="bg-white text-black" />
                 <h3 className="text-lg font-semibold mt-2">{offer.title}</h3>
-                <p className="text-gray-400 text-sm">{offer.desc}</p>
+                <p className="dark:text-gray-400 text-gray-600 text-sm">{offer.desc}</p>
               </div>
             ))}
           </div>
@@ -272,9 +182,9 @@ const Services = () => {
         </section>
 
         <section className="flex flex-col md:flex-row items-center justify-between p-8 rounded-lg relative">
-          <div className="md:w-1/2 text-white">
+          <div className="md:w-1/2 dark:text-white text-black">
             <h2 className="text-4xl font-semibold mb-4">Get Started Today</h2>
-            <p className="text-md text-gray-300 mb-6">
+            <p className="text-md dark:text-gray-300 text-gray-800 mb-6">
               Join 1000+ businesses using minimalistic technology to build their
               dream website.
             </p>
@@ -306,93 +216,7 @@ const Services = () => {
           </div>
         </section>
 
-        <footer className="bg-[#23272A] text-gray-300 mt-10">
-          <div className="max-w-full mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
-              <div>
-                <h3 className="text-white font-semibold text-lg mb-3">
-                  Minimalistic Technology
-                </h3>
-                <ul className="space-y-2">
-                  <li>
-                    <a href="#" className="hover:text-white transition">
-                      About Us
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="hover:text-white transition">
-                      Services
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="hover:text-white transition">
-                      Contact Us
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-white font-semibold text-lg mb-3">
-                  Services
-                </h3>
-                <ul className="space-y-2">
-                  <li>
-                    <a
-                      href="/#get-started-section"
-                      className="hover:text-white transition"
-                    >
-                      Book a Service
-                    </a>
-                  </li>
-                  {/* <li>
-                    <a href="#" className="hover:text-white transition">
-                      Domain Name
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="hover:text-white transition">
-                      Support
-                    </a>
-                  </li> */}
-                </ul>
-              </div>
-            </div>
-
-            {/* <div className="absolute left-0 right-0 border-b-2 border-gray-700"></div> */}
-            <div className="text-white text-sm mt-6">
-              © 2025 Minimalistic Technology. All Rights Reserved.
-            </div>
-            <div className="flex space-x-4 justify-end mt-4 mb-5">
-              <a
-                href="https://x.com/TechMinimalists"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-white transition"
-              >
-                <FaTwitter size={24} />
-              </a>
-
-              <a
-                href="https://www.instagram.com/minimalistictechnology?utm_source=qr&igsh=MTRucHg5bm5wNDBnYg=="
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-white transition"
-              >
-                <FaInstagram size={24} />
-              </a>
-
-              <a
-                href="https://www.linkedin.com/showcase/minimalistictechnology/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-white transition"
-              >
-                <FaLinkedin size={24} />
-              </a>
-            </div>
-          </div>
-        </footer>
+        <Footer></Footer>
       </div>
     </div>
   );
