@@ -6,7 +6,6 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-
 const gap = 24; // px
 
 const testimonials = [
@@ -20,7 +19,7 @@ const testimonials = [
     text: "From the first meeting to final deployment, Minimalistic Technology showed unmatched professionalism. Our site now looks and works great.",
     name: "Mahesh Kumar",
     role: "Client, Minimalistic Technology ",
-    image: "mahesh.jpg",
+    image: "maheshT.jpg",
   },
   {
     text: "Minimalistic Technology brought our concept to life with precision and creativity Their attention to detail and commitment to deadlines made the entire process smooth.",
@@ -115,6 +114,7 @@ const Testimonials = () => {
                       <img
                         src={t.image}
                         alt={t.name}
+                        loading="lazy"
                         className="w-14 h-14 rounded-full border-2 border-green-400 object-cover"
                       />
                       <div>
