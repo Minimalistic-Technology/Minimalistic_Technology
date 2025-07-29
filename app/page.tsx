@@ -2,7 +2,7 @@
 import ClientNavbarWrapper from "@/components/ClientNavbar";
 import { Inter } from "next/font/google";
 import dynamic from "next/dynamic";
-
+// import VisitTracker from "@/components/Visit";
 const poppins = Inter({ subsets: ["latin"] });
 
 const HeroSection = dynamic(() => import("@/components/HeroSection"));
@@ -21,9 +21,10 @@ export default function Home() {
         <WhatWeOffer />
         <PricingPlan />
         <Testimonials />
-        <main id="get-started-section" className="scroll-mt-12">
+        <div id="get-started-section">
           <GetStartedForm />
-        </main>
+        </div>
+        {/* <VisitTracker></VisitTracker> */}
         <Footer />
       </div>
     </div>

@@ -1,89 +1,48 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Image from "next/image";
 import { Poppins } from "next/font/google";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
 const poppins = Poppins({
   weight: ["400", "600", "700"],
   subsets: ["latin"],
   display: "swap",
 });
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
-const Team = () => {
-  const [isOpen, setIsOpen] = useState(false);
 
-  const highAuthorities = [
-    {
-      name: "Harsh",
-      position: "Chief Executive Officer (CEO),Founder",
-      img: "/harsh.jpg",
-    },
-    {
-      name: "Parth",
-      position: "Chief Technology Officer (CTO),Founder",
-      img: "/harsh.jpg",
-    },
-    // { name: "Priyal", position: "Chief Operating Officer (COO)", img: "/women.jpg" },
-    { name: "Sumit borate", position: "data scientist", img: "/sumeet.jpg" },
-    { name: "pops", position: "UI/UX developer", img: "/pops.jpg" },
-    { name: "Harsh Bhavsar", position: "Digital Marketing", img: "/DM.jpg" },
-    { name: "Sneha", position: "Manager", img: "/harsh.jpg" },
-    {
-      name: "Tushar Shukla",
-      position: "Jr.Software developer",
-      img: "/tushar.jpg",
-    },
-    { name: "Manikanta", position: "Jr.Software developer", img: "/mani.jpg" },
-    {
-      name: "Sadhashiv Zore",
-      position: "Jr.Software developer",
-      img: "/Sadhashiv.jpg",
-    },
-    {
-      name: "Manan Doshi",
-      position: "Jr.Software developer",
-      img: "/fool.jpg",
-    },
-    {
-      name: "Pallavi Kumari",
-      position: "Jr.Software developer",
-      img: "/harsh.jpg",
-    },
-    {
-      name: "Dr. Jagruti Sancheti",
-      position: "Marketing and Product Manager",
-      img: "/drJagruti.jpg",
-    },
-    {
-      name: "Vyom Mehta",
-      position: "Jr.Software developer",
-      img: "/vyom.jpg",
-    },
-    {
-      name: "Varshini Varma",
-      position: "Jr.Software developer",
-      img: "/varshini varma.jpg",
-    },
-    {
-      name: "Sandip Baranwal",
-      position: "Jr.Software developer",
-      img: "/majdoor.jpg",
-    },
-    {
-      name: "Sunny Radhakrishana",
-      position: "Jr.Software developer",
-      img: "/leone.jpg",
-    },
-  ];
+interface TeamMember {
+  _id: string;
+  name: string;
+  position: string;
+  imageUrl: string;
+}
+
+const Team = () => {
+  const [members, setMembers] = useState<TeamMember[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/team/team")
+      .then((res) => {
+        setMembers(res.data);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch team data:", err);
+      })
+      .finally(() => setLoading(false));
+  }, []);
 
   return (
     <div>
       {/* Header */}
-      <Navbar></Navbar>
+      <Navbar />
+
       <div
-        className={`${poppins.className} flex flex-col min-h-screen bg-white  dark:bg-[#23272A]  text-[#87C732]`}
+        className={`${poppins.className} flex flex-col min-h-screen bg-white dark:bg-[#23272A] text-[#87C732]`}
       >
         {/* Main Content */}
         <main className="flex-1 pt-28 px-4 md:px-20">
@@ -97,63 +56,43 @@ const Team = () => {
             </p>
           </section>
 
-          {/* High Authorities */}
+          {/* Team Grid */}
           <section className="mb-20">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-              {highAuthorities.map((person, index) => (
-                <div
-                  key={index}
-                  className="bg-white  dark:bg-[#23272A] rounded-lg overflow-hidden shadow-lg hover:scale-105 hover:shadow-white/50 transform transition duration-300"
-                >
-                  <Image
-                    src={person.img}
-                    alt={person.name}
-                    width={300}
-                    height={300}
-                    className="w-full h-56 object-cover"
-                  />
-                  <div className="p-4 text-center">
-                    <h3 className="text-lg font-semibold dark:text-white text-black">
-                      {person.name}
-                    </h3>
-                    <p className="dark:text-gray-300 text-gray-600 text-sm">
-                      {person.position}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Interns */}
-          {/* <section className="mb-20">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-            {interns.map((intern, index) => (
-              <div
-                key={index}
-                className="bg-[#2c2c2c] rounded-lg overflow-hidden shadow-lg hover:scale-105 hover:shadow-white/50 transform transition duration-300"
-              >
-                <Image
-                  src={intern.img}
-                  alt={intern.name}
-                  width={300}
-                  height={300}
-                  className="w-full h-56 object-cover"
-                />
-                <div className="p-4 text-center">
-                  <h3 className="text-lg font-semibold text-white">
-                    {intern.name}
-                  </h3>
-                  <p className="text-gray-300 text-sm">{intern.position}</p>
-                </div>
+            {loading ? (
+              <div className="text-center text-gray-600 dark:text-gray-300">
+                Loading team members...
               </div>
-            ))}
-          </div>
-        </section> */}
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                {members.map((person) => (
+                  <div
+                    key={person._id}
+                    className="bg-white dark:bg-[#23272A] rounded-lg overflow-hidden shadow-lg hover:scale-105 hover:shadow-white/50 transform transition duration-300"
+                  >
+                    <Image
+                      src={person.imageUrl}
+                      alt={person.name}
+                      width={300}
+                      height={300}
+                      className="w-full h-56 object-cover"
+                    />
+                    <div className="p-4 text-center">
+                      <h3 className="text-lg font-semibold dark:text-white text-black">
+                        {person.name}
+                      </h3>
+                      <p className="dark:text-gray-300 text-gray-600 text-sm">
+                        {person.position}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
         </main>
 
         {/* Footer */}
-        <Footer></Footer>
+        <Footer />
       </div>
     </div>
   );

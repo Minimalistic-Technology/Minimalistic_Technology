@@ -76,7 +76,7 @@ const Navbar = () => {
               <li className="md:hidden">
                 <a href="/#get-started-section">
                   <button className="w-full px-9 py-3 bg-[#7ED957] text-black rounded-md hover:bg-green-500 transition">
-                    Get Started
+                    Get Started   
                   </button>
                 </a>
               </li>
