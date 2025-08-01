@@ -1,16 +1,14 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTheme } from "next-themes";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
-  const { theme, setTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
-  const [current, setCurrent] = useState(0);
   const pathname = usePathname();
   const navLinks = [
     { name: "Home", path: "/" },
@@ -76,9 +74,9 @@ const Navbar = () => {
 
               {/* Get Started Button (Mobile) */}
               <li className="md:hidden">
-                <a href="#get-started-section">
+                <a href="/#get-started-section">
                   <button className="w-full px-9 py-3 bg-[#7ED957] text-black rounded-md hover:bg-green-500 transition">
-                    Get Started
+                    Get Started   
                   </button>
                 </a>
               </li>
@@ -87,7 +85,7 @@ const Navbar = () => {
 
           {/* Get Started Button (Desktop) */}
           <div className="hidden md:flex space-x-2">
-            <Link href="#get-started-section">
+            <Link href="/#get-started-section">
               <button className="bg-[#7ED957] text-black font-bold py-3 px-9 rounded-md hover:bg-green-500 transition disabled:opacity-50">
                 Get Started
               </button>

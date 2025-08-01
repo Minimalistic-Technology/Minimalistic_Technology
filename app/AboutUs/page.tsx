@@ -39,10 +39,11 @@ const AboutUs = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
+    <div><Navbar></Navbar>
     <div
       className={`min-h-screen ${poppins.className} bg-white text-black dark:bg-[#23272A] dark:text-white`}
     >
-      <Navbar></Navbar>
+      
 
       <div>
         {/* Hero Section */}
@@ -247,6 +248,7 @@ const AboutUs = () => {
           </div>
         </footer>
       </div>
+    </div>
     </div>
   );
 };

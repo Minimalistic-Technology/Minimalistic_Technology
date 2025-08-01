@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import api from "../../utils/api"; 
-import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -47,10 +46,11 @@ export default function TemplatesPage() {
   );
 
   return (
+    <div> <Navbar />
     <div
       className={`min-h-screen ${poppins.className} bg-white text-black dark:bg-[#23272A] dark:text-white`}
     >
-      <Navbar />
+     
 
       {/* Landing Section */}
       <div className="flex flex-col md:flex-row items-center justify-between w-full pt-32 px-6 sm:px-16">
@@ -170,6 +170,7 @@ export default function TemplatesPage() {
         </button>
       </div>
       <Footer />
+    </div>
     </div>
   );
 }
