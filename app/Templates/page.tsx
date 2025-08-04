@@ -29,7 +29,7 @@ export default function TemplatesPage() {
   useEffect(() => {
     const fetchTemplates = async () => {
       try {
-        const res = await api.get("/templates");
+        const res = await api.get("/mt/templates");
         setTemplates(res.data);
       } catch (error) {
         console.error("Failed to fetch templates:", error);

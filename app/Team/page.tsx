@@ -25,8 +25,7 @@ const Team = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/team/team")
+    axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/team`)
       .then((res) => {
         setMembers(res.data);
       })
