@@ -23,7 +23,7 @@ const Testimonials = () => {
   const [cardsPerView, setCardsPerView] = useState(1);
 
   useEffect(() => {
-    api.get("/testimonials").then((res) => {
+    api.get("/mt/testimonials").then((res) => {
       setTestimonials(res.data);
     });
   }, []);
