@@ -1,6 +1,6 @@
 "use client";
-import React from 'react'
-import Image from 'next/image'
+import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 const HeroSection = () => {
@@ -21,7 +21,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="text-base sm:text-lg"
+            className="text-base mt-2 sm:text-lg"
           >
             From Idea to Live Website - We Make It Seamless
           </motion.p>
@@ -31,7 +31,7 @@ const HeroSection = () => {
             <span>Fast deployment</span>
           </div>
           <Link href="#get-started-section">
-            <button className="bg-[#7ED957] hover:bg-green-500 text-black font-bold py-2 px-9 rounded-md mt-6">
+            <button className="bg-[#7ED957] hover:bg-green-500 text-black font-bold py-2 px-9 rounded-md mt-6 cursor-pointer">
               Start Building
             </button>
           </Link>
@@ -54,7 +54,7 @@ const HeroSection = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default HeroSection
+export default HeroSection;

@@ -374,7 +374,7 @@ const Home = () => {
         <GetStretdForm />
       </main>
 
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </div>
   );
 };

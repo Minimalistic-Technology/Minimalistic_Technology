@@ -46,7 +46,7 @@ const WhatWeOffer = () => {
           ))}
         </div>
         <Link href="#get-started-section">
-          <button className="mt-30 bg-[#7ED957] hover:bg-green-500 text-black font-bold py-2 px-9 rounded-md">
+          <button className="mt-30 bg-[#7ED957] hover:bg-green-500 text-black font-bold py-2 px-9 rounded-md cursor-pointer">
             Try it Now
           </button>
         </Link>
