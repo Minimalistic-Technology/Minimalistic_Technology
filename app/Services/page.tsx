@@ -86,7 +86,7 @@ const Services = () => {
               No coding needed | Super user-friendly | Fast deployment
             </p>
             <Link href="/#get-started-section">
-              <button className="bg-[#7ED957] hover:bg-green-500 text-black font-bold py-2 px-9 rounded-md mt-6">
+              <button className="bg-[#7ED957] hover:bg-green-500 text-black font-bold py-2 px-9 rounded-md mt-6 cursor-pointer">
                 Start Building
               </button>
             </Link>
@@ -178,7 +178,7 @@ const Services = () => {
               ))}
             </div>
             <Link href="#get-started-section">
-              <button className="mt-30 bg-[#7ED957] hover:bg-green-500 text-black font-bold py-2 px-9 rounded-md">
+              <button className="mt-30 bg-[#7ED957] hover:bg-green-500 text-black font-bold py-2 px-9 rounded-md cursor-pointer">
                 Try it Now
               </button>
             </Link>
@@ -208,18 +208,18 @@ const Services = () => {
             </div>
 
             <div className="relative flex justify-end w-full sm:w-3/4 md:w-1/2 mt-6 md:mt-0">
-              <div className="absolute -top-4 -bottom-8 -right-10 w-[80%] h-[100%] bg-green-200 rounded-lg"></div>
+              {/* <div className="absolute -top-4 -bottom-8 -right-10 w-[80%] h-[100%] bg-green-200 rounded-lg"></div> */}
               <Image
                 src="/meeting.jpg"
                 alt="Team working on laptops"
                 width={550}
                 height={100}
-                className="relative z-10 translate-x-1 translate-y-1"
+                className="relative z-10 translate-x-1 translate-y-1 shadow-[10px_-11px_0px_10px_#b9f8cf] rounded-lg"
               />
             </div>
           </section>
 
-          <Footer></Footer>
+          {/* <Footer></Footer> */}
         </div>
       </div>
     </div>

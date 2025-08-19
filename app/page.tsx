@@ -1,9 +1,9 @@
 
 import ClientNavbarWrapper from "@/components/ClientNavbar";
-import { Inter } from "next/font/google";
+
 import dynamic from "next/dynamic";
 // import VisitTracker from "@/components/Visit";
-const poppins = Inter({ subsets: ["latin"] });
+
 
 const HeroSection = dynamic(() => import("@/components/HeroSection"));
 const WhatWeOffer = dynamic(() => import("@/components/WhatWeOffer"));
@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div>
       <ClientNavbarWrapper />
-      <div className={`min-h-screen ${poppins.className} bg-white text-black dark:bg-[#23272A] dark:text-white`}>
+      <div className={`min-h-screen  bg-white text-black dark:bg-[#23272A] dark:text-white`}>
         <HeroSection />
         <WhatWeOffer />
         <PricingPlan />
@@ -25,7 +25,7 @@ export default function Home() {
           <GetStartedForm />
         </div>
         {/* <VisitTracker></VisitTracker> */}
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   );

@@ -80,7 +80,7 @@ export default function TemplatesPage() {
           </motion.div>
 
           <Link href="#templates">
-            <button className="bg-[#7ED957] text-black font-bold py-3 px-9 rounded-md hover:bg-green-500 transition disabled:opacity-50">
+            <button className="bg-[#7ED957] text-black font-bold py-3 px-9 rounded-md hover:bg-green-500 transition disabled:opacity-50 cursor-pointer">
               Browse Templates
             </button>
           </Link>
@@ -169,7 +169,7 @@ export default function TemplatesPage() {
           Next
         </button>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
     </div>
   );

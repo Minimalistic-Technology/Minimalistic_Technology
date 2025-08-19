@@ -20,7 +20,7 @@ export default function ThemeToggle() {
         setTheme(resolvedTheme === "dark" ? "light" : "dark")
       }
       aria-label="Toggle Theme"
-      className="p-2 rounded"
+      className="p-2 rounded cursor-pointer"
     >
       {resolvedTheme === "dark" ? (
         <Sun className="text-yellow-300" />

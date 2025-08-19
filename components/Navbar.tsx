@@ -86,7 +86,7 @@ const Navbar = () => {
           {/* Get Started Button (Desktop) */}
           <div className="hidden md:flex space-x-2">
             <Link href="/#get-started-section">
-              <button className="bg-[#7ED957] text-black font-bold py-3 px-9 rounded-md hover:bg-green-500 transition disabled:opacity-50">
+              <button className="bg-[#7ED957] text-black font-bold py-3 px-9 rounded-md hover:bg-green-500 transition disabled:opacity-50 cursor-pointer">
                 Get Started
               </button>
             </Link>

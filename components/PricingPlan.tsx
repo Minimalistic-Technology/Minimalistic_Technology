@@ -25,7 +25,7 @@ const PricingPlan = () => {
                 </p>
               </div>
               <Link href="#get-started-section" passHref>
-                <button className="bg-[#7ED957] text-white font-semibold py-2 px-4 rounded-md mt-6 w-full">
+                <button className="bg-[#7ED957] hover:bg-green-500 text-white font-semibold py-2 px-4 rounded-md mt-6 w-full cursor-pointer">
                   Get Started
                 </button>
               </Link>
@@ -53,7 +53,7 @@ const PricingPlan = () => {
                 </p>
               </div>
               <Link href="#get-started-section" passHref>
-                <button className="bg-white text-black dark:bg-[#23272A] dark:text-white font-semibold py-2 px-4 rounded-md mt-6 w-full">
+                <button className="bg-white hover:bg-gray-100 text-black dark:bg-[#23272A] dark:hover:bg-gray-900 dark:text-white font-semibold py-2 px-4 rounded-md mt-6 w-full cursor-pointer">
                   Get Started
                 </button>
               </Link>
@@ -79,7 +79,7 @@ const PricingPlan = () => {
                 </p>
               </div>
               <Link href="#get-started-section" passHref>
-                <button className="bg-[#7ED957] text-white font-semibold py-2 px-4 rounded-md mt-6 w-full">
+                <button className="bg-[#7ED957] hover:bg-green-500 cursor-pointer text-white font-semibold py-2 px-4 rounded-md mt-6 w-full">
                   Get Started
                 </button>
               </Link>

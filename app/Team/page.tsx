@@ -91,7 +91,7 @@ const Team = () => {
         </main>
 
         {/* Footer */}
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   );

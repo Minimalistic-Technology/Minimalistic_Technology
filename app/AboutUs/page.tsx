@@ -61,7 +61,7 @@ const AboutUs = () => {
             </motion.h1>
 
             <Link href="/#get-started-section">
-              <button className="bg-[#7ED957] hover:bg-green-500 text-black font-bold py-2 px-9 rounded-md mt-6">
+              <button className="bg-[#7ED957] hover:bg-green-500 text-black font-bold py-2 px-9 rounded-md mt-6 cursor-pointer">
                 Start Building
               </button>
             </Link>
@@ -147,7 +147,7 @@ const AboutUs = () => {
               Let's build something amazing together
             </p>
             <a href="/#get-started-section">
-              <button className="bg-[#87C732] text-xl text-black rounded-lg mt-10 py-3 px-6 shadow-md">
+              <button className="bg-[#87C732] hover:bg-green-600 cursor-pointer text-xl text-black rounded-lg mt-10 py-3 px-6 shadow-md">
                 Get Started
               </button>
             </a>
@@ -155,7 +155,7 @@ const AboutUs = () => {
         </div>
 
         {/* Footer */}
-        <footer className="bg-white text-black dark:bg-[#23272A] dark:text-gray-300 mt-10">
+        {/* <footer className="bg-white text-black dark:bg-[#23272A] dark:text-gray-300 mt-10">
           <div className="max-w-full mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
               <div>
@@ -199,21 +199,12 @@ const AboutUs = () => {
                       Book a Service
                     </a>
                   </li>
-                  {/* <li>
-                                  <a href="#" className="hover:text-white transition">
-                                    Domain Name
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="#" className="hover:text-white transition">
-                                    Support
-                                  </a>
-                                </li> */}
+              
                 </ul>
               </div>
             </div>
 
-            {/* <div className="absolute left-0 right-0 border-b-2 border-gray-700"></div> */}
+            
             <div className="dark:text-white text:black text-sm h-6 mt-6">
               © 2025 Minimalistic Technology. All Rights Reserved.
             </div>
@@ -246,7 +237,7 @@ const AboutUs = () => {
               </a>
             </div>
           </div>
-        </footer>
+        </footer> */}
       </div>
     </div>
     </div>

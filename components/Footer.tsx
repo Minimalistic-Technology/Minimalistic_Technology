@@ -1,7 +1,10 @@
 "use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 import { FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 const Footer = () => {
+  const pathName = usePathname();
   return (
     <div>
       <footer className="bg-white text-black dark:bg-[#23272A] dark:text-gray-300 mt-10">
@@ -13,28 +16,28 @@ const Footer = () => {
               </h3>
               <ul className="space-y-2">
                 <li>
-                  <a
-                    href="/AboutUs"
+                  <Link
+                    href={pathName === "/AboutUs" ? "/Team" : "/AboutUs"}
                     className="hover:text-black dark:hover:text-white transition"
                   >
-                    About Us
-                  </a>
+                    {pathName === "/AboutUs" ? "Our Team" : "About Us"}
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/Services"
                     className="hover:text-black dark:hover:text-white transition"
                   >
                     Services
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/#get-started-section"
                     className="hover:text-black dark:hover:text-white transition"
                   >
                     Contact Us
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -45,12 +48,12 @@ const Footer = () => {
               </h3>
               <ul className="space-y-2">
                 <li>
-                  <a
+                  <Link
                     href="/#get-started-section"
                     className="hover:text-white transition"
                   >
                     Book a Service
-                  </a>
+                  </Link>
                 </li>
                 {/* <li>
                           <a href="#" className="hover:text-white transition">
@@ -67,7 +70,7 @@ const Footer = () => {
           </div>
 
           {/* <div className="absolute left-0 right-0 border-b-2 border-gray-700"></div> */}
-          <div className="dark:text-white text:black text-sm h-6 mt-6">
+          <div className="dark:text-white text:black text-sm h-6 mt-6 text-center">
             © 2025 Minimalistic Technology. All Rights Reserved.
           </div>
           <div className="flex space-x-4 justify-end mt-4 mb-5">
