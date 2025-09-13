@@ -117,7 +117,7 @@ export default function TemplatesPage() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="bg-white text-black dark:bg-[#2c3135] dark:text-white rounded-2xl p-5 shadow-lg hover:shadow-xl transition-shadow flex flex-col justify-between"
+            className="bg-white text-black dark:bg-[#2c3135] dark:text-white rounded-2xl p-5 shadow-lg hover:shadow-xl dark:hover:shadow-white/30 transition-shadow flex flex-col justify-between"
           >
             <div>
               <div className="w-full h-[250px] mb-4 overflow-hidden rounded-lg">
@@ -150,7 +150,7 @@ export default function TemplatesPage() {
         ))}
       </section>
 
-      <div className="flex justify-center space-x-4">
+      <div className="flex justify-center space-x-4 pb-16">
         <button
           onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
           disabled={page === 1}

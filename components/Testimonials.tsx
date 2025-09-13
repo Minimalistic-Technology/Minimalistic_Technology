@@ -72,7 +72,7 @@ const Testimonials = () => {
           {/* Slider Container */}
           <div className="overflow-hidden" ref={containerRef}>
             <div
-              className="flex transition-transform duration-500 ease-in-out gap-6"
+              className="flex transition-transform duration-500 ease-in-out gap-6 py-4"
               style={{
                 transform: `translateX(-${current * (slideWidth + gap)}px)`,
               }}
@@ -111,13 +111,13 @@ const Testimonials = () => {
               onClick={prevTestimonial}
               className="text-gray-400 hover:text-black dark:hover:text-white p-3"
             >
-              <ArrowLeft className="size-7" />
+              <ArrowLeft className="size-7 cursor-pointer" />
             </button>
             <button
               onClick={nextTestimonial}
               className="text-gray-400 hover:text-black dark:hover:text-white p-3"
             >
-              <ArrowRight className="size-7" />
+              <ArrowRight className="size-7 cursor-pointer" />
             </button>
           </div>
         </div>

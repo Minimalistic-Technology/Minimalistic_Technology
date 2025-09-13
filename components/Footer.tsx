@@ -7,7 +7,7 @@ const Footer = () => {
   const pathName = usePathname();
   return (
     <div>
-      <footer className="bg-white text-black dark:bg-[#23272A] dark:text-gray-300 mt-10">
+      <footer className="bg-white text-black dark:bg-[#23272A] dark:text-gray-300 ">
         <div className="max-w-full mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
             <div>
@@ -18,7 +18,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href={pathName === "/AboutUs" ? "/Team" : "/AboutUs"}
-                    className="hover:text-black dark:hover:text-white transition"
+                    className="hover:text-black dark:hover:text-white transition hover:underline"
                   >
                     {pathName === "/AboutUs" ? "Our Team" : "About Us"}
                   </Link>
@@ -26,7 +26,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/Services"
-                    className="hover:text-black dark:hover:text-white transition"
+                    className="hover:text-black dark:hover:text-white transition hover:underline"
                   >
                     Services
                   </Link>
@@ -34,7 +34,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/#get-started-section"
-                    className="hover:text-black dark:hover:text-white transition"
+                    className="hover:text-black dark:hover:text-white transition hover:underline"
                   >
                     Contact Us
                   </Link>
@@ -50,30 +50,21 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/#get-started-section"
-                    className="hover:text-white transition"
+                    className="dark:hover:text-white transition hover:underline"
                   >
                     Book a Service
                   </Link>
                 </li>
-                {/* <li>
-                          <a href="#" className="hover:text-white transition">
-                            Domain Name
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" className="hover:text-white transition">
-                            Support
-                          </a>
-                        </li> */}
+               
               </ul>
             </div>
           </div>
 
           {/* <div className="absolute left-0 right-0 border-b-2 border-gray-700"></div> */}
-          <div className="dark:text-white text:black text-sm h-6 mt-6 text-center">
+          <div className="dark:text-white text:black text-sm   text-center">
             © 2025 Minimalistic Technology. All Rights Reserved.
           </div>
-          <div className="flex space-x-4 justify-end mt-4 mb-5">
+          <div className="flex space-x-4 justify-end md:-mt-6 pb-5">
             <a
               href="https://x.com/TechMinimalists"
               target="_blank"
