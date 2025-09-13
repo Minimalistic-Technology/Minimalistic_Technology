@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import React, { useState } from "react";
@@ -7,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { Mail } from "lucide-react";
 import api from "@/utils/api";
 import emailjs from "emailjs-com";
+import axios from "axios";
 
 type FormData = {
   fullName: string;
@@ -55,30 +54,45 @@ const GetStartedForm: React.FC = () => {
     try {
       setError(null);
 
-      const templateParams = {
-        name: data.fullName,
-        email: data.email,
-        title: "New Project Inquiry",
-        message: `
+      // const templateParams = {
+      //   name: data.fullName,
+      //   email: data.email,
+      //   title: "New Project Inquiry",
+      //   message: `
+      //   Phone: ${data.phone}
+      //   Business Name: ${data.businessName || "-"}
+      //   Business Description: ${data.businessDesc || "-"}
+      //   Website Type: ${data.websiteType}
+      //   Selected Service: ${service}
+      //   Existing Website: ${data.existingWebsite || "-"}
+      //   Existing Description: ${data.existingDesc || "-"}
+      //   Project Description: ${data.projectDesc || "-"}
+      // `,
+      // };
+       const body = `
+        Name: ${data.fullName}
+        Email: ${data.email}
         Phone: ${data.phone}
         Business Name: ${data.businessName || "-"}
         Business Description: ${data.businessDesc || "-"}
         Website Type: ${data.websiteType}
-        Selected Service: ${service}
+        Selected Service: ${data.service}
         Existing Website: ${data.existingWebsite || "-"}
         Existing Description: ${data.existingDesc || "-"}
         Project Description: ${data.projectDesc || "-"}
-      `,
-      };
+      `;
 
-      const response = await emailjs.send(
-        "service_8vx0ufi",
-        "template_g5yjqs9",
-        templateParams,
-        "xvO8nB8aPPNb7_kkH"
+      const response = await api.post(
+        "/email/send-email",
+        {
+          subject: "New Project Inquiry",
+          body,
+          recipients: ["hi@minimalistictechnology.com"],
+          // recipients: ["devanshraghavsn@gmail.com"],
+        }
       );
 
-      if (response.status === 200 || response.text === "OK") {
+      if (response.status === 200) {
         console.log("Message sent successfully!");
         reset();
         setService("");
@@ -86,7 +100,7 @@ const GetStartedForm: React.FC = () => {
         throw new Error("Failed to send message.");
       }
     } catch (err: any) {
-      console.error("Error occurred while sending:", err.message || err);
+      console.error("Error occurred while sending:", err.message );
       setError(err.message || "Something went wrong.");
     }
   };
@@ -241,8 +255,6 @@ const GetStartedForm: React.FC = () => {
                       {...register("service", {
                         required: "Please select a service",
                       })}
-                      
-                      
                       disabled={isSubmitting}
                       className={`form-input border-[#7ED957] ${
                         errors.service ? "border-red-500 border" : ""
