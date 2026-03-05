@@ -83,7 +83,7 @@ const ContactForm: React.FC = () => {
   const [activeField, setActiveField] = useState<string | null>(null);
 
   const mutation = useMutation({
-    mutationFn: (data: any) => apiFetch('/api/send-mail', {
+    mutationFn: (data: any) => apiFetch('/send-mail', {
       method: 'POST',
       body: JSON.stringify(data),
     }),
