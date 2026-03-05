@@ -1,58 +1,77 @@
-"use client";
-import React from 'react'
-import Link from 'next/link';
-import {
-  Cpu,
-  Layout,
-  Rocket,
-  Headset,
-} from "lucide-react";
-const WhatWeOffer = () => {
+'use client';
+
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Cpu, Palette, Zap, Headset, ArrowRight } from 'lucide-react';
+
+const WhatWeOffer: React.FC = () => {
+  const scrollToForm = () => {
+    const element = document.getElementById('contact-form');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const offerings = [
+    {
+      icon: <Cpu size={32} />,
+      title: "Ready to Use Template",
+      description: "Generate layout tailored to your needs"
+    },
+    {
+      icon: <Palette size={32} />,
+      title: "Custom UI/UX Design",
+      description: "Crafted by expert designers"
+    },
+    {
+      icon: <Zap size={32} />,
+      title: "Fast Deployment",
+      description: "Get your site live in 6 weeks"
+    },
+    {
+      icon: <Headset size={32} />,
+      title: "24/7 Support",
+      description: "We're here whenever you need help"
+    }
+  ];
+
   return (
-    <div>
-      <section className="bg-white text-black dark:bg-[#23272A] dark:text-white text-center mt-30 p-8">
-        <h2 className="text-4xl font-bold mt-22 mb-6">What We Offer</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-32 gap-8">
-          {[
-            {
-              Icon: Cpu,
-              title: "AI Powered Website Builder",
-              desc: "Generate layout tailored to your needs",
-            },
-            {
-              Icon: Layout,
-              title: "Custom UI/UX Design",
-              desc: "Crafted by expert designers",
-            },
-            {
-              Icon: Rocket,
-              title: "Fast Deployment",
-              desc: "Get your site live in 6 weeks",
-            },
-            {
-              Icon: Headset,
-              title: "24/7 Support",
-              desc: "Were here whenever you need help",
-            },
-          ].map((offer, index) => (
-            <div key={index} className="flex flex-col items-center">
-              <offer.Icon
-                size={40}
-                className="bg-white text-black dark:bg-[#23272A] dark:text-white"
-              />
-              <h3 className="text-lg font-semibold mt-2">{offer.title}</h3>
-              <p className="text-gray-400 text-sm">{offer.desc}</p>
+    <section id="services" className="py-24">
+      <div className="site-container">
+        <h2 className="text-[2.5rem] font-black text-[var(--text-main)] mb-24 text-center max-[768px]:text-[2rem]">
+          What We Offer
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-24">
+          {offerings.map((offering, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center text-center group"
+            >
+              <div className="w-12 h-12 text-[var(--text-main)] mb-6">
+                {offering.icon}
+              </div>
+              <h3 className="text-[1.1rem] font-black text-[var(--text-main)] mb-3 tracking-tight">
+                {offering.title}
+              </h3>
+              <p className="text-dim opacity-50 text-[0.85rem] leading-relaxed font-medium">
+                {offering.description}
+              </p>
             </div>
           ))}
         </div>
-        <Link href="#get-started-section">
-          <button className="mt-30 bg-[#7ED957] hover:bg-green-500 text-black font-bold py-2 px-9 rounded-md cursor-pointer">
-            Try it Now
-          </button>
-        </Link>
-      </section>
-    </div>
-  )
-}
 
-export default WhatWeOffer
+        <div className="flex justify-center mt-12 pb-12">
+          <button
+            onClick={scrollToForm}
+            className="btn-premium"
+          >
+            Try Now
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default WhatWeOffer;
