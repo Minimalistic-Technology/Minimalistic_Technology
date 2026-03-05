@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import Hero from './Hero';
 import Pricing from './Pricing';
@@ -29,7 +29,9 @@ export default function HomeClient() {
             </motion.div>
 
             <motion.div {...revealScale}>
-                <ContactForm />
+                <Suspense fallback={<div className="py-20 text-center">Loading contact form...</div>}>
+                    <ContactForm />
+                </Suspense>
             </motion.div>
         </div>
     );
