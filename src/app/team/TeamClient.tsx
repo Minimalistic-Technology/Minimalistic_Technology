@@ -19,7 +19,7 @@ export default function TeamClient() {
 
   const { data: teamMembers = [], isLoading } = useQuery<TeamMember[]>({
     queryKey: ["teamMembers"],
-    queryFn: () => apiFetch("/team")
+    queryFn: () => apiFetch("api/team")
   });
 
   return (
