@@ -1,100 +1,94 @@
-"use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React from "react";
-import { FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
-const Footer = () => {
-  const pathName = usePathname();
+'use client';
+
+import React from 'react';
+import Link from 'next/link';
+import { Twitter, Linkedin, Instagram, ArrowUpRight } from 'lucide-react';
+
+const Footer: React.FC = () => {
   return (
-    <div>
-      <footer className="bg-white text-black dark:bg-[#23272A] dark:text-gray-300 ">
-        <div className="max-w-full mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
-            <div>
-              <h3 className="dark:text-white text:black font-semibold text-lg mb-3">
-                Minimalistic Technology
-              </h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href={pathName === "/AboutUs" ? "/Team" : "/AboutUs"}
-                    className="hover:text-black dark:hover:text-white transition hover:underline"
-                  >
-                    {pathName === "/AboutUs" ? "Our Team" : "About Us"}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/Services"
-                    className="hover:text-black dark:hover:text-white transition hover:underline"
-                  >
-                    Services
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/#get-started-section"
-                    className="hover:text-black dark:hover:text-white transition hover:underline"
-                  >
-                    Contact Us
-                  </Link>
-                </li>
-              </ul>
-            </div>
+    <footer className="footer-main">
+      <div className="site-container">
+        {/* Top row */}
+        <div className="footer-grid">
 
-            <div>
-              <h3 className="dark:text-white text:black dark:hover:text-white font-semibold text-lg mb-3">
-                Services
-              </h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="/#get-started-section"
-                    className="dark:hover:text-white transition hover:underline"
-                  >
-                    Book a Service
-                  </Link>
-                </li>
-               
-              </ul>
+          {/* Brand */}
+          <div className="footer-brand">
+            <Link href="/" className="footer-logo">
+              <div className="footer-logo-icon">MT</div>
+              <span className="text-[var(--text-main)] font-bold text-xl tracking-tight">Minimalistic <span className="animate-color-change">Technology</span></span>
+            </Link>
+            <p className="footer-desc">
+              Premium web design and development. From idea to live website in weeks.
+            </p>
+            <div className="footer-socials">
+              {[
+                { Icon: Twitter, href: "#" },
+                { Icon: Instagram, href: "#" },
+                { Icon: Linkedin, href: "#" }
+              ].map((item, i) => (
+                <a key={i} href={item.href} className="footer-social-link">
+                  <item.Icon size={15} />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* <div className="absolute left-0 right-0 border-b-2 border-gray-700"></div> */}
-          <div className="dark:text-white text:black text-sm   text-center">
-            © 2025 Minimalistic Technology. All Rights Reserved.
+          {/* Company */}
+          <div>
+            <h5 className="footer-col-title">Company</h5>
+            <ul className="footer-link-list">
+              {[['About Us', '/about'], ['Our Team', '/team'], ['Services', '/services'], ['Templates', '/templates']].map(([label, href]) => (
+                <li key={href}>
+                  <Link href={href} className="footer-link">
+                    {label}
+                    <ArrowUpRight size={12} className="footer-link-arrow" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
-          <div className="flex space-x-4 justify-end md:-mt-6 pb-5">
-            <a
-              href="https://x.com/TechMinimalists"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="dark:text-white text:black dark:hover:text-white transition"
-            >
-              <FaTwitter size={24} />
-            </a>
 
-            <a
-              href="https://www.instagram.com/minimalistictechnology?utm_source=qr&igsh=MTRucHg5bm5wNDBnYg=="
-              target="_blank"
-              rel="noopener noreferrer"
-              className="dark:text-white text:black dark:hover:text-white transition"
-            >
-              <FaInstagram size={24} />
-            </a>
+          {/* Services */}
+          <div>
+            <h5 className="footer-col-title">Services</h5>
+            <ul className="footer-link-list">
+              {[['Web Design', '/services'], ['Development', '/services'], ['AI Builder', '/services'], ['UI/UX Design', '/services']].map(([label, href]) => (
+                <li key={label}>
+                  <Link href={href} className="footer-link">
+                    {label}
+                    <ArrowUpRight size={12} className="footer-link-arrow" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            <a
-              href="https://www.linkedin.com/showcase/minimalistictechnology/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="dark:text-white text:black dark:hover:text-white transition"
-            >
-              <FaLinkedin size={24} />
-            </a>
+          {/* Contact */}
+          <div>
+            <h5 className="footer-col-title">Contact</h5>
+            <ul className="footer-link-list">
+              <li>
+                <a href="mailto:hi@minimalistictechnology.com" className="footer-link">
+                  hi@minimalistictechnology.com
+                </a>
+              </li>
+              <li>
+                <Link href="/#contact-form" className="footer-link">
+                  Get in Touch
+                  <ArrowUpRight size={12} className="footer-link-arrow" />
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
-      </footer>
-    </div>
+
+        {/* Divider & Bottom */}
+        <div className="footer-bottom">
+          <span className="footer-copyright">© {new Date().getFullYear()} Minimalistic Technology. All rights reserved.</span>
+          <span className="footer-attribution">Built with ❤️ in India</span>
+        </div>
+      </div>
+    </footer>
   );
 };
 
