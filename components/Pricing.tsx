@@ -66,15 +66,6 @@ const Pricing: React.FC = () => {
 
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[0.6rem] font-black uppercase tracking-[0.4em] mb-8"
-          >
-            <Sparkles size={12} />
-            <span>Investment Matrix</span>
-          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -98,7 +89,7 @@ const Pricing: React.FC = () => {
             >
               {plan.highlight && (
                 <div className="absolute top-5 right-5 z-20">
-                  <div className="relative px-5 py-2 rounded-full bg-primary text-black text-[0.65rem] font-extrabold uppercase tracking-[0.2em] shadow-lg shadow-primary/30">
+                  <div className="relative px-4 py-2 rounded-full bg-primary text-black text-[10px] font-extrabold uppercase tracking-[0.2em] shadow-lg shadow-primary/30">
                     <span className="relative z-10">{plan.tag}</span>
 
                     {/* subtle glow ring */}
@@ -124,7 +115,7 @@ const Pricing: React.FC = () => {
                 {plan.features.map((feature, idx) => (
                   <li key={idx} className="flex items-center gap-4 group/item">
                     <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center group-hover/item:bg-primary transition-colors duration-300">
-                      <Check size={10} className="text-primary group-hover/item:text-black" strokeWidth={4} />
+                      <Check size={10} className="text-primary dark:group-hover/item:stroke-[var(--surface-hover)]" strokeWidth={4} />
                     </div>
                     <span className="text-[var(--text-main)]/80 text-[0.8rem] font-medium tracking-tight group-hover/item:text-[var(--text-main)] transition-colors">
                       {feature}
@@ -135,7 +126,7 @@ const Pricing: React.FC = () => {
 
               <button
                 onClick={scrollToForm}
-                className="btn-premium w-full group text-base py-5"
+                className="btn-premium w-full group text-base py-5 gap-2"
               >
                 <span>Get Started</span>
                 <ArrowRight

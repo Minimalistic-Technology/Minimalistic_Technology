@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Cpu, Palette, Zap, Headset, ArrowRight } from 'lucide-react';
+import { Cpu, Palette, Zap, Headset, ArrowRight, Cloud } from 'lucide-react';
 
 const WhatWeOffer: React.FC = () => {
   const scrollToForm = () => {
@@ -24,6 +24,11 @@ const WhatWeOffer: React.FC = () => {
       description: "Crafted by expert designers"
     },
     {
+      icon: <Cloud size={32} />, // Added Cloud service
+      title: "Cloud Infrastructure",
+      description: "Scalable, secure, and high-uptime hosting"
+    },
+    {
       icon: <Zap size={32} />,
       title: "Fast Deployment",
       description: "Get your site live in 6 weeks"
@@ -36,42 +41,38 @@ const WhatWeOffer: React.FC = () => {
   ];
 
   return (
-    <section id="services" className="py-24">
-      <div className="site-container">
-        <h2 className="text-[2.5rem] font-black text-[var(--text-main)] mb-24 text-center max-[768px]:text-[2rem]">
-          What We Offer
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-24">
-          {offerings.map((offering, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-center text-center group"
-            >
-              <div className="w-12 h-12 text-[var(--text-main)] mb-6">
-                {offering.icon}
-              </div>
-              <h3 className="text-[1.1rem] font-black text-[var(--text-main)] mb-3 tracking-tight">
-                {offering.title}
-              </h3>
-              <p className="text-dim opacity-50 text-[0.85rem] leading-relaxed font-medium">
-                {offering.description}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <div className="flex justify-center mt-12 pb-12">
-          <button
-            onClick={scrollToForm}
-            className="btn-premium"
+  <section id="services" className="py-24">
+    <div className="site-container">
+      <h2 className="text-[2.5rem] font-black text-[var(--text-main)] mb-24 text-center max-[768px]:text-[2rem]">
+        What We Offer
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-24 justify-items-center">
+        {offerings.map((offering, index) => (
+          <div
+            key={index}
+            className="flex flex-col items-center text-center group max-w-[300px]"
           >
-            Try Now
-          </button>
-        </div>
+            <div className="w-12 h-12 text-primary mb-6">
+              {offering.icon}
+            </div>
+            <h3 className="text-[1.1rem] font-black text-[var(--text-main)] mb-3 tracking-tight">
+              {offering.title}
+            </h3>
+            <p className="text-[var(--text-dim)] opacity-50 text-[0.85rem] leading-relaxed font-medium">
+              {offering.description}
+            </p>
+          </div>
+        ))}
       </div>
-    </section>
-  );
+
+      <div className="flex justify-center mt-12 pb-12">
+        <button onClick={scrollToForm} className="btn-premium">
+          Try Now
+        </button>
+      </div>
+    </div>
+  </section>
+);
 };
 
 export default WhatWeOffer;

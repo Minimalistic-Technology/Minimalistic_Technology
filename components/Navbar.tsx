@@ -32,6 +32,7 @@ const Navbar: React.FC = () => {
     setTheme(newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
+    console.log("new theme: ", newTheme)
   };
 
   const navLinks = [
@@ -62,7 +63,7 @@ const Navbar: React.FC = () => {
             <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-black font-black text-xs transition-transform duration-500 group-hover:rotate-[360deg]">
               MT
             </div>
-            <span className="text-[var(--text-main)] font-bold text-[0.75rem] tracking-[0.2em] uppercase">
+            <span className="text-[var(--text-main)] font-bold text-[0.75rem] tracking-[0.2em] uppercase hidden md:flex gap-2">
               Minimalistic <span className="animate-color-change">Technology</span>
             </span>
           </Link>
@@ -117,7 +118,7 @@ const Navbar: React.FC = () => {
                 }
               }}
             >
-              Initialize
+              Get Started
             </motion.button>
 
             <button

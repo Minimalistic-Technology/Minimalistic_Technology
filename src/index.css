@@ -1731,7 +1731,7 @@ body {
   border-top: 1px solid var(--border);
   padding-top: 1.5rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   color: var(--text-dim);
   font-size: 0.875rem;
@@ -1920,12 +1920,12 @@ body {
   }
 
   33% {
-    color: #38bdf8;
+    color: #45f838;
   }
 
   /* Sky 400 */
   66% {
-    color: #818cf8;
+    color: #81f883;
   }
 
   /* Indigo 400 */

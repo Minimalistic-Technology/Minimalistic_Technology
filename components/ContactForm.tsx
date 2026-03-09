@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
-import { Mail, ArrowRight, Hash, Rocket, Sparkles, Briefcase, DollarSign, Clock, Star, ShieldCheck } from 'lucide-react';
+import { Mail, ArrowRight, Hash, Rocket, Briefcase, DollarSign, Clock, ShieldCheck, User,  Phone} from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
 import { apiFetch } from '../lib/api';
@@ -60,15 +60,6 @@ const FieldWrapper = ({
 
     {/* Animated Focus Path */}
     <div className={`absolute bottom-0 left-0 h-[2px] bg-primary transition-all duration-700 ease-out z-20 ${activeField === name ? 'w-full opacity-100' : 'w-0 opacity-0'}`} />
-
-    {/* Subtle Ambient Glow */}
-    <motion.div
-      initial={false}
-      animate={{
-        opacity: activeField === name ? 0.04 : 0,
-      }}
-      className="absolute -inset-x-4 -inset-y-2 bg-primary rounded-2xl pointer-events-none z-0"
-    />
   </div>
 );
 
@@ -162,39 +153,24 @@ const ContactForm: React.FC = () => {
           <div className="absolute top-0 left-1/4 w-1/2 h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-b from-[var(--text-main)]/[0.02] to-transparent pointer-events-none" />
 
-          <div className="p-10 lg:p-20 flex flex-col items-center gap-16 lg:gap-20 relative z-10 w-full">
+          <div className="p-10 lg:p-20 flex flex-col items-center gap-16 lg:gap-12 relative z-10 w-full">
 
             {/* Hub Header Section */}
             <div className="w-full max-w-3xl flex flex-col items-center text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--surface-hover)] border border-[var(--border)] text-primary text-[0.7rem] font-bold uppercase tracking-[0.2em] mb-8 w-fit">
-                <Sparkles size={14} />
-                <span>Initiation Protocol</span>
-              </div>
-
               <h3 className="text-[3rem] lg:text-[4rem] font-bold text-[var(--text-main)] leading-[0.95] mb-6 tracking-[-0.04em]">
                 Get Started <span className="text-gradient">Today</span>
               </h3>
 
               <p className="text-[var(--text-dim)] text-lg leading-relaxed font-medium max-w-xl mb-10">
-                Deployment protocols initialized upon verified transmission. Join the high-authority network.
+                Your vision, engineered. Share your project details and let’s build your digital presence
               </p>
-
-              <div className="flex items-center gap-4 py-4 border-t border-[var(--border)] w-full justify-center">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                  <ShieldCheck size={20} />
-                </div>
-                <div className="text-left">
-                  <span className="text-[0.6rem] font-black text-[var(--text-dim)]/50 uppercase tracking-widest block">Security Status</span>
-                  <p className="text-[var(--text-main)] font-bold text-sm tracking-tight">End-to-End Encryption Enabled</p>
-                </div>
-              </div>
             </div>
 
             {/* Hub Form Section */}
             <div className="w-full max-w-3xl bg-[var(--surface-hover)]/30 p-8 lg:p-14 rounded-[48px] border border-[var(--border)] backdrop-blur-sm">
               <form onSubmit={handleSubmit} className="flex flex-col gap-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
-                  <FieldWrapper name="fullName" label="Full Name" icon={Hash} activeField={activeField}>
+                  <FieldWrapper name="fullName" label="Full Name" icon={User} activeField={activeField}>
                     <input
                       required
                       type="text"
@@ -235,7 +211,7 @@ const ContactForm: React.FC = () => {
                     />
                   </FieldWrapper>
 
-                  <FieldWrapper name="phone" label="Contact Number" icon={Hash} activeField={activeField}>
+                  <FieldWrapper name="phone" label="Contact Number" icon={Phone} activeField={activeField}>
                     <input
                       required
                       type="tel"
@@ -309,13 +285,13 @@ const ContactForm: React.FC = () => {
                 <FieldWrapper name="projectDescription" label="Objective Briefing" icon={Rocket} activeField={activeField}>
                   <textarea
                     name="projectDescription"
-                    placeholder="Describe your digital destination..."
+                    placeholder="Specify your project goals and desired outcomes..."
                     value={formData.projectDescription}
                     onChange={handleChange}
                     onFocus={() => setActiveField('projectDescription')}
                     onBlur={() => setActiveField(null)}
                     rows={2}
-                    className={`${inputClass} resize-none min-h-[90px]`}
+                    className={`${inputClass} resize-none min-h-[90px] border-none`}
                   />
                 </FieldWrapper>
 
