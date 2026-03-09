@@ -85,7 +85,6 @@ const Footer: React.FC = () => {
         {/* Divider & Bottom */}
         <div className="footer-bottom">
           <span className="footer-copyright">© {new Date().getFullYear()} Minimalistic Technology. All rights reserved.</span>
-          <span className="footer-attribution">Built with ❤️ in India</span>
         </div>
       </div>
     </footer>

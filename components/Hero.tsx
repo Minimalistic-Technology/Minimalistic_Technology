@@ -101,7 +101,6 @@ const Hero: React.FC = () => {
             className="hero-card-wrapper perspective-[2000px]"
           >
             <motion.div
-              style={{ rotate }}
               className="relative rounded-[48px] overflow-hidden border border-[var(--border)] shadow-2xl"
             >
               <img
