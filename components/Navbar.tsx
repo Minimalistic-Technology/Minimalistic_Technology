@@ -49,8 +49,8 @@ const Navbar: React.FC = () => {
       <div className="mx-auto w-full max-w-7xl px-[1.5rem]">
         <div
           className={cn(
-            "flex items-center justify-between rounded-full px-8 py-4",
-            "border border-[hsla(0,0%,0%,0.05)] bg-[hsla(210,10%,97%,0.8)] backdrop-blur-[20px]",
+            "flex items-center justify-between rounded-full px-8 py-2",
+            "border border-[hsla(0,0%,0%,0.1)] bg-[hsla(240,33%,97%,1)] backdrop-blur-[20px]",
             "dark:border-white/5 dark:bg-[hsla(0,0%,5%,0.6)]",
             "transition-all duration-500",
             scrolled && "bg-background/80 py-3 shadow-xl"
@@ -68,7 +68,7 @@ const Navbar: React.FC = () => {
             </div>
             <span className="hidden gap-2 text-[11px] xl:text-[12px] font-bold uppercase tracking-[0.2em] md:flex">
               Minimalistic{" "}
-              <span className="animate-color-change ">Technology</span>
+              <span className="bg-linear-to-tr from-primary to-primary/80 bg-clip-text text-transparent">Technology</span>
             </span>
           </Link>
 
@@ -93,14 +93,9 @@ const Navbar: React.FC = () => {
           {/* Actions */}
           <div className="flex items-center gap-6">
             <motion.button
-              whileHover={{ scale: 1.1, rotate: 15 }}
               whileTap={{ scale: 0.9 }}
               onClick={handleThemeToggle}
-              className={cn(
-                "rounded-xl border border-[hsla(0,0%,0%,0.05)] p-3",
-                "bg-[hsla(210,10%,97%,0.8)] backdrop-blur-[20px] dark:bg-[hsla(0,0%,5%,0.6)]",
-                "text-primary transition-all hover:shadow-[0_0_20px_rgba(163,230,53,0.2)]"
-              )}
+              whileHover={{rotate: 10, scale: 1.1}}
               aria-label="Toggle Theme"
             >
               <AnimatePresence mode="wait">
@@ -111,7 +106,7 @@ const Navbar: React.FC = () => {
                   exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
                   transition={{ duration: 0.3 }}
                 >
-                  {theme === "light" ? <Sun size={20} /> : <Moon size={20} />}
+                  {theme === "light" ? <Sun size={20} className="text-primary" /> : <Moon size={20} className="text-primary" />}
                 </motion.div>
               </AnimatePresence>
             </motion.button>
@@ -120,9 +115,9 @@ const Navbar: React.FC = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className={cn(
-                "relative z-10 hidden items-center justify-center rounded-xl sm:inline-flex",
+                "relative z-10 hidden items-center justify-center rounded-full sm:inline-flex",
                 "bg-primary px-8 py-3 lg:px-12",
-                "text-[0.7rem] font-bold uppercase tracking-[0.1em] text-black",
+                "text-[11px] font-bold uppercase tracking-[0.1em] text-black",
                 "transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]",
                 "hover:-translate-y-[2px] hover:bg-[#9de02b] hover:shadow-[0_20px_40px_rgba(132,204,22,0.15)]"
               )}
