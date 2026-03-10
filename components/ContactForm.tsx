@@ -9,7 +9,6 @@ import { apiFetch } from '../lib/api';
 
 
 interface FormData {
-
   fullName: string;
   email: string;
   phone: string;
@@ -30,9 +29,6 @@ const initialFormState: FormData = {
   timeline: '',
   projectDescription: '',
 };
-
-// --- Sub-components ---
-
 
 const FieldWrapper = ({
   name,
@@ -63,8 +59,6 @@ const FieldWrapper = ({
   </div>
 );
 
-// --- Main Component ---
-
 const ContactForm: React.FC = () => {
   const searchParams = useSearchParams();
   const templateId = searchParams.get('templateId');
@@ -88,20 +82,6 @@ const ContactForm: React.FC = () => {
     }
   });
 
-  // Mouse Reactive Logic
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const springConfig = { damping: 25, stiffness: 150 };
-  const springX = useSpring(mouseX, springConfig);
-  const springY = useSpring(mouseY, springConfig);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const { clientX, clientY } = e;
-    const { innerWidth, innerHeight } = window;
-    mouseX.set((clientX / innerWidth) - 0.5);
-    mouseY.set((clientY / innerHeight) - 0.5);
-  };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -124,28 +104,24 @@ const ContactForm: React.FC = () => {
   return (
     <section
       id="contact-form"
-      className="py-[clamp(60px,10vw,120px)] relative bg-[var(--background)] overflow-hidden min-h-screen flex items-center justify-center"
-      onMouseMove={handleMouseMove}
+      className="py-30 relative bg-[var(--background)] overflow-hidden min-h-screen flex items-center justify-center"
     >
       {/* Cinematic Aurora Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          style={{ x: springX.get() * 100, y: springY.get() * 100 }}
           className="absolute -top-[20%] -left-[10%] w-[1000px] h-[1000px] bg-primary/10 rounded-full blur-[200px]"
         />
         <motion.div
-          style={{ x: springX.get() * -100, y: springY.get() * -100 }}
           className="absolute -bottom-[20%] -right-[10%] w-[1000px] h-[1000px] bg-secondary/5 rounded-full blur-[250px]"
         />
       </div>
 
-      <div className="max-w-[1280px] mx-auto px-[clamp(1.5rem,5vw,4rem)] relative z-10 w-full flex flex-col items-center">
+      <div className="max-w-7xl mx-auto relative z-10 w-full flex flex-col items-center">
 
         {/* Elite Floating Hub */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className={`relative max-w-5xl w-full bg-surface backdrop-blur-md rounded-[64px] border border-[var(--border)] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.05)] transition-all duration-1000 ${activeField ? 'border-primary/20 ring-1 ring-primary/10 shadow-[0_0_80px_rgba(var(--primary-rgb),0.05)]' : ''}`}
         >

@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
   ];
 
   return (
-    <section className="relative min-h-[calc(100vh-112px)] flex items-center bg-background overflow-hidden">
+    <section className="relative min-h-[calc(100vh-112px)] pt-15 lg:pt-10 flex items-center bg-background overflow-hidden">
       {/* Immersive Background Layer */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] opacity-10" />

@@ -245,7 +245,7 @@ export default function TemplatesClient() {
                         </div>
                     </div>
 
-                    <div className="mt-28 flex flex-col items-center gap-10">
+                    <div className="flex flex-col items-center gap-10">
                         <div className="flex items-center gap-12">
                             <motion.button
                                 whileHover={{ scale: 1.1, x: -5 }}
