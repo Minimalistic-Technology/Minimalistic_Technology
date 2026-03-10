@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import QueryProvider from "../providers/QueryProvider";
 import { cn } from "@/lib/utils";
+import { ThemeProvider } from "next-themes";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -30,7 +31,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             "animate-pulse shadow-[0_0_20px_rgba(0,0,0,0.2)] shadow-primary/80",
           )}
         >
-          <span className="text-xl font-bold text-black dark:text-white">MT</span>
+          <span className="text-xl font-bold text-black dark:text-white">
+            MT
+          </span>
         </div>
       </div>
     );
@@ -38,13 +41,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <QueryProvider>
-      <div className="min-h-screen flex flex-col bg-[var(--background)]">
-        <Navbar />
-        <main className="flex-grow relative pt-[var(--nav-height)]">
-          {children}
-        </main>
-        <Footer />
-      </div>
+      <ThemeProvider attribute="class">
+        <div className="min-h-screen flex flex-col bg-[var(--background)]">
+          <Navbar />
+          <main className="flex-grow relative pt-[var(--nav-height)]">
+            {children}
+          </main>
+          <Footer />
+        </div>
+      </ThemeProvider>
     </QueryProvider>
   );
 };
