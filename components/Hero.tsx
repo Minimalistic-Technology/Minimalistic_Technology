@@ -77,7 +77,7 @@ const Hero: React.FC = () => {
 
             <motion.p
               {...fadeUp(0.7)}
-              className="text-lg text-dim mb-12 max-w-lg leading-relaxed opacity-50 font-medium"
+              className="text-lg text-neutral-400 mb-12 max-w-lg leading-relaxed opacity-50 font-medium"
             >
               No coding needed | AI powered design | Fast deployment
             </motion.p>
