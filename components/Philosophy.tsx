@@ -12,9 +12,9 @@ const Philosophy: React.FC = () => {
     ];
 
     return (
-        <div className="philosophy-section">
-            <div className="site-container">
-                <div className="philosophy-grid">
+        <div className="py-12 bg-background border-y border-white/5">
+            <div className="max-w-[1280px] mx-auto px-[clamp(1.5rem,5vw,4rem)]">
+                <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
                     {values.map((v, i) => (
                         <motion.div
                             key={i}
@@ -22,12 +22,12 @@ const Philosophy: React.FC = () => {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1, duration: 0.8 }}
-                            className="philosophy-item"
+                            className="flex items-center gap-3 bg-[hsla(210,10%,97%,0.8)] dark:bg-[hsla(0,0%,5%,0.6)] backdrop-blur-md border border-[hsla(0,0%,0%,0.05)] dark:border-white/5 px-6 py-3 rounded-full"
                         >
-                            <div className="philosophy-icon">
+                            <div className="text-primary">
                                 {v.icon}
                             </div>
-                            <span className="philosophy-text">
+                            <span className="text-sm font-bold tracking-wider uppercase text-[var(--text-main)]">
                                 {v.text}
                             </span>
                         </motion.div>

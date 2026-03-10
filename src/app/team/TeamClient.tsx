@@ -26,18 +26,18 @@ export default function TeamClient() {
     <div className="min-h-screen bg-[var(--background)]">
 
       {/* HERO SECTION SAME AS YOURS — NO CHANGE */}
-      <section className="hero-section relative overflow-hidden">
+      <section className="relative min-h-[calc(100vh-112px)] flex items-center bg-background overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="hero-bg-grid opacity-10" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] opacity-10" />
         </div>
 
-        <div className="site-container relative z-10 w-full flex items-center min-h-[60vh] lg:min-h-[70vh]">
+        <div className="max-w-[1280px] mx-auto px-[clamp(1.5rem,5vw,4rem)] relative z-10 w-full flex items-center min-h-[60vh] lg:min-h-[70vh]">
           <div className="w-full text-center py-10">
             <span className="inline-block text-[#a3e635] font-black uppercase tracking-[0.4em] text-[0.65rem] mb-6">
               OUR COLLECTIVE
             </span>
             <h1 className="text-[clamp(3.5rem,10vw,7rem)] font-black text-[var(--text-main)] mb-8 tracking-tighter leading-none">
-              Our <span className="text-gradient">Team</span>
+              Our <span className="bg-[linear-gradient(135deg,hsl(82,84%,50%),hsl(82,84%,35%))] bg-clip-text text-transparent">Team</span>
             </h1>
             <p className="text-xl md:text-2xl text-[var(--text-dim)] font-medium leading-relaxed max-w-3xl mx-auto opacity-80">
               The collective of architects and creative minds behind Minimalistic Technology. Our web development team is a powerhouse of diverse talent, comprising expert front-end and back-end developers, creative UI/UX designers, and dedicated quality assurance engineers.
@@ -50,7 +50,7 @@ export default function TeamClient() {
 
       {/* TEAM GRID */}
       <section className="pt-20 pb-16 md:pt-24 md:pb-20">
-        <div className="site-container relative z-10">
+        <div className="max-w-[1280px] mx-auto px-[clamp(1.5rem,5vw,4rem)] relative z-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {teamMembers.map((member) => (
               <div

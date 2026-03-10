@@ -124,7 +124,7 @@ const ContactForm: React.FC = () => {
   return (
     <section
       id="contact-form"
-      className="section-spacing relative bg-[var(--background)] overflow-hidden min-h-screen flex items-center justify-center py-24"
+      className="py-[clamp(60px,10vw,120px)] relative bg-[var(--background)] overflow-hidden min-h-screen flex items-center justify-center"
       onMouseMove={handleMouseMove}
     >
       {/* Cinematic Aurora Background */}
@@ -139,7 +139,7 @@ const ContactForm: React.FC = () => {
         />
       </div>
 
-      <div className="site-container relative z-10 w-full flex flex-col items-center">
+      <div className="max-w-[1280px] mx-auto px-[clamp(1.5rem,5vw,4rem)] relative z-10 w-full flex flex-col items-center">
 
         {/* Elite Floating Hub */}
         <motion.div
@@ -147,7 +147,7 @@ const ContactForm: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className={`relative max-w-5xl w-full glass-panel rounded-[64px] border border-[var(--border)] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.05)] transition-all duration-1000 ${activeField ? 'border-primary/20 ring-1 ring-primary/10 shadow-[0_0_80px_rgba(var(--primary-rgb),0.05)]' : ''}`}
+          className={`relative max-w-5xl w-full bg-surface backdrop-blur-md rounded-[64px] border border-[var(--border)] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.05)] transition-all duration-1000 ${activeField ? 'border-primary/20 ring-1 ring-primary/10 shadow-[0_0_80px_rgba(var(--primary-rgb),0.05)]' : ''}`}
         >
           {/* Internal Glow Effects */}
           <div className="absolute top-0 left-1/4 w-1/2 h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
@@ -158,7 +158,7 @@ const ContactForm: React.FC = () => {
             {/* Hub Header Section */}
             <div className="w-full max-w-3xl flex flex-col items-center text-center">
               <h3 className="text-[3rem] lg:text-[4rem] font-bold text-[var(--text-main)] leading-[0.95] mb-6 tracking-[-0.04em]">
-                Get Started <span className="text-gradient">Today</span>
+                Get Started <span className="bg-[linear-gradient(135deg,hsl(82,84%,50%),hsl(82,84%,35%))] bg-clip-text text-transparent">Today</span>
               </h3>
 
               <p className="text-[var(--text-dim)] text-lg leading-relaxed font-medium max-w-xl mb-10">
@@ -298,7 +298,7 @@ const ContactForm: React.FC = () => {
                 <button
                   type="submit"
                   disabled={mutation.isPending}
-                  className="btn-premium group w-full h-16 !rounded-3xl !p-0 overflow-hidden relative shadow-2xl hover:shadow-primary/30 active:scale-[0.98] transition-all duration-300"
+                  className="relative inline-flex items-center justify-center bg-primary text-black font-bold h-16 rounded-3xl w-full group overflow-hidden shadow-2xl hover:shadow-primary/30 active:scale-[0.98] transition-all duration-300"
                 >
                   <AnimatePresence mode="wait">
                     {!mutation.isPending ? (
@@ -356,7 +356,7 @@ const ContactForm: React.FC = () => {
               </p>
               <button
                 onClick={() => setShowSuccess(false)}
-                className="btn-premium w-fit px-12 !rounded-2xl h-16 text-lg relative z-10 mx-auto"
+                className="relative inline-flex items-center justify-center px-12 py-5 bg-primary text-black font-bold h-16 rounded-2xl text-lg transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:shadow-[0_20px_40px_rgba(132,204,22,0.15)] hover:bg-[#9de02b] z-10 w-fit mx-auto"
               >
                 Back to Home
               </button>

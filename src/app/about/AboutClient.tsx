@@ -9,26 +9,26 @@ const AboutHero: React.FC = () => {
     const router = useRouter();
 
     return (
-        <section className="hero-section relative overflow-hidden">
+        <section className="relative min-h-[calc(100vh-112px)] flex items-center bg-background overflow-hidden">
             {/* Background Decorations */}
             <div className="absolute inset-0 z-0 pointer-events-none">
-                <div className="hero-bg-grid opacity-10" />
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] opacity-10" />
                 <div className="absolute -top-[20%] -right-[10%] w-[1000px] h-[1000px] bg-primary/10 rounded-full blur-[150px]" />
             </div>
 
-            <div className="site-container relative z-10 w-full flex items-center min-h-[80vh]">
-                <div className="hero-grid py-20 w-full">
+            <div className="max-w-[1280px] mx-auto px-[clamp(1.5rem,5vw,4rem)] relative z-10 w-full flex flex-col justify-center min-h-[80vh]">
+                <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-20 lg:gap-24 items-center text-center lg:text-left py-20 lg:py-[clamp(60px,10vw,120px)] w-full">
                     {/* Left: Copy */}
-                    <div className="hero-copy">
+                    <div className="flex flex-col items-center lg:items-start">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
                         >
                             <span className="inline-block text-[#a3e635] font-black uppercase tracking-[0.4em] text-[0.65rem] mb-6">ESTABLISHED 2026</span>
-                            <h1 className="text-clamp-hero mb-8">
+                            <h1 className="text-[clamp(3.5rem,8vw,6rem)] leading-[0.9] font-black tracking-[-0.05em] mb-8 text-[var(--text-bright)]">
                                 Engineering <br />
-                                The <span className="text-gradient">Future</span>
+                                The <span className="bg-[linear-gradient(135deg,hsl(82,84%,50%),hsl(82,84%,35%))] bg-clip-text text-transparent">Future</span>
                             </h1>
                             <p className="text-xl md:text-2xl text-[var(--text-main)] font-bold mb-10 opacity-90 tracking-tight leading-relaxed max-w-2xl">
                                 An elite collective of architects and designers building high-performance digital solutions with surgical precision.
@@ -37,7 +37,7 @@ const AboutHero: React.FC = () => {
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => router.push('/#contact-form')}
-                                className="btn-premium group flex items-center gap-3"
+                                className="relative inline-flex items-center justify-center px-8 lg:px-12 py-4 lg:py-5 bg-primary text-black font-bold rounded-2xl transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:shadow-[0_20px_40px_rgba(132,204,22,0.15)] hover:bg-[#9de02b] z-10 gap-3 group"
                             >
                                 <span>Start Project</span>
                                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -50,7 +50,7 @@ const AboutHero: React.FC = () => {
                         initial={{ opacity: 0, scale: 0.9, rotate: 5 }}
                         animate={{ opacity: 1, scale: 1, rotate: 0 }}
                         transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                        className="hero-card-wrapper hidden lg:block"
+                        className="relative [perspective:2000px] hidden lg:block"
                     >
                         <div className="relative rounded-[48px] overflow-hidden border border-white/10 shadow-2xl aspect-[16/11]">
                             <img
@@ -73,7 +73,7 @@ const ValueCard: React.FC<{ icon: React.ReactNode; title: string; desc: string; 
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay, duration: 0.8 }}
-        className="p-8 rounded-[32px] glass-morphism border border-white/5 hover:border-[#a3e635]/30 transition-all duration-500 group"
+        className="p-8 rounded-[32px] bg-[hsla(210,10%,97%,0.8)] dark:bg-[hsla(0,0%,5%,0.6)] backdrop-blur-[20px] border border-white/5 hover:border-[#a3e635]/30 transition-all duration-500 group"
     >
         <div className="w-14 h-14 rounded-2xl bg-[#a3e635]/10 flex items-center justify-center text-[#a3e635] mb-8 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_20px_rgba(163,230,53,0.1)]">
             {icon}
@@ -85,8 +85,8 @@ const ValueCard: React.FC<{ icon: React.ReactNode; title: string; desc: string; 
 
 const WhoWeAre: React.FC = () => {
     return (
-        <section className="section-spacing relative overflow-hidden bg-[var(--surface-hover)]/30">
-            <div className="site-container relative z-10">
+        <section className="py-[clamp(60px,10vw,120px)] relative overflow-hidden bg-[var(--surface-hover)]/30">
+            <div className="max-w-[1280px] mx-auto px-[clamp(1.5rem,5vw,4rem)] relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-start mb-24">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
@@ -125,7 +125,7 @@ const TeamCTA: React.FC = () => {
     const router = useRouter();
     return (
         <section className="py-12 md:py-20">
-            <div className="site-container">
+            <div className="max-w-[1280px] mx-auto px-[clamp(1.5rem,5vw,4rem)]">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -143,7 +143,7 @@ const TeamCTA: React.FC = () => {
                     </p>
                     <button
                         onClick={() => router.push('/team')}
-                        className="btn-premium group !py-3 !px-8 !text-xs uppercase tracking-[0.2em]"
+                        className="relative inline-flex items-center justify-center bg-primary text-black font-bold rounded-xl transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:shadow-[0_20px_40px_rgba(132,204,22,0.15)] hover:bg-[#9de02b] z-10 px-8 py-3 text-xs uppercase tracking-[0.2em] group"
                     >
                         View Team Members
                         <ArrowRight size={16} className="ml-3 group-hover:translate-x-1 transition-transform" />

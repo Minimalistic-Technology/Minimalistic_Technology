@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Metadata } from "next";
 import Layout from "@/components/Layout";
-import "../index.css";
+import "./globals.css";
 
 export const metadata: Metadata = {
     title: "Minimalistic Technology | Engineering the Future",
@@ -27,7 +27,12 @@ export default function RootLayout({
                                     var savedTheme = localStorage.getItem('theme');
                                     var systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
                                     var theme = savedTheme || systemTheme;
-                                    document.documentElement.setAttribute('data-theme', theme);
+                                    
+                                    if (theme === 'dark') {
+                                        document.documentElement.classList.add('dark');
+                                    } else {
+                                        document.documentElement.classList.remove('dark');
+                                    }
                                 } catch (e) {
                                     console.error('Theme initialization failed:', e);
                                 }

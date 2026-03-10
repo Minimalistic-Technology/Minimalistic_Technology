@@ -29,8 +29,8 @@ const offerings = [
 
 const Offerings: React.FC = () => {
   return (
-    <section id="services" className="section-spacing relative bg-[var(--background)]">
-      <div className="site-container">
+    <section id="services" className="py-[clamp(60px,10vw,120px)] relative bg-[var(--background)]">
+      <div className="max-w-[1280px] mx-auto px-[clamp(1.5rem,5vw,4rem)]">
         <div className="flex flex-col gap-24">
 
           {/* Header */}
@@ -48,9 +48,9 @@ const Offerings: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-clamp-title mb-8 text-[var(--text-main)]"
+              className="text-[clamp(2rem,6vw,4rem)] leading-[1.1] font-extrabold tracking-[-0.03em] mb-8 text-[var(--text-main)]"
             >
-              Engineering <span className="text-gradient">Dimensions</span>
+              Engineering <span className="bg-[linear-gradient(135deg,hsl(82,84%,50%),hsl(82,84%,35%))] bg-clip-text text-transparent">Dimensions</span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0 }}
@@ -72,7 +72,7 @@ const Offerings: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="card-premium h-full min-h-[380px] flex flex-col justify-between group"
+                className="bg-surface border border-border p-8 lg:p-12 rounded-[32px] transition-all duration-400 hover:-translate-y-2 hover:border-border-bright hover:bg-surface-hover h-full min-h-[380px] flex flex-col justify-between group relative overflow-hidden"
               >
                 <div>
                   <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-10 border border-primary/20 group-hover:scale-110 group-hover:bg-primary group-hover:text-black transition-all duration-500">

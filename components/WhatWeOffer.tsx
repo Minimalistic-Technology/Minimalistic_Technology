@@ -42,7 +42,7 @@ const WhatWeOffer: React.FC = () => {
 
   return (
   <section id="services" className="py-24">
-    <div className="site-container">
+    <div className="max-w-[1280px] mx-auto px-[clamp(1.5rem,5vw,4rem)]">
       <h2 className="text-[2.5rem] font-black text-[var(--text-main)] mb-24 text-center max-[768px]:text-[2rem]">
         What We Offer
       </h2>
@@ -66,7 +66,7 @@ const WhatWeOffer: React.FC = () => {
       </div>
 
       <div className="flex justify-center mt-12 pb-12">
-        <button onClick={scrollToForm} className="btn-premium">
+        <button onClick={scrollToForm} className="relative inline-flex items-center justify-center px-8 lg:px-12 py-4 lg:py-5 bg-primary text-black font-bold rounded-2xl transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:shadow-[0_20px_40px_rgba(132,204,22,0.15)] hover:bg-[#9de02b] z-10">
           Try Now
         </button>
       </div>

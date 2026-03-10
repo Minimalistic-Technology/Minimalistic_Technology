@@ -89,10 +89,10 @@ export default function TemplatesClient() {
     return (
         <div className="bg-[var(--background)] text-[var(--text-main)] min-h-screen">
             {/* ── Hero Section ── */}
-            <section className="hero-section relative overflow-hidden">
+            <section className="relative min-h-[calc(100vh-112px)] flex items-center bg-background overflow-hidden">
                 {/* Immersive Background Layer */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
-                    <div className="hero-bg-grid opacity-10" />
+                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] opacity-10" />
 
                     {/* Massive Mesh Gradients */}
                     <motion.div
@@ -105,18 +105,18 @@ export default function TemplatesClient() {
                     />
                 </div>
 
-                <div className="site-container relative z-10 w-full min-h-screen flex items-center pt-20 lg:pt-32">
-                    <div className="hero-grid py-20 w-full">
+                <div className="max-w-[1280px] mx-auto px-[clamp(1.5rem,5vw,4rem)] relative z-10 w-full min-h-screen flex items-center pt-20 lg:pt-32">
+                    <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-20 lg:gap-24 items-center text-center lg:text-left py-20 w-full">
                         {/* ── Left: Copy ── */}
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                            className="hero-copy"
+                            className="flex flex-col items-center lg:items-start"
                         >
-                            <h1 className="text-clamp-hero mb-6">
+                            <h1 className="text-[clamp(3.5rem,8vw,6rem)] leading-[0.9] font-black tracking-[-0.05em] mb-6 block w-full">
                                 <span className="block text-[var(--text-main)]">Ready-to-Use</span>
-                                <span className="text-gradient block">Templates</span>
+                                <span className="bg-[linear-gradient(135deg,hsl(82,84%,50%),hsl(82,84%,35%))] bg-clip-text text-transparent block">Templates</span>
                             </h1>
                             <motion.p
                                 {...fadeUp(0.6)}
@@ -131,7 +131,7 @@ export default function TemplatesClient() {
                                 Surgical precision | Elite performance | Modern architecture
                             </motion.p>
                             <motion.div {...fadeUp(0.8)}>
-                                <button onClick={handleSelectTemplate} className="btn-premium flex items-center gap-3">
+                                <button onClick={handleSelectTemplate} className="relative inline-flex items-center justify-center px-8 lg:px-12 py-4 lg:py-5 bg-primary text-black font-bold rounded-2xl transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:shadow-[0_20px_40px_rgba(132,204,22,0.15)] hover:bg-[#9de02b] z-10 gap-3">
                                     Select Template <Check size={20} />
                                 </button>
                             </motion.div>
@@ -142,7 +142,7 @@ export default function TemplatesClient() {
                             initial={{ opacity: 0, scale: 0.8, rotateY: 30 }}
                             animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                             transition={{ delay: 0.9, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                            className="hero-card-wrapper perspective-[2000px]"
+                            className="relative [perspective:2000px]"
                         >
                             <motion.div
                                 style={{ rotate }}
@@ -162,7 +162,7 @@ export default function TemplatesClient() {
 
             {/* ── Templates Stack Section ── */}
             <section id="website-templates" className="py-24 relative overflow-hidden bg-[var(--background)]">
-                <div className="site-container relative z-10">
+                <div className="max-w-[1280px] mx-auto px-[clamp(1.5rem,5vw,4rem)] relative z-10">
                     <div className="text-center mb-20">
                         <motion.span
                             initial={{ opacity: 0, y: 10 }}
@@ -172,7 +172,7 @@ export default function TemplatesClient() {
                             PREMIUM DESIGNS
                         </motion.span>
                         <h2 className="text-5xl md:text-8xl font-black tracking-tighter text-[var(--text-main)]">
-                            Website <span className="text-gradient">Templates</span>
+                            Website <span className="bg-[linear-gradient(135deg,hsl(82,84%,50%),hsl(82,84%,35%))] bg-clip-text text-transparent">Templates</span>
                         </h2>
                     </div>
 
@@ -237,7 +237,7 @@ export default function TemplatesClient() {
                                                             </p>
                                                             <button
                                                                 onClick={handleSelectTemplate}
-                                                                className="w-fit btn-premium !py-3 !px-10 flex items-center gap-3 !rounded-2xl shadow-[0_20px_40px_rgba(163,230,53,0.2)]"
+                                                                className="relative inline-flex items-center justify-center bg-primary text-black font-bold transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:shadow-[0_20px_40px_rgba(132,204,22,0.15)] hover:bg-[#9de02b] z-10 w-fit py-3 px-10 gap-3 rounded-2xl shadow-[0_20px_40px_rgba(163,230,53,0.2)]"
                                                             >
                                                                 Select Template <Check size={18} />
                                                             </button>

@@ -61,8 +61,8 @@ const Pricing: React.FC = () => {
   };
 
   return (
-    <section id="pricing" className="section-spacing relative bg-[var(--background)]">
-      <div className="site-container relative z-10">
+    <section id="pricing" className="py-[clamp(60px,10vw,120px)] relative bg-[var(--background)]">
+      <div className="max-w-[1280px] mx-auto px-[clamp(1.5rem,5vw,4rem)] relative z-10">
 
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -70,9 +70,9 @@ const Pricing: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-clamp-title mb-6 text-[var(--text-main)]"
+            className="text-[clamp(2rem,6vw,4rem)] leading-[1.1] font-extrabold tracking-[-0.03em] mb-6 text-[var(--text-main)]"
           >
-            Choose Your <span className="text-gradient">Economic</span> Tier
+            Choose Your <span className="bg-[linear-gradient(135deg,hsl(82,84%,50%),hsl(82,84%,35%))] bg-clip-text text-transparent">Economic</span> Tier
           </motion.h2>
 
         </div>
@@ -126,7 +126,7 @@ const Pricing: React.FC = () => {
 
               <button
                 onClick={scrollToForm}
-                className="btn-premium w-full group text-base py-5 gap-2"
+                className="relative inline-flex items-center justify-center px-8 lg:px-12 py-4 lg:py-5 bg-primary text-black font-bold rounded-2xl transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:shadow-[0_20px_40px_rgba(132,204,22,0.15)] hover:bg-[#9de02b] z-10 w-full group text-base gap-2"
               >
                 <span>Get Started</span>
                 <ArrowRight

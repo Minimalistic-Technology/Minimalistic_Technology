@@ -54,10 +54,10 @@ export default function ServicesClient() {
   return (
     <div className="bg-[var(--background)] text-[var(--text-main)]">
       {/* ── Hero Synchronized with Home ── */}
-      <section className="hero-section relative overflow-hidden">
+      <section className="relative min-h-[calc(100vh-112px)] flex items-center bg-background overflow-hidden">
         {/* Immersive Background Layer */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="hero-bg-grid opacity-10" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] opacity-10" />
 
           {/* Massive Mesh Gradients */}
           <motion.div
@@ -70,11 +70,11 @@ export default function ServicesClient() {
           />
         </div>
 
-        <div className="site-container relative z-10 w-full min-h-screen flex items-center pt-20 lg:pt-32">
-          <div className="hero-grid py-20 w-full">
+        <div className="max-w-[1280px] mx-auto px-[clamp(1.5rem,5vw,4rem)] relative z-10 w-full min-h-screen flex items-center pt-20 lg:pt-32">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-20 lg:gap-24 items-center text-center lg:text-left py-20 w-full">
             {/* ── Left: Copy ── */}
-            <div className="hero-copy">
-              <motion.h1 className="text-clamp-hero mb-6">
+            <div className="flex flex-col items-center lg:items-start">
+              <motion.h1 className="text-[clamp(3.5rem,8vw,6rem)] leading-[0.9] font-black tracking-[-0.05em] mb-6 block w-full">
                 <motion.span
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -87,7 +87,7 @@ export default function ServicesClient() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 1.2, delay: 0.5 }}
-                  className="text-gradient block"
+                  className="bg-[linear-gradient(135deg,hsl(82,84%,50%),hsl(82,84%,35%))] bg-clip-text text-transparent block"
                 >
                   Effortlessly
                 </motion.span>
@@ -111,7 +111,7 @@ export default function ServicesClient() {
                 {...fadeUp(0.8)}
                 className="flex items-center gap-8 flex-wrap"
               >
-                <button onClick={scrollToForm} className="btn-premium group">
+                <button onClick={scrollToForm} className="relative inline-flex items-center justify-center px-8 lg:px-12 py-4 lg:py-5 bg-primary text-black font-bold rounded-2xl transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:shadow-[0_20px_40px_rgba(132,204,22,0.15)] hover:bg-[#9de02b] z-10 group">
                   Start Building
                   <ArrowRight
                     size={20}
@@ -130,7 +130,7 @@ export default function ServicesClient() {
                 duration: 1.5,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="hero-card-wrapper perspective-[2000px]"
+              className="relative [perspective:2000px]"
             >
               <motion.div
                 style={{ rotate }}
@@ -150,7 +150,7 @@ export default function ServicesClient() {
 
       {/* ── Process Steps (Mockup 1 Refined) ── */}
       <section className="py-20">
-        <div className="site-container">
+        <div className="max-w-[1280px] mx-auto px-[clamp(1.5rem,5vw,4rem)]">
           <div className="flex justify-center gap-8 mb-20 max-w-[900px] mx-auto">
             {steps.map((step, i) => (
               <React.Fragment key={i}>
@@ -203,7 +203,7 @@ export default function ServicesClient() {
 
       {/* ── Get Started Today (Mockup 2 Refined) ── */}
       <section className="py-20 relative overflow-hidden">
-        <div className="site-container relative z-10">
+        <div className="max-w-[1280px] mx-auto px-[clamp(1.5rem,5vw,4rem)] relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
