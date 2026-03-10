@@ -21,10 +21,6 @@ import { useScroll, useTransform } from "framer-motion";
 
 export default function ServicesClient() {
   const router = useRouter();
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 800], [0, 300]);
-  const y2 = useTransform(scrollY, [0, 800], [0, -200]);
-  const rotate = useTransform(scrollY, [0, 800], [0, 15]);
 
   const scrollToForm = () => {
     router.push("/#contact-form");
@@ -61,11 +57,9 @@ export default function ServicesClient() {
 
           {/* Massive Mesh Gradients */}
           <motion.div
-            style={{ y: y1 }}
             className="absolute -top-[20%] -right-[10%] w-[1000px] h-[1000px] bg-primary/10 rounded-full blur-[150px]"
           />
           <motion.div
-            style={{ y: y2 }}
             className="absolute top-[40%] -left-[10%] w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px]"
           />
         </div>
@@ -102,7 +96,7 @@ export default function ServicesClient() {
 
               <motion.p
                 {...fadeUp(0.7)}
-                className="text-lg text-dim mb-12 max-w-lg leading-relaxed opacity-50 font-medium"
+                className="text-lg text-neutral-400 mb-12 max-w-lg leading-relaxed opacity-50 font-medium"
               >
                 No coding needed | AI powered design | Fast deployment
               </motion.p>
@@ -123,8 +117,8 @@ export default function ServicesClient() {
 
             {/* ── Right: Visual Composite ── */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8, rotateY: 30 }}
-              animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1}}
               transition={{
                 delay: 0.9,
                 duration: 1.5,
@@ -133,7 +127,6 @@ export default function ServicesClient() {
               className="relative [perspective:2000px]"
             >
               <motion.div
-                style={{ rotate }}
                 className="relative rounded-[48px] overflow-hidden border border-[var(--border)] shadow-2xl aspect-[16/11]"
               >
                 <img

@@ -49,10 +49,6 @@ export default function TemplatesClient() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [direction, setDirection] = useState(0);
     const router = useRouter();
-    const { scrollY } = useScroll();
-    const y1 = useTransform(scrollY, [0, 800], [0, 300]);
-    const y2 = useTransform(scrollY, [0, 800], [0, -200]);
-    const rotate = useTransform(scrollY, [0, 800], [0, 15]);
 
    const handleSelectTemplate = () => {
     const selectedTemplate = templates[currentIndex];
@@ -96,11 +92,9 @@ export default function TemplatesClient() {
 
                     {/* Massive Mesh Gradients */}
                     <motion.div
-                        style={{ y: y1 }}
                         className="absolute -top-[20%] -right-[10%] w-[1000px] h-[1000px] bg-primary/10 rounded-full blur-[150px]"
                     />
                     <motion.div
-                        style={{ y: y2 }}
                         className="absolute top-[40%] -left-[10%] w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px]"
                     />
                 </div>
@@ -126,7 +120,7 @@ export default function TemplatesClient() {
                             </motion.p>
                             <motion.p
                                 {...fadeUp(0.7)}
-                                className="text-lg text-dim mb-12 max-w-lg leading-relaxed opacity-50 font-medium"
+                                className="text-lg text-neutral-400 mb-12 max-w-lg leading-relaxed opacity-50 font-medium"
                             >
                                 Surgical precision | Elite performance | Modern architecture
                             </motion.p>
@@ -145,7 +139,6 @@ export default function TemplatesClient() {
                             className="relative [perspective:2000px]"
                         >
                             <motion.div
-                                style={{ rotate }}
                                 className="relative rounded-[48px] overflow-hidden border border-[var(--border)] shadow-2xl bg-[var(--surface)]"
                             >
                                 <img
@@ -273,7 +266,7 @@ export default function TemplatesClient() {
                                 whileHover={{ scale: 1.1, x: 5 }}
                                 whileTap={{ scale: 0.9 }}
                                 onClick={handleNext}
-                                className="w-16 h-16 rounded-2xl bg-[#a3e635] flex items-center justify-center text-black shadow-[0_20px_40px_rgba(163,230,53,0.3)] transition-all"
+                                className="w-16 h-16 rounded-2xl bg-[var(--surface-hover)] border border-[var(--border-bright)] flex items-center justify-center text-[var(--text-main)] hover:text-[#a3e635] hover:border-[#a3e635]/30 transition-all shadow-[0_20px_40px_rgba(0,0,0,0.05)]"
                             >
                                 <ArrowRight size={28} />
                             </motion.button>

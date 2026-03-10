@@ -131,7 +131,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Divider & Bottom */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-center items-center gap-4">
           <span className="text-dim opacity-50 text-xs">
             © {new Date().getFullYear()} Minimalistic Technology. All rights
             reserved.

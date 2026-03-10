@@ -47,8 +47,8 @@ const AboutHero: React.FC = () => {
 
                     {/* Right: Visual */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9, rotate: 5 }}
-                        animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                        initial={{ opacity: 0, scale: 0.9}}
+                        animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
                         className="relative [perspective:2000px] hidden lg:block"
                     >
