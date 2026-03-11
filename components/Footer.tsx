@@ -6,7 +6,7 @@ import { Twitter, Linkedin, Instagram, ArrowUpRight } from "lucide-react";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="py-16 md:py-24 bg-background border-t border-white/5">
+    <footer className="py-16 md:py-10 bg-background border-t border-white/5">
       <div className="max-w-[1280px] mx-auto px-[clamp(1.5rem,5vw,4rem)]">
         {/* Top row */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-12 lg:gap-8 mb-16">

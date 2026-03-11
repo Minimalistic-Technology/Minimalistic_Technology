@@ -38,7 +38,7 @@ export default function HomeClient() {
             "animate-pulse shadow-[0_0_20px_rgba(0,0,0,0.2)] shadow-primary/80",
           )}
         >
-          <span className="text-xl font-bold dark:text-black text-white">
+          <span className="text-xl font-bold text-black">
             MT
           </span>
         </div>

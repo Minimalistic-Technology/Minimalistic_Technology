@@ -3,8 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import { ArrowLeft, ArrowRight, Check, Globe, Shield, Sparkles, Zap } from 'lucide-react';
-import { useScroll, useTransform } from 'framer-motion';
+import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
 
 const templates = [
     {
@@ -42,6 +41,84 @@ const templates = [
         name: 'Zen Wellness',
         image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2440&auto=format&fit=crop',
         tags: ['Organic', 'Minimal', 'Health']
+    },
+    {
+        id: 'education',
+        name: 'Education Pro',
+        image: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        tags: ['Education', 'Courses', 'LMS']
+    },
+    {
+        id: 'freelance',
+        name: 'Freelance Hub',
+        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        tags: ['Freelance', 'Services', 'Modern']
+    },
+    {
+        id: 'pet-adoption',
+        name: 'Pet Adoption',
+        image: 'https://images.unsplash.com/photo-1522276498395-f4f68f7f8454?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        tags: ['Pets', 'Adoption', 'Care']
+    },
+    {
+        id: 'therapy',
+        name: 'Therapy Session',
+        image: 'https://www.brainandlife.org/siteassets/current-issue/20-febmarch/cbt-main.jpg',
+        tags: ['Therapy', 'Wellness', 'Calm']
+    },
+    {
+        id: 'photography',
+        name: 'Photography Portfolio',
+        image: 'https://plus.unsplash.com/premium_photo-1663134149019-284682ece04c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        tags: ['Photography', 'Gallery', 'Visuals']
+    },
+    {
+        id: 'library',
+        name: 'Library Management',
+        image: 'https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        tags: ['Library', 'Books', 'Management']
+    },
+    {
+        id: 'restaurant',
+        name: 'Restaurant Menu',
+        image: 'https://plus.unsplash.com/premium_photo-1723491285855-f1035c4c703c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        tags: ['Dining', 'Menu', 'Reservations']
+    },
+    {
+        id: 'fitness',
+        name: 'Fitness Gym',
+        image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        tags: ['Fitness', 'Gym', 'Workout']
+    },
+    {
+        id: 'agarbatti',
+        name: 'Agarbatti Store',
+        image: 'https://thepurplepony.com/cdn/shop/files/ChandanAgarbatti1.jpg?v=1745478007&width=1920',
+        tags: ['Incense', 'Spiritual', 'Aroma']
+    },
+    {
+        id: 'event',
+        name: 'Event Website',
+        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop',
+        tags: ['Events', 'Tickets', 'Schedule']
+    },
+    {
+        id: 'clothing',
+        name: 'Clothing Brand',
+        image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2340&auto=format&fit=crop',
+        tags: ['Fashion', 'Apparel', 'Shop']
+    },
+    {
+        id: 'portfolio',
+        name: 'Portfolio Website',
+        image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        tags: ['Portfolio', 'Resume', 'Showcase']
+    },
+    {
+        id: 'hospital',
+        name: 'Hospital Management',
+        image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1453&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        tags: ['Healthcare', 'Medical', 'System']
     }
 ];
 

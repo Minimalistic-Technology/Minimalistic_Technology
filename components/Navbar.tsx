@@ -61,7 +61,7 @@ const Navbar: React.FC = () => {
             <div
               className={cn(
                 "flex size-10 items-center justify-center rounded-full bg-primary",
-                "text-xs font-black text-white dark:text-black"
+                "text-xs font-black text-black"
               )}
             >
               MT
@@ -74,20 +74,28 @@ const Navbar: React.FC = () => {
 
           {/* Desktop Links */}
           <div className="hidden items-center gap-10 lg:flex">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.path}
-                onClick={(e) => handleLinkClick(e, link.path)}
-                className={cn(
-                  "group relative py-2 text-[9px] font-bold uppercase tracking-[0.2em] xl:text-[12px]",
-                  "text-dim transition-colors hover:text-[var(--text-main)]"
-                )}
-              >
-                {link.name}
-                <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-primary transition-all duration-500 group-hover:w-full" />
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.path;
+              return (
+                <a
+                  key={link.name}
+                  href={link.path}
+                  onClick={(e) => handleLinkClick(e, link.path)}
+                  className={cn(
+                    "group relative py-2 text-[9px] font-bold uppercase tracking-[0.2em] xl:text-[12px] transition-colors",
+                    isActive ? "text-[var(--text-main)]" : "text-neutral-400 hover:text-[var(--text-main)]"
+                  )}
+                >
+                  {link.name}
+                  <span
+                    className={cn(
+                      "absolute bottom-0 left-0 h-[1px] bg-primary transition-all duration-500",
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
+                    )}
+                  />
+                </a>
+              );
+            })}
           </div>
 
           {/* Actions */}
@@ -158,19 +166,22 @@ const Navbar: React.FC = () => {
             )}
           >
             <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-6 px-[clamp(1.5rem,5vw,4rem)] py-10">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.path}
-                  onClick={(e) => handleLinkClick(e, link.path)}
-                  className={cn(
-                    "border-b border-[var(--border)] py-4",
-                    "text-lg font-black uppercase tracking-widest text-[var(--text-main)]"
-                  )}
-                >
-                  {link.name}
-                </a>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = pathname === link.path;
+                return (
+                  <a
+                    key={link.name}
+                    href={link.path}
+                    onClick={(e) => handleLinkClick(e, link.path)}
+                    className={cn(
+                      "border-b py-4 text-lg font-black uppercase tracking-widest text-[var(--text-main)] transition-colors",
+                      isActive ? "border-primary" : "border-[var(--border)]"
+                    )}
+                  >
+                    {link.name}
+                  </a>
+                );
+              })}
               <button
                 className={cn(
                   "relative z-10 mt-4 inline-flex w-full items-center justify-center rounded-2xl",
