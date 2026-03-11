@@ -28,6 +28,8 @@ export async function apiFetch(endpoint: string, options: RequestInit = {}) {
         },
     });
 
+    console.log("response: ", response);
+
     if (!response.ok) {
         let errorMessage = `API request failed: ${response.status} ${response.statusText}`;
         try {

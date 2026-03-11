@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Linkedin, Twitter, Mail, ArrowUpRight } from "lucide-react";
 import { apiFetch } from "@/lib/api";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 interface TeamMember {
   _id: string;
@@ -17,10 +17,15 @@ interface TeamMember {
 export default function TeamClient() {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
-  const { data: teamMembers = [], isLoading } = useQuery<TeamMember[]>({
-    queryKey: ["teamMembers"],
-    queryFn: () => apiFetch("/team")
+  const { mutate: fetchTeamMembers, data = [] } = useMutation<TeamMember[], Error, void>({
+    mutationFn: () => apiFetch("/api/team/get-all-members", { method: "POST" })
   });
+
+  useEffect(() => {
+    fetchTeamMembers();
+  }, [fetchTeamMembers]);
+
+  const teamMembers = data;
 
   return (
     <div className="min-h-screen bg-[var(--background)]">
