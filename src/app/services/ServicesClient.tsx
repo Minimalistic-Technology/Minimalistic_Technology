@@ -197,16 +197,33 @@ export default function ServicesClient() {
       {/* ── Get Started Today (Mockup 2 Refined) ── */}
       <section className="py-20 relative overflow-hidden">
         <div className="max-w-[1280px] mx-auto px-[clamp(1.5rem,5vw,4rem)] relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center"> */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              // viewport={{ once: true }}
+              className="flex flex-col items-center"
             >
               <h2 className="text-[4rem] font-black text-[var(--text-main)] leading-tight mb-8">
                 Get Started Today
               </h2>
-              <p className="text-[var(--text-dim)] text-lg mb-12 font-medium leading-relaxed max-w-md">
+              <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              // viewport={{ once: true }}
+              className="lg:max-w-[600px]"
+            >
+              <div className="absolute -inset-4 bg-[#a3e635]/20 rounded-[40px] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="relative aspect-[16/10] rounded-[32px] overflow-hidden border border-[#a3e635]/30">
+                <img
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop"
+                  alt="Collaboration"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              </div>
+            </motion.div>
+              <p className="text-[var(--text-dim)] text-lg mt-4 mb-12 font-medium leading-relaxed max-w-md text-center">
                 Join 1000+ businesses using minimalistic technology to build
                 their dream website.
               </p>
@@ -219,23 +236,8 @@ export default function ServicesClient() {
               </a>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative group lg:max-w-[450px] lg:ml-auto"
-            >
-              <div className="absolute -inset-4 bg-[#a3e635]/20 rounded-[40px] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              <div className="relative aspect-[16/10] rounded-[32px] overflow-hidden border border-[#a3e635]/30">
-                <img
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop"
-                  alt="Collaboration"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              </div>
-            </motion.div>
-          </div>
+            
+          {/* </div> */}
         </div>
       </section>
     </div>
